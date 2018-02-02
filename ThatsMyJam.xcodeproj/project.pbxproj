@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2990D801202525FA0090E18C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D800202525FA0090E18C /* UIView+Extensions.swift */; };
+		2990D8032025260E0090E18C /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8022025260E0090E18C /* Sequence+Extensions.swift */; };
+		2990D8052025261F0090E18C /* MutableCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */; };
 		29A3A028202522E900118867 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A027202522E900118867 /* AppDelegate.swift */; };
-		29A3A02A202522E900118867 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A029202522E900118867 /* ViewController.swift */; };
 		29A3A02D202522E900118867 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A3A02B202522E900118867 /* Main.storyboard */; };
 		29A3A030202522E900118867 /* ThatsMyJam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A02E202522E900118867 /* ThatsMyJam.xcdatamodeld */; };
 		29A3A032202522E900118867 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29A3A031202522E900118867 /* Assets.xcassets */; };
 		29A3A035202522E900118867 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A3A033202522E900118867 /* LaunchScreen.storyboard */; };
 		29A3A040202522E900118867 /* ThatsMyJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A03F202522E900118867 /* ThatsMyJamTests.swift */; };
+		29A3A0512025240400118867 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0502025240400118867 /* MediaManager.swift */; };
+		29A3A0522025240400118867 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0502025240400118867 /* MediaManager.swift */; };
+		29A3A0542025242900118867 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0532025242900118867 /* MediaPlayerViewController.swift */; };
+		29A3A0552025242900118867 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0532025242900118867 /* MediaPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,9 +33,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2990D800202525FA0090E18C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		2990D8022025260E0090E18C /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
+		2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MutableCollection+Extensions.swift"; sourceTree = "<group>"; };
 		29A3A024202522E900118867 /* ThatsMyJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThatsMyJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A3A027202522E900118867 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		29A3A029202522E900118867 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		29A3A02C202522E900118867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		29A3A02F202522E900118867 /* ThatsMyJam.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ThatsMyJam.xcdatamodel; sourceTree = "<group>"; };
 		29A3A031202522E900118867 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +46,8 @@
 		29A3A03B202522E900118867 /* ThatsMyJamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThatsMyJamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A3A03F202522E900118867 /* ThatsMyJamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThatsMyJamTests.swift; sourceTree = "<group>"; };
 		29A3A041202522E900118867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29A3A0502025240400118867 /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaManager.swift; sourceTree = "<group>"; };
+		29A3A0532025242900118867 /* MediaPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +89,11 @@
 		29A3A026202522E900118867 /* ThatsMyJam */ = {
 			isa = PBXGroup;
 			children = (
-				29A3A027202522E900118867 /* AppDelegate.swift */,
-				29A3A029202522E900118867 /* ViewController.swift */,
-				29A3A02B202522E900118867 /* Main.storyboard */,
-				29A3A031202522E900118867 /* Assets.xcassets */,
-				29A3A033202522E900118867 /* LaunchScreen.storyboard */,
-				29A3A036202522E900118867 /* Info.plist */,
-				29A3A02E202522E900118867 /* ThatsMyJam.xcdatamodeld */,
+				29A3A04E2025238B00118867 /* Model */,
+				29A3A04D2025238900118867 /* View */,
+				29A3A04C2025238700118867 /* Controller */,
+				29A3A04B2025238500118867 /* Extensions */,
+				29A3A04A2025238300118867 /* SupportingFiles */,
 			);
 			path = ThatsMyJam;
 			sourceTree = "<group>";
@@ -97,6 +105,60 @@
 				29A3A041202522E900118867 /* Info.plist */,
 			);
 			path = ThatsMyJamTests;
+			sourceTree = "<group>";
+		};
+		29A3A04A2025238300118867 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				29A3A027202522E900118867 /* AppDelegate.swift */,
+				29A3A031202522E900118867 /* Assets.xcassets */,
+				29A3A033202522E900118867 /* LaunchScreen.storyboard */,
+				29A3A036202522E900118867 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		29A3A04B2025238500118867 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2990D800202525FA0090E18C /* UIView+Extensions.swift */,
+				2990D8022025260E0090E18C /* Sequence+Extensions.swift */,
+				2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		29A3A04C2025238700118867 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				29A3A0532025242900118867 /* MediaPlayerViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		29A3A04D2025238900118867 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				29A3A02B202522E900118867 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		29A3A04E2025238B00118867 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				29A3A04F202523DE00118867 /* CoreData */,
+				29A3A0502025240400118867 /* MediaManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		29A3A04F202523DE00118867 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				29A3A02E202522E900118867 /* ThatsMyJam.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +212,11 @@
 					29A3A023202522E900118867 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					29A3A03A202522E900118867 = {
 						CreatedOnToolsVersion = 9.2;
@@ -202,8 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2990D8052025261F0090E18C /* MutableCollection+Extensions.swift in Sources */,
+				2990D8032025260E0090E18C /* Sequence+Extensions.swift in Sources */,
 				29A3A030202522E900118867 /* ThatsMyJam.xcdatamodeld in Sources */,
-				29A3A02A202522E900118867 /* ViewController.swift in Sources */,
+				29A3A0512025240400118867 /* MediaManager.swift in Sources */,
+				2990D801202525FA0090E18C /* UIView+Extensions.swift in Sources */,
+				29A3A0542025242900118867 /* MediaPlayerViewController.swift in Sources */,
 				29A3A028202522E900118867 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +283,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29A3A0522025240400118867 /* MediaManager.swift in Sources */,
+				29A3A0552025242900118867 /* MediaPlayerViewController.swift in Sources */,
 				29A3A040202522E900118867 /* ThatsMyJamTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,7 +432,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8YZSQZRNW;
-				INFOPLIST_FILE = ThatsMyJam/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ThatsMyJam/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewhsingleton.ThatsMyJam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -374,7 +447,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8YZSQZRNW;
-				INFOPLIST_FILE = ThatsMyJam/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ThatsMyJam/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewhsingleton.ThatsMyJam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
