@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		283D87E86C2F621DE8EDBF93 /* Pods_ThatsMyJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EF45B95F707500CAABFCF0 /* Pods_ThatsMyJamTests.framework */; };
+		290070C8202529100054A0C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 290070C7202529100054A0C2 /* GoogleService-Info.plist */; };
 		2990D801202525FA0090E18C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D800202525FA0090E18C /* UIView+Extensions.swift */; };
 		2990D8032025260E0090E18C /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8022025260E0090E18C /* Sequence+Extensions.swift */; };
 		2990D8052025261F0090E18C /* MutableCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */; };
@@ -20,6 +22,7 @@
 		29A3A0522025240400118867 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0502025240400118867 /* MediaManager.swift */; };
 		29A3A0542025242900118867 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0532025242900118867 /* MediaPlayerViewController.swift */; };
 		29A3A0552025242900118867 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0532025242900118867 /* MediaPlayerViewController.swift */; };
+		B16DC1FAC1ECE4922434174E /* Pods_ThatsMyJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645321C3C91BA2077AE8CE0 /* Pods_ThatsMyJam.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E898F2C06109C0F215828DD /* Pods-ThatsMyJam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThatsMyJam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam.debug.xcconfig"; sourceTree = "<group>"; };
+		290070C7202529100054A0C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2990D800202525FA0090E18C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		2990D8022025260E0090E18C /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MutableCollection+Extensions.swift"; sourceTree = "<group>"; };
@@ -48,6 +53,11 @@
 		29A3A041202522E900118867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29A3A0502025240400118867 /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaManager.swift; sourceTree = "<group>"; };
 		29A3A0532025242900118867 /* MediaPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerViewController.swift; sourceTree = "<group>"; };
+		2F8682BE3DA2F11CEE1D5EA5 /* Pods-ThatsMyJamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThatsMyJamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThatsMyJamTests/Pods-ThatsMyJamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		58EF45B95F707500CAABFCF0 /* Pods_ThatsMyJamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThatsMyJamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9695E006F660BFCCF9C68971 /* Pods-ThatsMyJamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThatsMyJamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ThatsMyJamTests/Pods-ThatsMyJamTests.release.xcconfig"; sourceTree = "<group>"; };
+		A645321C3C91BA2077AE8CE0 /* Pods_ThatsMyJam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThatsMyJam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA037383E2C92440F3BBA5AB /* Pods-ThatsMyJam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThatsMyJam.release.xcconfig"; path = "Pods/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B16DC1FAC1ECE4922434174E /* Pods_ThatsMyJam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,18 +73,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				283D87E86C2F621DE8EDBF93 /* Pods_ThatsMyJamTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1414085DDC0EA4FFAED01033 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A645321C3C91BA2077AE8CE0 /* Pods_ThatsMyJam.framework */,
+				58EF45B95F707500CAABFCF0 /* Pods_ThatsMyJamTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		29A3A01B202522E900118867 = {
 			isa = PBXGroup;
 			children = (
 				29A3A026202522E900118867 /* ThatsMyJam */,
 				29A3A03E202522E900118867 /* ThatsMyJamTests */,
 				29A3A025202522E900118867 /* Products */,
+				490D40A6EE5FA38BAC34B870 /* Pods */,
+				1414085DDC0EA4FFAED01033 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +137,7 @@
 				29A3A031202522E900118867 /* Assets.xcassets */,
 				29A3A033202522E900118867 /* LaunchScreen.storyboard */,
 				29A3A036202522E900118867 /* Info.plist */,
+				290070C7202529100054A0C2 /* GoogleService-Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -161,6 +185,17 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		490D40A6EE5FA38BAC34B870 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0E898F2C06109C0F215828DD /* Pods-ThatsMyJam.debug.xcconfig */,
+				FA037383E2C92440F3BBA5AB /* Pods-ThatsMyJam.release.xcconfig */,
+				2F8682BE3DA2F11CEE1D5EA5 /* Pods-ThatsMyJamTests.debug.xcconfig */,
+				9695E006F660BFCCF9C68971 /* Pods-ThatsMyJamTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,9 +203,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29A3A044202522E900118867 /* Build configuration list for PBXNativeTarget "ThatsMyJam" */;
 			buildPhases = (
+				F1B0C1690D59205BC1F18939 /* [CP] Check Pods Manifest.lock */,
 				29A3A020202522E900118867 /* Sources */,
 				29A3A021202522E900118867 /* Frameworks */,
 				29A3A022202522E900118867 /* Resources */,
+				A5523AAC78F38A36DF30B320 /* [CP] Embed Pods Frameworks */,
+				054DCBB53232B5F776E30BE2 /* [CP] Copy Pods Resources */,
+				296B61C620252CA400627E41 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -185,9 +224,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29A3A047202522E900118867 /* Build configuration list for PBXNativeTarget "ThatsMyJamTests" */;
 			buildPhases = (
+				9D8CD639D44B6AF4096A1755 /* [CP] Check Pods Manifest.lock */,
 				29A3A037202522E900118867 /* Sources */,
 				29A3A038202522E900118867 /* Frameworks */,
 				29A3A039202522E900118867 /* Resources */,
+				D53DAF71B73B7ADB828553D5 /* [CP] Embed Pods Frameworks */,
+				A9946BA937DA33597101D1C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -206,7 +248,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Matthew Howes Singleton";
 				TargetAttributes = {
 					29A3A023202522E900118867 = {
@@ -250,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29A3A035202522E900118867 /* LaunchScreen.storyboard in Resources */,
+				290070C8202529100054A0C2 /* GoogleService-Info.plist in Resources */,
 				29A3A032202522E900118867 /* Assets.xcassets in Resources */,
 				29A3A02D202522E900118867 /* Main.storyboard in Resources */,
 			);
@@ -263,6 +306,127 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		054DCBB53232B5F776E30BE2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		296B61C620252CA400627E41 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+		};
+		9D8CD639D44B6AF4096A1755 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ThatsMyJamTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5523AAC78F38A36DF30B320 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9946BA937DA33597101D1C7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ThatsMyJamTests/Pods-ThatsMyJamTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D53DAF71B73B7ADB828553D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ThatsMyJamTests/Pods-ThatsMyJamTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1B0C1690D59205BC1F18939 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ThatsMyJam-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		29A3A020202522E900118867 /* Sources */ = {
@@ -333,6 +497,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -340,6 +505,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -390,6 +556,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -397,6 +564,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -421,6 +589,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -428,9 +597,12 @@
 		};
 		29A3A045202522E900118867 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E898F2C06109C0F215828DD /* Pods-ThatsMyJam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = K8YZSQZRNW;
 				INFOPLIST_FILE = "$(SRCROOT)/ThatsMyJam/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -443,8 +615,10 @@
 		};
 		29A3A046202522E900118867 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA037383E2C92440F3BBA5AB /* Pods-ThatsMyJam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8YZSQZRNW;
 				INFOPLIST_FILE = "$(SRCROOT)/ThatsMyJam/SupportingFiles/Info.plist";
@@ -458,9 +632,11 @@
 		};
 		29A3A048202522E900118867 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F8682BE3DA2F11CEE1D5EA5 /* Pods-ThatsMyJamTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8YZSQZRNW;
 				INFOPLIST_FILE = ThatsMyJamTests/Info.plist;
@@ -475,9 +651,11 @@
 		};
 		29A3A049202522E900118867 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9695E006F660BFCCF9C68971 /* Pods-ThatsMyJamTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8YZSQZRNW;
 				INFOPLIST_FILE = ThatsMyJamTests/Info.plist;

@@ -9,6 +9,7 @@
 import UIKit
 import MediaPlayer
 import AVFoundation
+import FirebasePerformance
 
 class MediaPlayerViewController: UIViewController {
   
@@ -78,10 +79,12 @@ class MediaPlayerViewController: UIViewController {
   // MARK: - Initial Audio Player setup Logic
   
   func setUpAudioPlayerAndGetSongsShuffled() {
+    let setUpTrace = Performance.startTrace(name: "setUpAudioPlayerAndGetSongsShuffled")
     try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback) //AVAudioSessionCategorySoloAmbient
     try? AVAudioSession.sharedInstance().setActive(true)
     
     MediaManager.shared.getAllSongs { (songs) in
+      let getAllSongsTrace = Performance.startTrace(name: "getAllSongs")
       guard let theSongs = songs else {
         return
       }
@@ -100,10 +103,9 @@ class MediaPlayerViewController: UIViewController {
       self.mediaPlayer.shuffleMode = .albums
       self.mediaPlayer.repeatMode = .none
       self.aSongIsInChamber = false
-      
+      getAllSongsTrace?.stop()
     }
-    
-    
+    setUpTrace?.stop()
   }
   
   
@@ -116,7 +118,7 @@ class MediaPlayerViewController: UIViewController {
   }
   
   @objc func songChanged(_ notification: Notification) {
-    
+    let songChangedTrace = Performance.startTrace(name: "songChanged")
     songProgressSlider.maximumValue = Float(mediaPlayer.nowPlayingItem?.playbackDuration ?? 0)
     songProgressSlider.minimumValue = 0
     songProgressSlider.value = 0
@@ -176,6 +178,7 @@ class MediaPlayerViewController: UIViewController {
         }
       }
     }
+    songChangedTrace?.stop()
   }
   
   
@@ -226,6 +229,7 @@ class MediaPlayerViewController: UIViewController {
   // MARK: - Get Song Information
   
   func getCurrentlyPlayedInfo() {
+    let getCurrentlyPlayedInfoTrace = Performance.startTrace(name: "getCurrentlyPlayedInfo")
     DispatchQueue.main.async {
       if let songInfo = self.mediaPlayer.nowPlayingItem {
         self.songNameLabel.text = songInfo.title ?? ""
@@ -234,6 +238,7 @@ class MediaPlayerViewController: UIViewController {
         self.albumArtImageView.image = songInfo.artwork?.image(at: CGSize(width: 400, height: 400)) ?? #imageLiteral(resourceName: "lockedIconRed")
       }
     }
+    getCurrentlyPlayedInfoTrace?.stop()
   }
   
   
@@ -254,11 +259,13 @@ class MediaPlayerViewController: UIViewController {
   }
   
   func updateCurrentPlaybackTime() {
+    let updateCurrentPlaybackTimeTrace = Performance.startTrace(name: "updateCurrentPlaybackTime")
     let elapsedTime = mediaPlayer.currentPlaybackTime
     songProgressSlider.value = Float(elapsedTime)
     songProgressView.progress = Float(elapsedTime / Double(songProgressSlider.maximumValue))
     songTimePlayedLabel.text = getTimeElapsed()
     songTimeRemainingLabel.text = getTimeRemaining()
+    updateCurrentPlaybackTimeTrace?.stop()
   }
   
   
@@ -332,6 +339,7 @@ class MediaPlayerViewController: UIViewController {
   @IBAction func albumLockButtonTapped(_ sender: UIButton) {
     if let nowPlaying = mediaPlayer.nowPlayingItem {
       if sender.isSelected {
+        let albumUnLockTrace = Performance.startTrace(name: "albumUnLock")
         sender.isSelected = false
         albumIsLocked = false
         tappedLockLogic()
@@ -342,7 +350,9 @@ class MediaPlayerViewController: UIViewController {
           items.shuffle()
           mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
         }
+        albumUnLockTrace?.stop()
       } else {
+        let albumLockTrace = Performance.startTrace(name: "albumLock")
         sender.isSelected = true
         albumIsLocked = true
         let albumPredicate = MPMediaPropertyPredicate(value: nowPlaying.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
@@ -350,6 +360,7 @@ class MediaPlayerViewController: UIViewController {
         albumQuery.addFilterPredicate(albumPredicate)
         mediaPlayer.setQueue(with: albumQuery)
         tappedLockLogic()
+        albumLockTrace?.stop()
       }
     }
   }

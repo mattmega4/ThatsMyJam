@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - NavBar Light Color
     UIApplication.shared.statusBarStyle = .lightContent
+    
+    FirebaseApp.configure()
     
     return true
   }

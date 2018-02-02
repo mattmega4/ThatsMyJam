@@ -1,0 +1,6 @@
+framework module Pods_ThatsMyJam {
+  umbrella header "Pods-ThatsMyJam-umbrella.h"
+
+  export *
+  module * { export * }
+}

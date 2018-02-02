@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UQg-ei-7of">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,12 +21,12 @@
         <!--Media Player View Controller-->
         <scene sceneID="1UG-Iy-0D4">
             <objects>
-                <viewController id="UQg-ei-7of" customClass="MediaPlayerViewController" customModule="SmartShuffle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mediaPlayer" id="UQg-ei-7of" customClass="MediaPlayerViewController" customModule="ThatsMyJam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gIN-lc-wzJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testAlbumCover" translatesAutoresizingMaskIntoConstraints="NO" id="RBE-Qy-rGm">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lockedIconRed" translatesAutoresizingMaskIntoConstraints="NO" id="RBE-Qy-rGm">
                                 <rect key="frame" x="133" y="45" width="110.5" height="110.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RBE-Qy-rGm" secondAttribute="height" multiplier="1:1" id="aX7-2F-qmQ"/>
@@ -306,14 +306,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="forwardIconLight" width="16" height="16"/>
-        <image name="lockedIconRed" width="16" height="16"/>
-        <image name="pauseIconLight" width="16" height="16"/>
-        <image name="playIconLight" width="16" height="16"/>
-        <image name="rewindIconLight" width="16" height="16"/>
-        <image name="testAlbumCover" width="16" height="16"/>
-        <image name="unlockedIconLight" width="16" height="16"/>
-        <image name="volumeLessIconLight" width="16" height="16"/>
-        <image name="volumeMoreIconLight" width="16" height="16"/>
+        <image name="forwardIconLight" width="40" height="40"/>
+        <image name="lockedIconRed" width="50" height="50"/>
+        <image name="pauseIconLight" width="48" height="52"/>
+        <image name="playIconLight" width="47" height="51"/>
+        <image name="rewindIconLight" width="40" height="40"/>
+        <image name="unlockedIconLight" width="50" height="50"/>
+        <image name="volumeLessIconLight" width="31" height="31"/>
+        <image name="volumeMoreIconLight" width="31" height="31"/>
     </resources>
 </document>
