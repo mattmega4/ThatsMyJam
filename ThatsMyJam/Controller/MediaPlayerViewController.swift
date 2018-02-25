@@ -86,10 +86,6 @@ class MediaPlayerViewController: UIViewController {
       guard let theSongs = songs else {
         return
       }
-      let predicate = MPMediaPropertyPredicate(value: "Non_Existant_Song_Name", forProperty: MPMediaItemPropertyTitle)
-      let emptyTheQueue = MPMediaQuery()
-      emptyTheQueue.addFilterPredicate(predicate)
-      self.mediaPlayer.setQueue(with: emptyTheQueue)
       self.mediaPlayer.nowPlayingItem = nil
       DispatchQueue.main.async {
         self.clearSongInfo()
