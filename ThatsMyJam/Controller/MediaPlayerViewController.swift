@@ -44,7 +44,7 @@ class MediaPlayerViewController: UIViewController {
   var genreQuery: MPMediaQuery?
   var newSongs = [MPMediaItem]()
   var currentSong: MPMediaItem?
-  let mediaPlayer = MPMusicPlayerApplicationController.systemMusicPlayer
+  let mediaPlayer = MPMusicPlayerApplicationController.applicationQueuePlayer //systemMusicPlayer
   var songTimer: Timer?
   var firstLaunch = true
   var lastPlayedItem: MPMediaItem?
