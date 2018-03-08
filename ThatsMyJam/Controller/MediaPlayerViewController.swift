@@ -341,7 +341,11 @@ class MediaPlayerViewController: UIViewController {
         let albumPredicate = MPMediaPropertyPredicate(value: nowPlaying.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
         let albumQuery = MPMediaQuery()
         albumQuery.addFilterPredicate(albumPredicate)
-        mediaPlayer.setQueue(with: albumQuery)
+//        mediaPlayer.setQueue(with: albumQuery)
+        if var items = albumQuery.items {
+          items.shuffle()
+          mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
+        }
         tappedLockLogic()
       }
     }
@@ -367,7 +371,11 @@ class MediaPlayerViewController: UIViewController {
         let artistPredicate = MPMediaPropertyPredicate(value: nowPlaying.artist, forProperty: MPMediaItemPropertyArtist)
         let artistQuery = MPMediaQuery()
         artistQuery.addFilterPredicate(artistPredicate)
-        mediaPlayer.setQueue(with: artistQuery)
+//        mediaPlayer.setQueue(with: artistQuery)
+        if var items = artistQuery.items {
+          items.shuffle()
+          mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
+        }
         tappedLockLogic()
       }
     }
@@ -393,7 +401,11 @@ class MediaPlayerViewController: UIViewController {
         let genrePredicate = MPMediaPropertyPredicate(value: nowPlaying.genre, forProperty: MPMediaItemPropertyGenre)
         let genreQuery = MPMediaQuery()
         genreQuery.addFilterPredicate(genrePredicate)
-        mediaPlayer.setQueue(with: genreQuery)
+//        mediaPlayer.setQueue(with: genreQuery)
+        if var items = genreQuery.items {
+          items.shuffle()
+          mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
+        }
         tappedLockLogic()
       }
     }
