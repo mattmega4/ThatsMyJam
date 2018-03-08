@@ -209,7 +209,7 @@ class MediaPlayerViewController: UIViewController {
   // MARK: - Clear Song Information
   
   func clearSongInfo() {
-    albumArtImageView.image = #imageLiteral(resourceName: "lockedIconRed")
+    albumArtImageView.image = #imageLiteral(resourceName: "emptyArtworkImage")
     songNameLabel.text = ""
     songArtistLabel.text = ""
     songAlbumLabel.text = ""
@@ -224,7 +224,7 @@ class MediaPlayerViewController: UIViewController {
         self.songNameLabel.text = songInfo.title ?? ""
         self.songAlbumLabel.text = songInfo.albumTitle ?? ""
         self.songArtistLabel.text = songInfo.artist ?? ""
-        self.albumArtImageView.image = songInfo.artwork?.image(at: CGSize(width: 400, height: 400)) ?? #imageLiteral(resourceName: "lockedIconRed")
+        self.albumArtImageView.image = songInfo.artwork?.image(at: CGSize(width: 400, height: 400)) ?? #imageLiteral(resourceName: "emptyArtworkImage")
       }
     }
   }
