@@ -79,7 +79,7 @@ class MediaPlayerViewController: UIViewController {
   // MARK: - Initial Audio Player setup Logic
   
   func setUpAudioPlayerAndGetSongsShuffled() {
-    try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback) //AVAudioSessionCategorySoloAmbient
+    try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
     try? AVAudioSession.sharedInstance().setActive(true)
     
     MediaManager.shared.getAllSongs { (songs) in
@@ -94,6 +94,8 @@ class MediaPlayerViewController: UIViewController {
         return !MediaManager.shared.playedSongs.contains(item)
       })
       self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: self.newSongs.shuffled()))
+      self.mediaPlayer.prepareToPlay()
+      self.mediaPlayer.stop()
       self.mediaPlayer.shuffleMode = .albums
       self.mediaPlayer.repeatMode = .none
       self.aSongIsInChamber = false
@@ -286,24 +288,9 @@ class MediaPlayerViewController: UIViewController {
     isPlaying = !isPlaying
     sender.isSelected = isPlaying
     if self.isPlaying {
-      //      if self.mediaPlayer.playbackState != .playing {
-      //        if self.mediaPlayer.isPreparedToPlay {
-      //          DispatchQueue.main.async {
-      //            self.mediaPlayer.play()
-      //            self.aSongIsInChamber = true
-      //          }
-      //        } else {
-      //          DispatchQueue.main.async {
-      //            self.mediaPlayer.play()
-      //            self.aSongIsInChamber = true
-      //          }
-      //        }
-      //      }
       self.mediaPlayer.play()
     } else {
-      //      if self.mediaPlayer.playbackState == .playing {
       self.mediaPlayer.pause()
-      //      }
     }
     
     getCurrentlyPlayedInfo()
