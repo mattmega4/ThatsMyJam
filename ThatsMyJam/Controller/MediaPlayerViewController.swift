@@ -82,6 +82,7 @@ class MediaPlayerViewController: UIViewController {
     try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
     try? AVAudioSession.sharedInstance().setActive(true)
     
+     let testTrace = Performance.startTrace(name: "Test")
     MediaManager.shared.getAllSongs { (songs) in
       guard let theSongs = songs else {
         return
@@ -94,11 +95,15 @@ class MediaPlayerViewController: UIViewController {
         return !MediaManager.shared.playedSongs.contains(item)
       })
       self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: self.newSongs.shuffled()))
-      self.mediaPlayer.prepareToPlay()
-      self.mediaPlayer.stop()
+      self.mediaPlayer.prepareToPlay(completionHandler: { (error) in
+        print(error?.localizedDescription ?? "Something went wrong")
+        self.mediaPlayer.stop()
+      })
+//      self.mediaPlayer.stop()
       self.mediaPlayer.shuffleMode = .albums
       self.mediaPlayer.repeatMode = .none
       self.aSongIsInChamber = false
+      testTrace?.stop()
     }
   }
   
@@ -385,14 +390,17 @@ class MediaPlayerViewController: UIViewController {
       } else {
         sender.isSelected = true
         genreIsLocked = true
-        let genrePredicate = MPMediaPropertyPredicate(value: nowPlaying.genre, forProperty: MPMediaItemPropertyGenre)
+         let testTrace = Performance.startTrace(name: "Test")
+        let genrePredicate = MPMediaPropertyPredicate(value: nowPlaying.genre, forProperty: MPMediaItemPropertyGenre, comparisonType: .contains)
+          
+         // MPMediaPropertyPredicate(value: nowPlaying.genre, forProperty: MPMediaItemPropertyGenre)
         let genreQuery = MPMediaQuery()
         genreQuery.addFilterPredicate(genrePredicate)
-//        mediaPlayer.setQueue(with: genreQuery)
         if var items = genreQuery.items {
           items.shuffle()
           mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
         }
+        testTrace?.stop()
         tappedLockLogic()
       }
     }
