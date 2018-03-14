@@ -9,8 +9,8 @@ target 'ThatsMyJam' do
 
 	pod 'Firebase/Core'
 	pod 'Firebase/Performance'
-	pod 'Fabric', '~> 1.7.2'
-	pod 'Crashlytics', '~> 3.9.3'
+  pod 'Fabric', '~> 1.7.5'
+  pod 'Crashlytics', '~> 3.10.1'
 
   target 'ThatsMyJamTests' do
     inherit! :search_paths
