@@ -82,7 +82,7 @@ class MediaPlayerViewController: UIViewController {
     try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
     try? AVAudioSession.sharedInstance().setActive(true)
     
-     let testTrace = Performance.startTrace(name: "Test")
+    let setupTrace = Performance.startTrace(name: "setupTrace")
     MediaManager.shared.getAllSongs { (songs) in
       guard let theSongs = songs else {
         return
@@ -95,18 +95,15 @@ class MediaPlayerViewController: UIViewController {
         return !MediaManager.shared.playedSongs.contains(item)
       })
       self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: self.newSongs.shuffled()))
-      self.mediaPlayer.prepareToPlay(completionHandler: { (error) in
-        print(error?.localizedDescription ?? "Something went wrong")
-        self.mediaPlayer.stop()
-      })
-//      self.mediaPlayer.stop()
-      self.mediaPlayer.shuffleMode = .albums
+      self.mediaPlayer.prepareToPlay()
+      self.mediaPlayer.stop()
+      self.mediaPlayer.shuffleMode = .songs
       self.mediaPlayer.repeatMode = .none
       self.aSongIsInChamber = false
-      testTrace?.stop()
+      setupTrace?.stop()
     }
   }
-  
+
   
   // MARK: - Playback Slider
   
@@ -319,6 +316,7 @@ class MediaPlayerViewController: UIViewController {
       if sender.isSelected {
         sender.isSelected = false
         albumIsLocked = false
+        let albumUnlockedTrace = Performance.startTrace(name: "albumUnlockedTrace")
         tappedLockLogic()
         let albumPredicate = MPMediaPropertyPredicate(value: nowPlaying.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
         let albumQuery = MPMediaQuery()
@@ -327,17 +325,19 @@ class MediaPlayerViewController: UIViewController {
           items.shuffle()
           mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
         }
+        albumUnlockedTrace?.stop()
       } else {
         sender.isSelected = true
         albumIsLocked = true
+        let albumLockedTrace = Performance.startTrace(name: "albumLockedTrace")
         let albumPredicate = MPMediaPropertyPredicate(value: nowPlaying.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
         let albumQuery = MPMediaQuery()
         albumQuery.addFilterPredicate(albumPredicate)
-//        mediaPlayer.setQueue(with: albumQuery)
         if var items = albumQuery.items {
           items.shuffle()
           mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
         }
+        albumLockedTrace?.stop()
         tappedLockLogic()
       }
     }
@@ -349,6 +349,7 @@ class MediaPlayerViewController: UIViewController {
       if sender.isSelected {
         sender.isSelected = false
         artistIsLocked = false
+        let artistUnlockedTrace = Performance.startTrace(name: "artistUnlockedTrace")
         tappedLockLogic()
         let artistPredicate = MPMediaPropertyPredicate(value: nowPlaying.artist, forProperty: MPMediaItemPropertyArtist)
         let artistQuery = MPMediaQuery()
@@ -357,17 +358,19 @@ class MediaPlayerViewController: UIViewController {
           items.shuffle()
           mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
         }
+        artistUnlockedTrace?.stop()
       } else {
         sender.isSelected = true
         artistIsLocked = true
+        let artistLockedTrace = Performance.startTrace(name: "artistLockedTrace")
         let artistPredicate = MPMediaPropertyPredicate(value: nowPlaying.artist, forProperty: MPMediaItemPropertyArtist)
         let artistQuery = MPMediaQuery()
         artistQuery.addFilterPredicate(artistPredicate)
-//        mediaPlayer.setQueue(with: artistQuery)
         if var items = artistQuery.items {
           items.shuffle()
           mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
         }
+        artistLockedTrace?.stop()
         tappedLockLogic()
       }
     }
@@ -379,6 +382,7 @@ class MediaPlayerViewController: UIViewController {
       if sender.isSelected {
         sender.isSelected = false
         genreIsLocked = false
+        let genreUnlockedTrace = Performance.startTrace(name: "genreUnlockedTrace")
         tappedLockLogic()
         let genrePredicate = MPMediaPropertyPredicate(value: nowPlaying.genre, forProperty: MPMediaItemPropertyGenre)
         let genreQuery = MPMediaQuery()
@@ -387,20 +391,19 @@ class MediaPlayerViewController: UIViewController {
           items.shuffle()
           mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
         }
+        genreUnlockedTrace?.stop()
       } else {
         sender.isSelected = true
         genreIsLocked = true
-         let testTrace = Performance.startTrace(name: "Test")
+        let genreLockedTrace = Performance.startTrace(name: "genreLockedTrace")
         let genrePredicate = MPMediaPropertyPredicate(value: nowPlaying.genre, forProperty: MPMediaItemPropertyGenre, comparisonType: .contains)
-          
-         // MPMediaPropertyPredicate(value: nowPlaying.genre, forProperty: MPMediaItemPropertyGenre)
         let genreQuery = MPMediaQuery()
         genreQuery.addFilterPredicate(genrePredicate)
         if var items = genreQuery.items {
           items.shuffle()
           mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
         }
-        testTrace?.stop()
+        genreLockedTrace?.stop()
         tappedLockLogic()
       }
     }
