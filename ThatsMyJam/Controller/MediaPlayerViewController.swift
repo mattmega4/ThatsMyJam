@@ -56,7 +56,7 @@ class MediaPlayerViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     mediaPlayer.beginGeneratingPlaybackNotifications()
     NotificationCenter.default.addObserver(self, selector: #selector(songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
     

@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 import Firebase
+import Fabric
+import Crashlytics
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - NavBar Light Color
     UIApplication.shared.statusBarStyle = .lightContent
     
+    Fabric.with([Crashlytics.self])
     FirebaseApp.configure()
     incrementAppRuns()
     
