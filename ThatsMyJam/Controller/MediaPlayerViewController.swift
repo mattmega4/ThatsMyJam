@@ -63,6 +63,7 @@ class MediaPlayerViewController: UIViewController {
     albumArtImageView.createRoundedCorners()
     songProgressSlider.addTarget(self, action: #selector(playbackSlider(_:)), for: .valueChanged)
     volumeControlView.showsVolumeSlider = true
+    showReview()
   }
   
   override func viewDidLayoutSubviews() {
@@ -101,7 +102,7 @@ class MediaPlayerViewController: UIViewController {
       })
       self.aSongIsInChamber = false
       self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: self.newSongs.shuffled()))
-      self.mediaPlayer.prepareToPlay()
+//      self.mediaPlayer.prepareToPlay()
       self.mediaPlayer.stop()
       self.mediaPlayer.shuffleMode = .songs
       self.mediaPlayer.repeatMode = .none
@@ -295,6 +296,7 @@ class MediaPlayerViewController: UIViewController {
     isPlaying = !isPlaying
     sender.isSelected = isPlaying
     if self.isPlaying {
+      self.mediaPlayer.prepareToPlay()
       self.mediaPlayer.play()
     } else {
       self.mediaPlayer.pause()

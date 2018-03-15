@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UIApplication.shared.statusBarStyle = .lightContent
     
     FirebaseApp.configure()
+    incrementAppRuns()
     
     return true
   }

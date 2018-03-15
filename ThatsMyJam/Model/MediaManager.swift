@@ -29,11 +29,9 @@ class MediaManager: NSObject {
         query.addFilterPredicate(audioFilter)
         let songs = query.items?.filter({ (item) -> Bool in
           
-          return item.mediaType.rawValue == 1 // && item.artist?.contains("B.B. King") == true
+          return item.mediaType.rawValue == 1
         })
-//        for song in songs! {
-//          print(song.mediaType)
-//        }
+
         completion(songs)
       } else {
         completion(nil)
