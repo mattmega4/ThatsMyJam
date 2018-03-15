@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		283D87E86C2F621DE8EDBF93 /* Pods_ThatsMyJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EF45B95F707500CAABFCF0 /* Pods_ThatsMyJamTests.framework */; };
 		290070C8202529100054A0C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 290070C7202529100054A0C2 /* GoogleService-Info.plist */; };
+		2969DC862059E87800C2BE0A /* Old Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2969DC852059E87800C2BE0A /* Old Code.swift */; };
 		2990D801202525FA0090E18C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D800202525FA0090E18C /* UIView+Extensions.swift */; };
 		2990D8032025260E0090E18C /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8022025260E0090E18C /* Sequence+Extensions.swift */; };
 		2990D8052025261F0090E18C /* MutableCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		0E898F2C06109C0F215828DD /* Pods-ThatsMyJam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThatsMyJam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam.debug.xcconfig"; sourceTree = "<group>"; };
 		290070C7202529100054A0C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2969DC852059E87800C2BE0A /* Old Code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Old Code.swift"; sourceTree = "<group>"; };
 		2990D800202525FA0090E18C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		2990D8022025260E0090E18C /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MutableCollection+Extensions.swift"; sourceTree = "<group>"; };
@@ -89,6 +91,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2969DC872059E88D00C2BE0A /* Old Code */ = {
+			isa = PBXGroup;
+			children = (
+				2969DC852059E87800C2BE0A /* Old Code.swift */,
+			);
+			path = "Old Code";
+			sourceTree = "<group>";
+		};
 		29A3A01B202522E900118867 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +127,7 @@
 				29A3A04C2025238700118867 /* Controller */,
 				29A3A04B2025238500118867 /* Extensions */,
 				29A3A04A2025238300118867 /* SupportingFiles */,
+				2969DC872059E88D00C2BE0A /* Old Code */,
 			);
 			path = ThatsMyJam;
 			sourceTree = "<group>";
@@ -436,6 +447,7 @@
 				2990D8052025261F0090E18C /* MutableCollection+Extensions.swift in Sources */,
 				2990D8032025260E0090E18C /* Sequence+Extensions.swift in Sources */,
 				29A3A030202522E900118867 /* ThatsMyJam.xcdatamodeld in Sources */,
+				2969DC862059E87800C2BE0A /* Old Code.swift in Sources */,
 				29A3A0512025240400118867 /* MediaManager.swift in Sources */,
 				2990D801202525FA0090E18C /* UIView+Extensions.swift in Sources */,
 				29A3A0542025242900118867 /* MediaPlayerViewController.swift in Sources */,

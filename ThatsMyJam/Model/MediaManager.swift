@@ -45,61 +45,65 @@ class MediaManager: NSObject {
   // MARK: - Album Lock Logic
   
   func getSongsWithCurrentAlbumFor(item: MPMediaItem) -> MPMediaQuery {
-    let albumFilter = MPMediaPropertyPredicate(value: item.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle, comparisonType: MPMediaPredicateComparison.equalTo)
-    let predicates: Set<MPMediaPropertyPredicate> = [albumFilter]
-    let query = MPMediaQuery(filterPredicates: predicates)
-    query.addFilterPredicate(albumFilter)
+    let albumPredicate = MPMediaPropertyPredicate(value: item.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
+    let query = MPMediaQuery()
+    query.addFilterPredicate(albumPredicate)
+    return query
+  }
+  
+  // MARK: - Remove Album Filter Logic
+  
+  func removeAlbumLockFor(item: MPMediaItem) -> MPMediaQuery {
+    let albumPredicate = MPMediaPropertyPredicate(value: item.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
+    let query = MPMediaQuery()
+    query.removeFilterPredicate(albumPredicate)
     return query
   }
   
   // MARK: - Artist Lock Logic
   
   func getSongsWithCurrentArtistFor(item: MPMediaItem) -> MPMediaQuery {
-    let artistFilter = MPMediaPropertyPredicate(value: item.artist, forProperty: MPMediaItemPropertyArtist, comparisonType: MPMediaPredicateComparison.equalTo)
-    let predicates: Set<MPMediaPropertyPredicate> = [artistFilter]
-    let query = MPMediaQuery(filterPredicates: predicates)
-    return query
-  }
-  
-  // MARK: - Genre Lock Logic
-  
-  func getSongsWithCurrentGenreFor(item: MPMediaItem) -> MPMediaQuery {
-    let genreFilter = MPMediaPropertyPredicate(value: item.genre, forProperty: MPMediaItemPropertyGenre, comparisonType: MPMediaPredicateComparison.equalTo)
-    let predicates: Set<MPMediaPropertyPredicate> = [genreFilter]
-    let query = MPMediaQuery(filterPredicates: predicates)
-    return query
-  }
-  
-  
-  // MARK: - Remove Album Filter Logic
-  
-  func removeAlbumLockFor(item: MPMediaItem) -> MPMediaQuery {
-    let albumFilter = MPMediaPropertyPredicate(value: item.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle, comparisonType: MPMediaPredicateComparison.equalTo)
-    let predicates: Set<MPMediaPropertyPredicate> = [albumFilter]
-    let query = MPMediaQuery(filterPredicates: predicates)
-    query.removeFilterPredicate(albumFilter)
+    let artistPredicate = MPMediaPropertyPredicate(value: item.artist, forProperty: MPMediaItemPropertyArtist)
+    let query = MPMediaQuery()
+    query.addFilterPredicate(artistPredicate)
     return query
   }
   
   // MARK: - Remove Artist Filter Logic
   
   func removeArtistLockFor(item: MPMediaItem) -> MPMediaQuery {
-    let artistFilter = MPMediaPropertyPredicate(value: item.artist, forProperty: MPMediaItemPropertyArtist, comparisonType: MPMediaPredicateComparison.equalTo)
-    let predicates: Set<MPMediaPropertyPredicate> = [artistFilter]
-    let query = MPMediaQuery(filterPredicates: predicates)
-    query.removeFilterPredicate(artistFilter)
+    let artistPredicate = MPMediaPropertyPredicate(value: item.artist, forProperty: MPMediaItemPropertyArtist)
+    let query = MPMediaQuery()
+    query.removeFilterPredicate(artistPredicate)
     return query
   }
   
+  
+  // MARK: - Genre Lock Logic
+  
+  func getSongsWithCurrentGenreFor(item: MPMediaItem) -> MPMediaQuery {
+    let genrePredicate = MPMediaPropertyPredicate(value: item.genre, forProperty: MPMediaItemPropertyGenre, comparisonType: .contains)
+    let query = MPMediaQuery()
+    query.addFilterPredicate(genrePredicate)
+    return query
+  }
+    
   // MARK: - Remove Genre Filter Logic
   
   func removeGenreLockFor(item: MPMediaItem) -> MPMediaQuery {
-    let genreFilter = MPMediaPropertyPredicate(value: item.genre, forProperty: MPMediaItemPropertyGenre, comparisonType: MPMediaPredicateComparison.equalTo)
-    let predicates: Set<MPMediaPropertyPredicate> = [genreFilter]
-    let query = MPMediaQuery(filterPredicates: predicates)
-    query.removeFilterPredicate(genreFilter)
+    
+    let genrePredicate = MPMediaPropertyPredicate(value: item.genre, forProperty: MPMediaItemPropertyGenre)
+    let query = MPMediaQuery()
+    query.removeFilterPredicate(genrePredicate)
     return query
   }
+
+  
+  
+
+  
+
+
   
   // MARK: - Check if the songs should continue playing from the same genre, album or atrist
   
