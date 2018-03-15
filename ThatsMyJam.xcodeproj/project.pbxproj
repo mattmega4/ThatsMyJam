@@ -23,6 +23,10 @@
 		29A3A0522025240400118867 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0502025240400118867 /* MediaManager.swift */; };
 		29A3A0542025242900118867 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0532025242900118867 /* MediaPlayerViewController.swift */; };
 		29A3A0552025242900118867 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0532025242900118867 /* MediaPlayerViewController.swift */; };
+		29CB7C05205A37A900696357 /* RequestReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CB7C04205A37A900696357 /* RequestReview.swift */; };
+		29CB7C06205A37A900696357 /* RequestReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CB7C04205A37A900696357 /* RequestReview.swift */; };
+		29CB7C09205A37DC00696357 /* ReviewKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CB7C08205A37DC00696357 /* ReviewKeys.swift */; };
+		29CB7C0A205A37DC00696357 /* ReviewKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CB7C08205A37DC00696357 /* ReviewKeys.swift */; };
 		B16DC1FAC1ECE4922434174E /* Pods_ThatsMyJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645321C3C91BA2077AE8CE0 /* Pods_ThatsMyJam.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +59,8 @@
 		29A3A041202522E900118867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29A3A0502025240400118867 /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaManager.swift; sourceTree = "<group>"; };
 		29A3A0532025242900118867 /* MediaPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerViewController.swift; sourceTree = "<group>"; };
+		29CB7C04205A37A900696357 /* RequestReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestReview.swift; sourceTree = "<group>"; };
+		29CB7C08205A37DC00696357 /* ReviewKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewKeys.swift; sourceTree = "<group>"; };
 		2F8682BE3DA2F11CEE1D5EA5 /* Pods-ThatsMyJamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThatsMyJamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThatsMyJamTests/Pods-ThatsMyJamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		58EF45B95F707500CAABFCF0 /* Pods_ThatsMyJamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThatsMyJamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9695E006F660BFCCF9C68971 /* Pods-ThatsMyJamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThatsMyJamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ThatsMyJamTests/Pods-ThatsMyJamTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +133,7 @@
 				29A3A04C2025238700118867 /* Controller */,
 				29A3A04B2025238500118867 /* Extensions */,
 				29A3A04A2025238300118867 /* SupportingFiles */,
+				29CB7C07205A37CA00696357 /* Constants */,
 				2969DC872059E88D00C2BE0A /* Old Code */,
 			);
 			path = ThatsMyJam;
@@ -184,6 +191,7 @@
 			children = (
 				29A3A04F202523DE00118867 /* CoreData */,
 				29A3A0502025240400118867 /* MediaManager.swift */,
+				29CB7C04205A37A900696357 /* RequestReview.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,6 +202,14 @@
 				29A3A02E202522E900118867 /* ThatsMyJam.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		29CB7C07205A37CA00696357 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				29CB7C08205A37DC00696357 /* ReviewKeys.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		490D40A6EE5FA38BAC34B870 /* Pods */ = {
@@ -445,6 +461,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2990D8052025261F0090E18C /* MutableCollection+Extensions.swift in Sources */,
+				29CB7C05205A37A900696357 /* RequestReview.swift in Sources */,
 				2990D8032025260E0090E18C /* Sequence+Extensions.swift in Sources */,
 				29A3A030202522E900118867 /* ThatsMyJam.xcdatamodeld in Sources */,
 				2969DC862059E87800C2BE0A /* Old Code.swift in Sources */,
@@ -452,6 +469,7 @@
 				2990D801202525FA0090E18C /* UIView+Extensions.swift in Sources */,
 				29A3A0542025242900118867 /* MediaPlayerViewController.swift in Sources */,
 				29A3A028202522E900118867 /* AppDelegate.swift in Sources */,
+				29CB7C09205A37DC00696357 /* ReviewKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,8 +478,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				29A3A0522025240400118867 /* MediaManager.swift in Sources */,
+				29CB7C06205A37A900696357 /* RequestReview.swift in Sources */,
 				29A3A0552025242900118867 /* MediaPlayerViewController.swift in Sources */,
 				29A3A040202522E900118867 /* ThatsMyJamTests.swift in Sources */,
+				29CB7C0A205A37DC00696357 /* ReviewKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
