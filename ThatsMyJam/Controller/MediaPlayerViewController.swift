@@ -56,7 +56,7 @@ class MediaPlayerViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     mediaPlayer.beginGeneratingPlaybackNotifications()
     NotificationCenter.default.addObserver(self, selector: #selector(songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
     
@@ -100,16 +100,16 @@ class MediaPlayerViewController: UIViewController {
       self.newSongs = theSongs.filter({ (item) -> Bool in
         return !MediaManager.shared.playedSongs.contains(item)
       })
-      self.aSongIsInChamber = false
+      self.aSongIsInChamber = true
       self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: self.newSongs.shuffled()))
-//      self.mediaPlayer.prepareToPlay()
+      //      self.mediaPlayer.prepareToPlay()
       self.mediaPlayer.stop()
       self.mediaPlayer.shuffleMode = .songs
       self.mediaPlayer.repeatMode = .none
       setupTrace?.stop()
     }
   }
-
+  
   
   // MARK: - Playback Slider
   
@@ -133,7 +133,11 @@ class MediaPlayerViewController: UIViewController {
       firstLaunch = false
     }
     rewindSongButton.isEnabled = mediaPlayer.indexOfNowPlayingItem != 0
-    
+    checkIfLocksShouldBeEnabled()
+    checkIfSongHasPlayedAllInLock()
+  }
+  
+  func checkIfSongHasPlayedAllInLock() {
     if let nowPlaying = mediaPlayer.nowPlayingItem {
       
       if self.albumIsLocked || self.artistIsLocked || self.genreIsLocked {
@@ -157,34 +161,42 @@ class MediaPlayerViewController: UIViewController {
         MediaManager.shared.lockedSongs.removeAll()
         Analytics.logEvent("genreTriggeredUnlocked", parameters: nil)
       }
+      print(aSongIsInChamber)
       
+    }
+    
+  }
+  
+  func checkIfLocksShouldBeEnabled() {
+    albumLockIconButton.isEnabled = true
+    artistLockIconButton.isEnabled = true
+    genreLockIconButton.isEnabled = true
+    if let nowPlaying = mediaPlayer.nowPlayingItem {
       if aSongIsInChamber == true {
         if nowPlaying.albumTitle != nil {
-          if MediaManager.shared.getSongsWithCurrentAlbumFor(item: nowPlaying).items?.count ?? 0 > 1 {
-            albumLockIconButton.isEnabled = true
+          if MediaManager.shared.getSongsWithCurrentAlbumFor(item: nowPlaying).items?.count ?? 0 < 2 {
+            albumLockIconButton.isEnabled = false
           }
         } else {
-          albumLockIconButton.isEnabled = false
+          albumLockIconButton.isEnabled = true
         }
         if nowPlaying.artist != nil {
-          if MediaManager.shared.getSongsWithCurrentArtistFor(item: nowPlaying).items?.count ?? 0 > 1 {
-            artistLockIconButton.isEnabled = true
+          if MediaManager.shared.getSongsWithCurrentArtistFor(item: nowPlaying).items?.count ?? 0 < 2 {
+            artistLockIconButton.isEnabled = false
           }
         } else {
-          artistLockIconButton.isEnabled = false
+          artistLockIconButton.isEnabled = true
         }
         if nowPlaying.genre != nil {
-          if MediaManager.shared.getSongsWithCurrentGenreFor(item: nowPlaying).items?.count ?? 0 > 1 {
-            genreLockIconButton.isEnabled = true
+          if MediaManager.shared.getSongsWithCurrentGenreFor(item: nowPlaying).items?.count ?? 0 < 2 {
+            genreLockIconButton.isEnabled = false
           }
         } else {
-          genreLockIconButton.isEnabled = false
+          genreLockIconButton.isEnabled = true
         }
       }
     }
   }
-  
-  
   
   func tappedLockLogic() {
     if !self.albumIsLocked && !self.artistIsLocked && !self.genreIsLocked {
@@ -421,10 +433,12 @@ class MediaPlayerViewController: UIViewController {
 
 extension MediaPlayerViewController: AVAudioPlayerDelegate {
   func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+    Analytics.logEvent("audioPlayerDecodeErrorDidOccur", parameters: ["error": error?.localizedDescription ?? "error"])
     print("error")
   }
   
   func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+    Analytics.logEvent("audioPlayerDidFinishPlaying", parameters: nil)
     print("finished playing")
     
   }
