@@ -130,7 +130,6 @@
 				29A3A04C2025238700118867 /* Controller */,
 				29A3A04B2025238500118867 /* Extensions */,
 				29A3A04A2025238300118867 /* SupportingFiles */,
-				29CB7C07205A37CA00696357 /* Constants */,
 				2969DC872059E88D00C2BE0A /* Old Code */,
 			);
 			path = ThatsMyJam;
@@ -199,13 +198,6 @@
 				29A3A02E202522E900118867 /* ThatsMyJam.xcdatamodeld */,
 			);
 			path = CoreData;
-			sourceTree = "<group>";
-		};
-		29CB7C07205A37CA00696357 /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Constants;
 			sourceTree = "<group>";
 		};
 		490D40A6EE5FA38BAC34B870 /* Pods */ = {

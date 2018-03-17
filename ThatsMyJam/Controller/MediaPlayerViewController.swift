@@ -10,6 +10,7 @@ import UIKit
 import MediaPlayer
 import AVFoundation
 import FirebasePerformance
+import FirebaseAnalytics
 
 class MediaPlayerViewController: UIViewController {
   
@@ -145,14 +146,17 @@ class MediaPlayerViewController: UIViewController {
       if albumIsLocked && MediaManager.shared.hasPlayedAllSongsFromAlbumFor(song: nowPlaying) {
         albumLockButtonTapped(albumLockIconButton)
         MediaManager.shared.lockedSongs.removeAll()
+        Analytics.logEvent("albumTriggeredUnlocked", parameters: ["success" : true])
       }
       if artistIsLocked && MediaManager.shared.hasPlayedAllSongsFromArtistFor(song: nowPlaying) {
         artistLockButtonTapped(artistLockIconButton)
         MediaManager.shared.lockedSongs.removeAll()
+        Analytics.logEvent("artistTriggeredUnlocked", parameters: ["success" : true])
       }
       if genreIsLocked && MediaManager.shared.hasPlayedAllSongsFromGenreFor(song: nowPlaying) {
         genreLockButtonTapped(genreLockIconButton)
         MediaManager.shared.lockedSongs.removeAll()
+        Analytics.logEvent("genreTriggeredUnlocked", parameters: ["success" : true])
       }
       
       if aSongIsInChamber == true {
@@ -324,6 +328,7 @@ class MediaPlayerViewController: UIViewController {
         sender.isSelected = false
         albumIsLocked = false
         let albumUnlockedTrace = Performance.startTrace(name: "albumUnlockedTrace")
+        Analytics.logEvent("albumTapUnlocked", parameters: ["success" : true])
         tappedLockLogic()
         let removeAlbumLock = MediaManager.shared.removeAlbumLockFor(item: nowPlaying)
         if var items = removeAlbumLock.items {
@@ -335,6 +340,7 @@ class MediaPlayerViewController: UIViewController {
         sender.isSelected = true
         albumIsLocked = true
         let albumLockedTrace = Performance.startTrace(name: "albumLockedTrace")
+        Analytics.logEvent("albumTapLocked", parameters: ["success" : true])
         let albumLock = MediaManager.shared.getSongsWithCurrentAlbumFor(item: nowPlaying)
         if var items = albumLock.items {
           items.shuffle()
@@ -353,6 +359,7 @@ class MediaPlayerViewController: UIViewController {
         sender.isSelected = false
         artistIsLocked = false
         let artistUnlockedTrace = Performance.startTrace(name: "artistUnlockedTrace")
+        Analytics.logEvent("artistTapUnlocked", parameters: ["success" : true])
         tappedLockLogic()
         let unlockArtist = MediaManager.shared.removeArtistLockFor(item: nowPlaying)
         if var items = unlockArtist.items {
@@ -364,6 +371,7 @@ class MediaPlayerViewController: UIViewController {
         sender.isSelected = true
         artistIsLocked = true
         let artistLockedTrace = Performance.startTrace(name: "artistLockedTrace")
+        Analytics.logEvent("artistTapLocked", parameters: ["success" : true])
         let artistLock = MediaManager.shared.getSongsWithCurrentArtistFor(item: nowPlaying)
         if var items = artistLock.items {
           items.shuffle()
@@ -382,8 +390,8 @@ class MediaPlayerViewController: UIViewController {
         sender.isSelected = false
         genreIsLocked = false
         let genreUnlockedTrace = Performance.startTrace(name: "genreUnlockedTrace")
+        Analytics.logEvent("genreTapUnlocked", parameters: ["success" : true])
         tappedLockLogic()
-        
         let genreUnlocked = MediaManager.shared.removeGenreLockFor(item: nowPlaying)
         if var items = genreUnlocked.items {
           items.shuffle()
@@ -394,9 +402,8 @@ class MediaPlayerViewController: UIViewController {
         sender.isSelected = true
         genreIsLocked = true
         let genreLockedTrace = Performance.startTrace(name: "genreLockedTrace")
-
+        Analytics.logEvent("genreTapLocked", parameters: ["success" : true])
         let genreLocked = MediaManager.shared.getSongsWithCurrentGenreFor(item: nowPlaying)
-
         if var items = genreLocked.items {
           items.shuffle()
           mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
