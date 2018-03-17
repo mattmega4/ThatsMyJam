@@ -31,9 +31,6 @@ class MediaManager: NSObject {
 //          return item.mediaType.rawValue == 1
           return item.mediaType.rawValue <= MPMediaType.anyAudio.rawValue
         })
-        
-        
-        
         completion(songs)
       } else {
         completion(nil)
