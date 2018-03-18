@@ -45,7 +45,7 @@ class MediaPlayerViewController: UIViewController {
   var genreQuery: MPMediaQuery?
   var newSongs = [MPMediaItem]()
   var currentSong: MPMediaItem?
-  let mediaPlayer = MPMusicPlayerApplicationController.applicationQueuePlayer //systemMusicPlayer
+  let mediaPlayer = MPMusicPlayerApplicationController.systemMusicPlayer //applicationQueuePlayer
   var songTimer: Timer?
   var firstLaunch = true
   var lastPlayedItem: MPMediaItem?
@@ -85,7 +85,7 @@ class MediaPlayerViewController: UIViewController {
   // MARK: - Initial Audio Player setup Logic
   
   func setUpAudioPlayerAndGetSongsShuffled() {
-    try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+    try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategorySoloAmbient)
     try? AVAudioSession.sharedInstance().setActive(true)
     
     let setupTrace = Performance.startTrace(name: "setupTrace")
@@ -246,6 +246,7 @@ class MediaPlayerViewController: UIViewController {
   func getCurrentlyPlayedInfo() {
     DispatchQueue.main.async {
       if let songInfo = self.mediaPlayer.nowPlayingItem {
+//        print("****************" + self.mediaPlayer.it)
         self.songNameLabel.text = songInfo.title ?? ""
         self.songAlbumLabel.text = songInfo.albumTitle ?? ""
         self.songArtistLabel.text = songInfo.artist ?? ""

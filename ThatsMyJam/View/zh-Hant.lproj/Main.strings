@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "0:0"; ObjectID = "Wf8-90-cnA"; */
+"Wf8-90-cnA.text" = "0:0";
+
+/* Class = "UILabel"; text = "0:0"; ObjectID = "gWw-nA-Y6u"; */
+"gWw-nA-Y6u.text" = "0:0";
+
+/* Class = "UILabel"; text = "Artist"; ObjectID = "oOH-9A-Wjt"; */
+"oOH-9A-Wjt.text" = "藝術家";
+
+/* Class = "UILabel"; text = "Album"; ObjectID = "pt7-42-wWk"; */
+"pt7-42-wWk.text" = 專輯;
+
+/* Class = "UILabel"; text = "Genre"; ObjectID = "zNe-xO-3h4"; */
+"zNe-xO-3h4.text" = "類型";
