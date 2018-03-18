@@ -45,7 +45,8 @@ class MediaPlayerViewController: UIViewController {
   var genreQuery: MPMediaQuery?
   var newSongs = [MPMediaItem]()
   var currentSong: MPMediaItem?
-  let mediaPlayer = MPMusicPlayerApplicationController.systemMusicPlayer //applicationQueuePlayer
+//  let mediaPlayer = MPMusicPlayerApplicationController.systemMusicPlayer //applicationQueuePlayer
+  let mediaPlayer = MPMusicPlayerController.systemMusicPlayer
   var songTimer: Timer?
   var firstLaunch = true
   var lastPlayedItem: MPMediaItem?
@@ -102,8 +103,8 @@ class MediaPlayerViewController: UIViewController {
       })
       self.aSongIsInChamber = true
       self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: self.newSongs.shuffled()))
-      //      self.mediaPlayer.prepareToPlay()
-      self.mediaPlayer.stop()
+//      self.mediaPlayer.prepareToPlay()
+//      self.mediaPlayer.stop()
       self.mediaPlayer.shuffleMode = .songs
       self.mediaPlayer.repeatMode = .none
       setupTrace?.stop()
@@ -246,7 +247,6 @@ class MediaPlayerViewController: UIViewController {
   func getCurrentlyPlayedInfo() {
     DispatchQueue.main.async {
       if let songInfo = self.mediaPlayer.nowPlayingItem {
-//        print("****************" + self.mediaPlayer.it)
         self.songNameLabel.text = songInfo.title ?? ""
         self.songAlbumLabel.text = songInfo.albumTitle ?? ""
         self.songArtistLabel.text = songInfo.artist ?? ""
@@ -300,11 +300,12 @@ class MediaPlayerViewController: UIViewController {
   
   
   @IBAction func forwardSongButtonTapped(_ sender: UIButton) {
-    mediaPlayer.prepareToPlay(completionHandler: { (error) in
-      DispatchQueue.main.async {
-        self.mediaPlayer.skipToNextItem()
-      }
-    })
+//    mediaPlayer.prepareToPlay(completionHandler: { (error) in
+//      DispatchQueue.main.async {
+//        self.mediaPlayer.skipToNextItem()
+//      }
+//    })
+    self.mediaPlayer.skipToNextItem()
     getCurrentlyPlayedInfo()
   }
   
@@ -312,8 +313,9 @@ class MediaPlayerViewController: UIViewController {
     isPlaying = !isPlaying
     sender.isSelected = isPlaying
     if self.isPlaying {
-      self.mediaPlayer.prepareToPlay()
-      self.mediaPlayer.play()
+      self.mediaPlayer.prepareToPlay { error in
+        self.mediaPlayer.play()
+      }
     } else {
       self.mediaPlayer.pause()
     }
@@ -323,9 +325,10 @@ class MediaPlayerViewController: UIViewController {
       songTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
         DispatchQueue.main.async {
           self.updateCurrentPlaybackTime()
-          self.getCurrentlyPlayedInfo()
+//          self.getCurrentlyPlayedInfo()
         }
       })
+      self.getCurrentlyPlayedInfo()
     } else {
       songTimer?.invalidate()
     }

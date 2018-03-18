@@ -20,14 +20,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyArtworkImage" translatesAutoresizingMaskIntoConstraints="NO" id="RBE-Qy-rGm">
-                                <rect key="frame" x="107.66666666666667" y="44.999999999999986" width="198.66666666666663" height="198.66666666666663"/>
+                                <rect key="frame" x="110.33333333333333" y="44.999999999999986" width="193.66666666666669" height="193.66666666666663"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RBE-Qy-rGm" secondAttribute="height" multiplier="1:1" id="aX7-2F-qmQ"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="125" id="dH7-1r-2jH"/>
                                 </constraints>
                             </imageView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pn6-8W-UUI">
-                                <rect key="frame" x="45" y="285" width="324" height="2"/>
+                                <rect key="frame" x="45" y="282.66666666666669" width="324" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="mbg-nn-XMA"/>
                                 </constraints>
@@ -269,9 +269,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTp-dd-Lyz">
-                                <rect key="frame" x="43" y="268.66666666666669" width="328" height="36"/>
+                                <rect key="frame" x="43" y="263.66666666666669" width="328" height="41"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="o1a-dS-tZI"/>
+                                    <constraint firstAttribute="height" constant="40" id="o1a-dS-tZI"/>
                                 </constraints>
                                 <color key="minimumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
