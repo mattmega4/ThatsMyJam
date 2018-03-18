@@ -286,26 +286,38 @@ class MediaPlayerViewController: UIViewController {
   // MARK: - Song Control Button Actions
   
   @IBAction func rewindSongButtonTapped(_ sender: UIButton) {
+    mediaPlayer.prepareToPlay(completionHandler: { (error) in
+      DispatchQueue.main.async {
+        let secondsElapsed = self.songProgressSlider.value
+        let minutes = Int(secondsElapsed / 60)
+        let seconds = Int(secondsElapsed - Float(60  * minutes))
+        if seconds < 5 {
+          self.mediaPlayer.skipToPreviousItem()
+        } else {
+          self.mediaPlayer.skipToBeginning()
+        }
+      }
+    })
     
-    let secondsElapsed = songProgressSlider.value
-    let minutes = Int(secondsElapsed / 60)
-    let seconds = Int(secondsElapsed - Float(60  * minutes))
-    if seconds < 5 {
-      mediaPlayer.skipToPreviousItem()
-    } else {
-      mediaPlayer.skipToBeginning()
-    }
+    
+//    let secondsElapsed = songProgressSlider.value
+//    let minutes = Int(secondsElapsed / 60)
+//    let seconds = Int(secondsElapsed - Float(60  * minutes))
+//    if seconds < 5 {
+//      mediaPlayer.skipToPreviousItem()
+//    } else {
+//      mediaPlayer.skipToBeginning()
+//    }
     getCurrentlyPlayedInfo()
   }
   
   
   @IBAction func forwardSongButtonTapped(_ sender: UIButton) {
-//    mediaPlayer.prepareToPlay(completionHandler: { (error) in
-//      DispatchQueue.main.async {
-//        self.mediaPlayer.skipToNextItem()
-//      }
-//    })
-    self.mediaPlayer.skipToNextItem()
+    mediaPlayer.prepareToPlay(completionHandler: { (error) in
+      DispatchQueue.main.async {
+        self.mediaPlayer.skipToNextItem()
+      }
+    })
     getCurrentlyPlayedInfo()
   }
   

@@ -42,8 +42,16 @@ class MediaManager: NSObject {
   // MARK: - Album Lock Logic
   
   func getSongsWithCurrentAlbumFor(item: MPMediaItem) -> MPMediaQuery {
-    let albumPredicate = MPMediaPropertyPredicate(value: item.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
-    let query = MPMediaQuery()
+//    let albumPredicate = MPMediaPropertyPredicate(value: item.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
+//    let query = MPMediaQuery()
+//    query.addFilterPredicate(albumPredicate)
+//    return query
+    
+    
+    
+    
+    let albumPredicate: MPMediaPropertyPredicate  = MPMediaPropertyPredicate(value: item.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
+    let query: MPMediaQuery = MPMediaQuery.albums()
     query.addFilterPredicate(albumPredicate)
     return query
   }
