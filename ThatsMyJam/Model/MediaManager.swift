@@ -42,16 +42,8 @@ class MediaManager: NSObject {
   // MARK: - Album Lock Logic
   
   func getSongsWithCurrentAlbumFor(item: MPMediaItem) -> MPMediaQuery {
-//    let albumPredicate = MPMediaPropertyPredicate(value: item.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
-//    let query = MPMediaQuery()
-//    query.addFilterPredicate(albumPredicate)
-//    return query
-    
-    
-    
-    
-    let albumPredicate: MPMediaPropertyPredicate  = MPMediaPropertyPredicate(value: item.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
-    let query: MPMediaQuery = MPMediaQuery.albums()
+    let albumPredicate = MPMediaPropertyPredicate(value: item.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
+    let query = MPMediaQuery()
     query.addFilterPredicate(albumPredicate)
     return query
   }
@@ -68,7 +60,7 @@ class MediaManager: NSObject {
   // MARK: - Artist Lock Logic
   
   func getSongsWithCurrentArtistFor(item: MPMediaItem) -> MPMediaQuery {
-    let artistPredicate = MPMediaPropertyPredicate(value: item.artist, forProperty: MPMediaItemPropertyArtist)
+    let artistPredicate = MPMediaPropertyPredicate(value: item.artist, forProperty: MPMediaItemPropertyArtist, comparisonType: .contains)
     let query = MPMediaQuery()
     query.addFilterPredicate(artistPredicate)
     return query
