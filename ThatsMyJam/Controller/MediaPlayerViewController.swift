@@ -347,9 +347,7 @@ class MediaPlayerViewController: UIViewController {
     sender.isSelected = isPlaying
     if self.isPlaying {
       DispatchQueue.main.async {
-        //      self.mediaPlayer.prepareToPlay { error in
-        //          self.mediaPlayer.play()
-        //        }
+
         self.mediaPlayer.prepareToPlay()
         self.mediaPlayer.play()
       }
@@ -389,12 +387,12 @@ class MediaPlayerViewController: UIViewController {
           Analytics.logEvent("albumTapUnlocked", parameters: nil)
           self.tappedLockLogic()
           let unlockAlbum = MediaManager.shared.removeAlbumLockFor(item: nowPlaying)
-          if var items = unlockAlbum.items {
+          if var items = unlockAlbum.items?.filter({ (item) -> Bool in
+            return item.mediaType.rawValue <= MPMediaType.anyAudio.rawValue
+          }) {
             items.shuffle()
             self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
-            //            self.mediaPlayer.prepareToPlay { error in
-            //              self.mediaPlayer.play()
-            //            }
+    
             self.mediaPlayer.prepareToPlay()
             self.mediaPlayer.play()
           }
@@ -408,9 +406,6 @@ class MediaPlayerViewController: UIViewController {
           if var items = lockAlbum.items {
             items.shuffle()
             self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
-            //            self.mediaPlayer.prepareToPlay { error in
-            //              self.mediaPlayer.play()
-            //            }
             self.mediaPlayer.prepareToPlay()
             self.mediaPlayer.play()
           }
@@ -432,12 +427,12 @@ class MediaPlayerViewController: UIViewController {
           Analytics.logEvent("artistTapUnlocked", parameters: nil)
           self.tappedLockLogic()
           let unlockArtist = MediaManager.shared.removeArtistLockFor(item: nowPlaying)
-          if var items = unlockArtist.items {
+          if var items = unlockArtist.items?.filter({ (item) -> Bool in
+            return item.mediaType.rawValue <= MPMediaType.anyAudio.rawValue
+          }) {
             items.shuffle()
             self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
-            //            self.mediaPlayer.prepareToPlay { error in
-            //              self.mediaPlayer.play()
-            //            }
+  
             self.mediaPlayer.prepareToPlay()
             self.mediaPlayer.play()
           }
@@ -451,16 +446,9 @@ class MediaPlayerViewController: UIViewController {
           let lockArtist = MediaManager.shared.getSongsWithCurrentArtistFor(item: nowPlaying)
           if var items = lockArtist.items {
             items.shuffle()
-            //            self.mediaPlayer.prepareToPlay { error in
             self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
-            //            self.mediaPlayer.prepareToPlay { error in
-            //              self.mediaPlayer.play()
-            //            }
             self.mediaPlayer.prepareToPlay()
             self.mediaPlayer.play()
-            
-            //              self.mediaPlayer.play()
-            //            }
           }
           unlockArtistTrace?.stop()
           self.tappedLockLogic()
@@ -480,12 +468,11 @@ class MediaPlayerViewController: UIViewController {
           Analytics.logEvent("genreTapUnlocked", parameters: nil)
           self.tappedLockLogic()
           let unlockGenre = MediaManager.shared.removeGenreLockFor(item: nowPlaying)
-          if var items = unlockGenre.items {
+          if var items = unlockGenre.items?.filter({ (item) -> Bool in
+            return item.mediaType.rawValue <= MPMediaType.anyAudio.rawValue
+          }) {
             items.shuffle()
             self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
-            //            self.mediaPlayer.prepareToPlay { error in
-            //              self.mediaPlayer.play()
-            //            }
             self.mediaPlayer.prepareToPlay()
             self.mediaPlayer.play()
           }
@@ -499,9 +486,6 @@ class MediaPlayerViewController: UIViewController {
           if var items = lockGenre.items {
             items.shuffle()
             self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: items))
-            //            self.mediaPlayer.prepareToPlay { error in
-            //              self.mediaPlayer.play()
-            //            }
             self.mediaPlayer.prepareToPlay()
             self.mediaPlayer.play()
           }
