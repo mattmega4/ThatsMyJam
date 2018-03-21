@@ -30,6 +30,13 @@
 		2990D801202525FA0090E18C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D800202525FA0090E18C /* UIView+Extensions.swift */; };
 		2990D8032025260E0090E18C /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8022025260E0090E18C /* Sequence+Extensions.swift */; };
 		2990D8052025261F0090E18C /* MutableCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */; };
+		2994BBF720620960006FC966 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994BBF620620960006FC966 /* SettingsViewController.swift */; };
+		2994BBF920620C30006FC966 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994BBF820620C30006FC966 /* MediaPlayerViewController.swift */; };
+		2994BBFA20620C30006FC966 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994BBF820620C30006FC966 /* MediaPlayerViewController.swift */; };
+		2994BBFB20620ED1006FC966 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A3A02B202522E900118867 /* Main.storyboard */; };
+		2994BBFF20621074006FC966 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994BBF620620960006FC966 /* SettingsViewController.swift */; };
+		2994BC002062116F006FC966 /* StoryboardKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2943999D206203F6005FBD99 /* StoryboardKeys.swift */; };
+		2994BC01206213E8006FC966 /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDD62061F4CC00C04DD4 /* AcknowledgementsViewController.swift */; };
 		29A3A028202522E900118867 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A027202522E900118867 /* AppDelegate.swift */; };
 		29A3A02D202522E900118867 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A3A02B202522E900118867 /* Main.storyboard */; };
 		29A3A030202522E900118867 /* ThatsMyJam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A02E202522E900118867 /* ThatsMyJam.xcdatamodeld */; };
@@ -38,8 +45,6 @@
 		29A3A040202522E900118867 /* ThatsMyJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A03F202522E900118867 /* ThatsMyJamTests.swift */; };
 		29A3A0512025240400118867 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0502025240400118867 /* MediaManager.swift */; };
 		29A3A0522025240400118867 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0502025240400118867 /* MediaManager.swift */; };
-		29A3A0542025242900118867 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0532025242900118867 /* MediaPlayerViewController.swift */; };
-		29A3A0552025242900118867 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0532025242900118867 /* MediaPlayerViewController.swift */; };
 		29CB7C05205A37A900696357 /* RequestReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CB7C04205A37A900696357 /* RequestReview.swift */; };
 		29CB7C06205A37A900696357 /* RequestReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CB7C04205A37A900696357 /* RequestReview.swift */; };
 		B16DC1FAC1ECE4922434174E /* Pods_ThatsMyJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645321C3C91BA2077AE8CE0 /* Pods_ThatsMyJam.framework */; };
@@ -81,6 +86,8 @@
 		2990D800202525FA0090E18C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		2990D8022025260E0090E18C /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MutableCollection+Extensions.swift"; sourceTree = "<group>"; };
+		2994BBF620620960006FC966 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2994BBF820620C30006FC966 /* MediaPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerViewController.swift; sourceTree = "<group>"; };
 		29A3A024202522E900118867 /* ThatsMyJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThatsMyJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A3A027202522E900118867 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29A3A02C202522E900118867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -92,7 +99,6 @@
 		29A3A03F202522E900118867 /* ThatsMyJamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThatsMyJamTests.swift; sourceTree = "<group>"; };
 		29A3A041202522E900118867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29A3A0502025240400118867 /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaManager.swift; sourceTree = "<group>"; };
-		29A3A0532025242900118867 /* MediaPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerViewController.swift; sourceTree = "<group>"; };
 		29C09C43205DE5A8003E5158 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		29C09C44205DE5A8003E5158 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		29C09C45205DE5B7003E5158 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -246,11 +252,12 @@
 		29A3A04C2025238700118867 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				29A3A0532025242900118867 /* MediaPlayerViewController.swift */,
-				295AFDDF2061F56000C04DD4 /* LegalViewController.swift */,
-				294399A02062057B005FBD99 /* FeedbackViewController.swift */,
+				2994BBF820620C30006FC966 /* MediaPlayerViewController.swift */,
+				2994BBF620620960006FC966 /* SettingsViewController.swift */,
 				295AFDD62061F4CC00C04DD4 /* AcknowledgementsViewController.swift */,
 				295AFDDB2061F50100C04DD4 /* Acknowledgements */,
+				295AFDDF2061F56000C04DD4 /* LegalViewController.swift */,
+				294399A02062057B005FBD99 /* FeedbackViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -411,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				295AFDEA2061F6A600C04DD4 /* Pods-Lynked-acknowledgements.plist in Resources */,
+				2994BBFB20620ED1006FC966 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,13 +566,14 @@
 				2969DC862059E87800C2BE0A /* Old Code.swift in Sources */,
 				295AFDDD2061F52800C04DD4 /* Library.swift in Sources */,
 				295AFDD72061F4CC00C04DD4 /* AcknowledgementsViewController.swift in Sources */,
+				2994BBF920620C30006FC966 /* MediaPlayerViewController.swift in Sources */,
 				29A3A0512025240400118867 /* MediaManager.swift in Sources */,
 				2990D801202525FA0090E18C /* UIView+Extensions.swift in Sources */,
 				295AFDE32061F59700C04DD4 /* UIViewController+Extensions.swift in Sources */,
 				295AFDE62061F60300C04DD4 /* AcknowledgementsTableViewCell.swift in Sources */,
-				29A3A0542025242900118867 /* MediaPlayerViewController.swift in Sources */,
 				29A3A028202522E900118867 /* AppDelegate.swift in Sources */,
 				295AFDD92061F4F400C04DD4 /* AcknowledgementsViewModel.swift in Sources */,
+				2994BBF720620960006FC966 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,12 +582,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				29A3A0522025240400118867 /* MediaManager.swift in Sources */,
+				2994BBFA20620C30006FC966 /* MediaPlayerViewController.swift in Sources */,
+				2994BC002062116F006FC966 /* StoryboardKeys.swift in Sources */,
+				2994BBFF20621074006FC966 /* SettingsViewController.swift in Sources */,
 				29CB7C06205A37A900696357 /* RequestReview.swift in Sources */,
+				2994BC01206213E8006FC966 /* AcknowledgementsViewController.swift in Sources */,
 				295AFDE72061F60300C04DD4 /* AcknowledgementsTableViewCell.swift in Sources */,
 				295AFDE12061F56000C04DD4 /* LegalViewController.swift in Sources */,
 				295AFDDA2061F4F400C04DD4 /* AcknowledgementsViewModel.swift in Sources */,
 				295AFDE42061F59700C04DD4 /* UIViewController+Extensions.swift in Sources */,
-				29A3A0552025242900118867 /* MediaPlayerViewController.swift in Sources */,
 				29A3A040202522E900118867 /* ThatsMyJamTests.swift in Sources */,
 				295AFDDE2061F52800C04DD4 /* Library.swift in Sources */,
 			);

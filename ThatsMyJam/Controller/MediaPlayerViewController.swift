@@ -2,7 +2,7 @@
 //  MediaPlayerViewController.swift
 //  ThatsMyJam
 //
-//  Created by Matthew Howes Singleton on 2/2/18.
+//  Created by Matthew Howes Singleton on 3/20/18.
 //  Copyright © 2018 Matthew Howes Singleton. All rights reserved.
 //
 
@@ -14,7 +14,7 @@ import FirebaseAnalytics
 
 class MediaPlayerViewController: UIViewController {
   
-  
+  @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
   @IBOutlet weak var albumArtImageView: UIImageView!
   @IBOutlet weak var songProgressView: UIProgressView!
   @IBOutlet weak var songProgressSlider: UISlider!
@@ -311,6 +311,14 @@ class MediaPlayerViewController: UIViewController {
   
   
   // MARK: - IB Actions
+  
+  @IBAction func rightBarButtonItemTapped(_ sender: UIBarButtonItem) {
+    if let prefVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardKeys.settingsViewControllerStoryboardID) as? SettingsViewController {
+      let prefNavigation = UINavigationController(rootViewController: prefVC)
+      self.navigationController?.present(prefNavigation, animated: true, completion: nil)
+    }
+  }
+  
   
   // MARK: - Song Control Button Actions
   
