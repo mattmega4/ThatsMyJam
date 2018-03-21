@@ -160,7 +160,7 @@ extension FeedbackViewController: UITextFieldDelegate {
 
 extension FeedbackViewController: UITextViewDelegate {
   
-  func textViewDidBeginEditing(_ textView: UITextView) {
+  func textViewDidChange(_ textView: UITextView) {
     if textView == bodyTextView {
       if !textView.text.isEmpty {
         bodySatisfied = true
@@ -170,6 +170,7 @@ extension FeedbackViewController: UITextViewDelegate {
     }
     checkIfBothConditionsAreTrue()
   }
+
 }
 
 

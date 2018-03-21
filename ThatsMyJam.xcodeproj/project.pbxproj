@@ -24,7 +24,7 @@
 		295AFDE42061F59700C04DD4 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDE22061F59700C04DD4 /* UIViewController+Extensions.swift */; };
 		295AFDE62061F60300C04DD4 /* AcknowledgementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */; };
 		295AFDE72061F60300C04DD4 /* AcknowledgementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */; };
-		2969DC862059E87800C2BE0A /* Old Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2969DC852059E87800C2BE0A /* Old Code.swift */; };
+		2990C69C206223EA005F1825 /* Pods-ThatsMyJam-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2990C69B206223EA005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */; };
 		2990D801202525FA0090E18C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D800202525FA0090E18C /* UIView+Extensions.swift */; };
 		2990D8032025260E0090E18C /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8022025260E0090E18C /* Sequence+Extensions.swift */; };
 		2990D8052025261F0090E18C /* MutableCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */; };
@@ -80,8 +80,8 @@
 		295AFDDF2061F56000C04DD4 /* LegalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalViewController.swift; sourceTree = "<group>"; };
 		295AFDE22061F59700C04DD4 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsTableViewCell.swift; sourceTree = "<group>"; };
-		2969DC852059E87800C2BE0A /* Old Code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Old Code.swift"; sourceTree = "<group>"; };
-		2990C69920622086005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pods-ThatsMyJam-acknowledgements.plist"; sourceTree = "<group>"; };
+		2990C69920622086005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Pods-ThatsMyJam-acknowledgements.plist"; path = "../../SupportingFiles/Pods-ThatsMyJam-acknowledgements.plist"; sourceTree = "<group>"; };
+		2990C69B206223EA005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-ThatsMyJam-acknowledgements.plist"; sourceTree = "<group>"; };
 		2990D800202525FA0090E18C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		2990D8022025260E0090E18C /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MutableCollection+Extensions.swift"; sourceTree = "<group>"; };
@@ -169,16 +169,10 @@
 				295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */,
 				295AFDD82061F4F400C04DD4 /* AcknowledgementsViewModel.swift */,
 				295AFDDC2061F52800C04DD4 /* Library.swift */,
+				2990C69B206223EA005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */,
+				2990C69920622086005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */,
 			);
 			path = Acknowledgements;
-			sourceTree = "<group>";
-		};
-		2969DC872059E88D00C2BE0A /* Old Code */ = {
-			isa = PBXGroup;
-			children = (
-				2969DC852059E87800C2BE0A /* Old Code.swift */,
-			);
-			path = "Old Code";
 			sourceTree = "<group>";
 		};
 		29A3A01B202522E900118867 = {
@@ -211,7 +205,6 @@
 				29A3A04B2025238500118867 /* Extensions */,
 				2943999F20620400005FBD99 /* Constants */,
 				29A3A04A2025238300118867 /* SupportingFiles */,
-				2969DC872059E88D00C2BE0A /* Old Code */,
 			);
 			path = ThatsMyJam;
 			sourceTree = "<group>";
@@ -233,7 +226,6 @@
 				29A3A033202522E900118867 /* LaunchScreen.storyboard */,
 				29A3A036202522E900118867 /* Info.plist */,
 				290070C7202529100054A0C2 /* GoogleService-Info.plist */,
-				2990C69920622086005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */,
 				294399A220620747005FBD99 /* Keys.plist */,
 			);
 			path = SupportingFiles;
@@ -409,6 +401,7 @@
 				29A3A035202522E900118867 /* LaunchScreen.storyboard in Resources */,
 				290070C8202529100054A0C2 /* GoogleService-Info.plist in Resources */,
 				294399A320620747005FBD99 /* Keys.plist in Resources */,
+				2990C69C206223EA005F1825 /* Pods-ThatsMyJam-acknowledgements.plist in Resources */,
 				29A3A032202522E900118867 /* Assets.xcassets in Resources */,
 				29A3A02D202522E900118867 /* Main.storyboard in Resources */,
 			);
@@ -563,7 +556,6 @@
 				295AFDE02061F56000C04DD4 /* LegalViewController.swift in Sources */,
 				2943999E206203F6005FBD99 /* StoryboardKeys.swift in Sources */,
 				29A3A030202522E900118867 /* ThatsMyJam.xcdatamodeld in Sources */,
-				2969DC862059E87800C2BE0A /* Old Code.swift in Sources */,
 				295AFDDD2061F52800C04DD4 /* Library.swift in Sources */,
 				295AFDD72061F4CC00C04DD4 /* AcknowledgementsViewController.swift in Sources */,
 				2994BBF920620C30006FC966 /* MediaPlayerViewController.swift in Sources */,

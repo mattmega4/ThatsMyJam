@@ -14,7 +14,8 @@ import FirebaseAnalytics
 
 class MediaPlayerViewController: UIViewController {
   
-  @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
+  
+  @IBOutlet weak var topRightButton: UIButton!
   @IBOutlet weak var albumArtImageView: UIImageView!
   @IBOutlet weak var songProgressView: UIProgressView!
   @IBOutlet weak var songProgressSlider: UISlider!
@@ -59,7 +60,7 @@ class MediaPlayerViewController: UIViewController {
     
     clearSongInfo()
     setUpAudioPlayerAndGetSongsShuffled()
-    
+    setNavBar()
     DispatchQueue.main.async {
       NotificationCenter.default.addObserver(self, selector: #selector(self.songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: self.mediaPlayer)
       self.mediaPlayer.beginGeneratingPlaybackNotifications()
@@ -312,10 +313,10 @@ class MediaPlayerViewController: UIViewController {
   
   // MARK: - IB Actions
   
-  @IBAction func rightBarButtonItemTapped(_ sender: UIBarButtonItem) {
+  @IBAction func topRightButtonTapped(_ sender: UIButton) {
     if let prefVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardKeys.settingsViewControllerStoryboardID) as? SettingsViewController {
       let prefNavigation = UINavigationController(rootViewController: prefVC)
-      self.navigationController?.present(prefNavigation, animated: true, completion: nil)
+      self.present(prefNavigation, animated: true, completion: nil)
     }
   }
   

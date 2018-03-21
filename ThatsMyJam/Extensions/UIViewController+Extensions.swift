@@ -13,9 +13,9 @@ extension UIViewController {
   
   func setNavBar() {
     self.navigationController?.isNavigationBarHidden = false
-    navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0,
-                                                               green: 0.0/255.0,
-                                                               blue: 0.0/255.0,
+    navigationController?.navigationBar.barTintColor = UIColor(red: 38.0/255.0,
+                                                               green: 38.0/255.0,
+                                                               blue: 38.0/255.0,
                                                                alpha: 1.0)
     
     UINavigationBar.appearance().tintColor = .white

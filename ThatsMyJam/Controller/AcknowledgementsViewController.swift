@@ -32,9 +32,6 @@ class AcknowledgementsViewController: UIViewController {
     tableView.estimatedRowHeight = 500
     setNavBar()
     title = "Acknowledgements"
-    print("foo")
-    print(pods.count)
-    print("bar")
   }
   
   
