@@ -80,7 +80,6 @@
 		295AFDDF2061F56000C04DD4 /* LegalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalViewController.swift; sourceTree = "<group>"; };
 		295AFDE22061F59700C04DD4 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsTableViewCell.swift; sourceTree = "<group>"; };
-		2990C69920622086005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Pods-ThatsMyJam-acknowledgements.plist"; path = "../../SupportingFiles/Pods-ThatsMyJam-acknowledgements.plist"; sourceTree = "<group>"; };
 		2990C69B206223EA005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-ThatsMyJam-acknowledgements.plist"; sourceTree = "<group>"; };
 		2990D800202525FA0090E18C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		2990D8022025260E0090E18C /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
@@ -170,7 +169,6 @@
 				295AFDD82061F4F400C04DD4 /* AcknowledgementsViewModel.swift */,
 				295AFDDC2061F52800C04DD4 /* Library.swift */,
 				2990C69B206223EA005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */,
-				2990C69920622086005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */,
 			);
 			path = Acknowledgements;
 			sourceTree = "<group>";

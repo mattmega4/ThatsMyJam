@@ -9,6 +9,7 @@
 import UIKit
 import mailgun
 import UITextView_Placeholder
+import FirebaseAnalytics
 
 
 class FeedbackViewController: UIViewController {
@@ -113,7 +114,7 @@ class FeedbackViewController: UIViewController {
     }
     
     mailGun?.sendMessage(to: "singletondevelopment@gmail.com", from: "ThatsMyJam@ThatsMyJam.com", subject: theTopic, body: theBody, success: { (success) in
-      
+      Analytics.logEvent("feedbackSent", parameters: ["topic": theTopic])
       self.thankYouAlert()
       
     }, failure: { (error) in
