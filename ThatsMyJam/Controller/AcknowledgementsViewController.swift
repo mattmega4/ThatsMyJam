@@ -12,7 +12,7 @@ class AcknowledgementsViewController: UIViewController {
 
   
   @IBOutlet weak var doneButton: UIBarButtonItem!
-  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var logoImgView: UIImageView!
   @IBOutlet weak var versionLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
   

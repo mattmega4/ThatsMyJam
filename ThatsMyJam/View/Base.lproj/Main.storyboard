@@ -14,7 +14,7 @@
         <!--Media Player View Controller-->
         <scene sceneID="1UG-Iy-0D4">
             <objects>
-                <viewController storyboardIdentifier="mediaPlayer" id="UQg-ei-7of" customClass="MediaPlayerViewController" customModule="ThatsMyJam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mediaPlayerVC" id="UQg-ei-7of" customClass="MediaPlayerViewController" customModule="ThatsMyJam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gIN-lc-wzJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -395,7 +395,7 @@
         <!--View Controller-->
         <scene sceneID="8Xj-Vf-a9z">
             <objects>
-                <viewController id="Edz-G0-CeK" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingsVC" id="Edz-G0-CeK" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C4k-JS-gBW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -440,7 +440,7 @@
         <!--Acknowledgements View Controller-->
         <scene sceneID="45l-NV-XTA">
             <objects>
-                <viewController storyboardIdentifier="ackVC" id="J1d-bN-PcB" customClass="AcknowledgementsViewController" customModule="Lynked" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="acknowledgementsVC" id="J1d-bN-PcB" customClass="AcknowledgementsViewController" customModule="ThatsMyJam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rZ6-yW-e1W">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -455,38 +455,42 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="202"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lynked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OjN-4g-czx">
-                                            <rect key="frame" x="74.5" y="25" width="226" height="62"/>
-                                            <fontDescription key="fontDescription" name="GillSans-UltraBold" family="Gill Sans" pointSize="50"/>
-                                            <color key="textColor" red="0.42352941179999998" green="0.61960784310000006" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ORO-BV-Xbc">
-                                            <rect key="frame" x="167.5" y="95" width="40" height="20"/>
+                                            <rect key="frame" x="167.5" y="132" width="40" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="iBs-pt-1Gt"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="17"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app uses the following libraries" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zb8-m9-xbE">
-                                            <rect key="frame" x="10" y="167" width="355" height="20"/>
+                                            <rect key="frame" x="10" y="187" width="355" height="0.0"/>
                                             <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="HFT-8C-9xJ">
+                                            <rect key="frame" x="136" y="15" width="102" height="102"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="HFT-8C-9xJ" secondAttribute="height" multiplier="1:1" id="7Ev-wH-pfB"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="OjN-4g-czx" firstAttribute="top" secondItem="8g2-Xs-zwW" secondAttribute="top" constant="25" id="1NZ-KQ-aLR"/>
                                         <constraint firstAttribute="trailing" secondItem="Zb8-m9-xbE" secondAttribute="trailing" constant="10" id="9nN-ci-inR"/>
-                                        <constraint firstItem="OjN-4g-czx" firstAttribute="centerX" secondItem="8g2-Xs-zwW" secondAttribute="centerX" id="G23-HK-eg7"/>
                                         <constraint firstItem="Zb8-m9-xbE" firstAttribute="leading" secondItem="8g2-Xs-zwW" secondAttribute="leading" constant="10" id="HU5-ww-m96"/>
-                                        <constraint firstItem="ORO-BV-Xbc" firstAttribute="top" secondItem="OjN-4g-czx" secondAttribute="bottom" constant="8" id="Mzb-N2-GqB"/>
+                                        <constraint firstItem="Zb8-m9-xbE" firstAttribute="top" secondItem="ORO-BV-Xbc" secondAttribute="bottom" constant="35" id="Ui2-Sa-olP"/>
                                         <constraint firstAttribute="bottom" secondItem="Zb8-m9-xbE" secondAttribute="bottom" constant="15" id="dhR-zI-7NX"/>
                                         <constraint firstItem="ORO-BV-Xbc" firstAttribute="centerX" secondItem="8g2-Xs-zwW" secondAttribute="centerX" id="fn4-Jd-MM4"/>
+                                        <constraint firstItem="HFT-8C-9xJ" firstAttribute="centerX" secondItem="8g2-Xs-zwW" secondAttribute="centerX" id="idf-LQ-aP2"/>
+                                        <constraint firstItem="HFT-8C-9xJ" firstAttribute="top" secondItem="8g2-Xs-zwW" secondAttribute="top" constant="15" id="qdU-Kg-bcZ"/>
+                                        <constraint firstItem="ORO-BV-Xbc" firstAttribute="top" secondItem="HFT-8C-9xJ" secondAttribute="bottom" constant="15" id="uVw-iE-OTF"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AcknowledgeCell" rowHeight="132" id="zJf-XU-jqu" customClass="AcknowledgementsTableViewCell" customModule="Lynked" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AcknowledgeCell" rowHeight="132" id="zJf-XU-jqu" customClass="AcknowledgementsTableViewCell" customModule="ThatsMyJam" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="230" width="375" height="132"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zJf-XU-jqu" id="QOG-UG-Yr7">
@@ -543,6 +547,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="J1d-bN-PcB" id="N8R-Xo-UC2"/>
+                                    <outlet property="delegate" destination="J1d-bN-PcB" id="16z-Fd-ueG"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -564,26 +572,26 @@
                     </navigationItem>
                     <connections>
                         <outlet property="doneButton" destination="FVD-97-gnv" id="lqe-jn-8aF"/>
+                        <outlet property="logoImgView" destination="HFT-8C-9xJ" id="p3R-bc-3q7"/>
                         <outlet property="tableView" destination="dhe-Qk-Zeo" id="1tB-O3-0Oi"/>
-                        <outlet property="titleLabel" destination="OjN-4g-czx" id="zRL-ox-aqH"/>
                         <outlet property="versionLabel" destination="ORO-BV-Xbc" id="yph-Hw-rnn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izz-ai-1Mc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2972" y="1632"/>
+            <point key="canvasLocation" x="2972" y="1631.3343328335834"/>
         </scene>
         <!--Legal View Controller-->
         <scene sceneID="jF3-QD-tZ5">
             <objects>
-                <viewController storyboardIdentifier="legalVC" id="t9K-Cj-uV2" customClass="LegalViewController" customModule="Lynked" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="legalVC" id="t9K-Cj-uV2" customClass="LegalViewController" customModule="ThatsMyJam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hws-pt-j4x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r6f-r7-QsB">
                                 <rect key="frame" x="15" y="79" width="345" height="573"/>
-                                <mutableString key="text">Terms of Service
+                                <string key="text">Terms of Service
 
 Last updated: July 23, 2017
 
@@ -667,7 +675,7 @@ By continuing to access or use our Service after any revisions become effective,
 
 Contact Us
 
-If you have any questions about these Terms, please contact us.</mutableString>
+If you have any questions about these Terms, please contact us.</string>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -702,7 +710,7 @@ If you have any questions about these Terms, please contact us.</mutableString>
         <!--Feedback View Controller-->
         <scene sceneID="e7n-s0-Unj">
             <objects>
-                <viewController storyboardIdentifier="feedbackVC" automaticallyAdjustsScrollViewInsets="NO" id="5Uv-hJ-gpw" customClass="FeedbackViewController" customModule="Lynked" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="feedbackVC" automaticallyAdjustsScrollViewInsets="NO" id="5Uv-hJ-gpw" customClass="FeedbackViewController" customModule="ThatsMyJam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m3l-Tp-6ga">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -754,25 +762,25 @@ If you have any questions about these Terms, please contact us.</mutableString>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="4F8-XB-CEo"/>
                                                 <exclude reference="Awh-O2-dFy"/>
                                                 <exclude reference="wcq-07-8QG"/>
-                                                <exclude reference="4F8-XB-CEo"/>
                                                 <exclude reference="Cbi-t5-YH8"/>
                                                 <exclude reference="VBZ-3j-m1L"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <mask key="constraints">
-                                                <include reference="Awh-O2-dFy"/>
-                                                <exclude reference="4a5-KP-xtl"/>
-                                                <include reference="wcq-07-8QG"/>
-                                                <exclude reference="5wb-Go-Iwg"/>
                                                 <include reference="4F8-XB-CEo"/>
+                                                <exclude reference="4a5-KP-xtl"/>
+                                                <exclude reference="5wb-Go-Iwg"/>
+                                                <include reference="Awh-O2-dFy"/>
                                                 <exclude reference="MJs-Tg-Ttx"/>
+                                                <include reference="wcq-07-8QG"/>
                                                 <include reference="Cbi-t5-YH8"/>
-                                                <exclude reference="g9i-fN-d35"/>
                                                 <include reference="VBZ-3j-m1L"/>
                                                 <exclude reference="YzT-OB-IXk"/>
+                                                <exclude reference="g9i-fN-d35"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -892,6 +900,7 @@ If you have any questions about these Terms, please contact us.</mutableString>
     <resources>
         <image name="emptyArtworkImage" width="1024" height="1024"/>
         <image name="forwardIconLight" width="40" height="40"/>
+        <image name="launchLogo" width="1024" height="1024"/>
         <image name="lockedIconRed" width="50" height="50"/>
         <image name="pauseIconLight" width="48" height="52"/>
         <image name="playIconLight" width="47" height="51"/>
