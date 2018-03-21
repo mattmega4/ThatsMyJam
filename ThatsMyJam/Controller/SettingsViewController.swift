@@ -31,6 +31,7 @@ class SettingsViewController: UIViewController {
     // MARK: - IB Actions
   
   @IBAction func rightBarButtonItemTapped(_ sender: UIBarButtonItem) {
+    dismiss(animated: true, completion: nil)
   }
   
   @IBAction func acknowledgementsButtonTapped(_ sender: UIButton) {

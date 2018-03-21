@@ -11,7 +11,7 @@ import UIKit
 class AcknowledgementsViewController: UIViewController {
 
   
-  @IBOutlet weak var doneButton: UIBarButtonItem!
+//  @IBOutlet weak var doneButton: UIBarButtonItem!
   @IBOutlet weak var logoImgView: UIImageView!
   @IBOutlet weak var versionLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
@@ -37,9 +37,9 @@ class AcknowledgementsViewController: UIViewController {
   
   // MARK: - IBActions
   
-  @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
-    navigationController?.popViewController(animated: true)
-  }
+//  @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
+//    navigationController?.popViewController(animated: true)
+//  }
   
 }
 

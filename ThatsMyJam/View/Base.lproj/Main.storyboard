@@ -291,7 +291,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="oOY-G3-oDL" firstAttribute="centerY" secondItem="KdI-YC-bNx" secondAttribute="centerY" id="0WB-TO-A1H"/>
                             <constraint firstItem="rin-Sp-OcR" firstAttribute="top" secondItem="wZJ-qU-2LO" secondAttribute="bottom" constant="80" id="27M-r5-1ed"/>
@@ -624,16 +624,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0D0-UR-jq7"/>
                     </view>
-                    <navigationItem key="navigationItem" id="mFb-mL-yIi">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="FVD-97-gnv">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="doneButtonTapped:" destination="J1d-bN-PcB" id="qoa-4S-WWB"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="mFb-mL-yIi"/>
                     <connections>
-                        <outlet property="doneButton" destination="FVD-97-gnv" id="lqe-jn-8aF"/>
                         <outlet property="logoImgView" destination="HFT-8C-9xJ" id="p3R-bc-3q7"/>
                         <outlet property="tableView" destination="dhe-Qk-Zeo" id="1tB-O3-0Oi"/>
                         <outlet property="versionLabel" destination="ORO-BV-Xbc" id="yph-Hw-rnn"/>
@@ -752,16 +744,8 @@ If you have any questions about these Terms, please contact us.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ITg-rA-cty"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Mqd-yk-XVg">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="0cG-Tf-ebd">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="leftNavBarButtonTapped:" destination="t9K-Cj-uV2" id="AS6-9y-NiX"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Mqd-yk-XVg"/>
                     <connections>
-                        <outlet property="leftNavBarButton" destination="0cG-Tf-ebd" id="37O-MK-4Vj"/>
                         <outlet property="legalLabel" destination="r6f-r7-QsB" id="3E1-Ce-DtB"/>
                     </connections>
                 </viewController>

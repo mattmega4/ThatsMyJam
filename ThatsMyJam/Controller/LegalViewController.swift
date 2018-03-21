@@ -10,7 +10,7 @@ import UIKit
 
 class LegalViewController: UIViewController {
 
-  @IBOutlet weak var leftNavBarButton: UIBarButtonItem!
+  
   @IBOutlet weak var legalLabel: UILabel!
   
   
@@ -20,10 +20,7 @@ class LegalViewController: UIViewController {
     setNavBar()
     title = "Legal"
   }
-  
-  
-  @IBAction func leftNavBarButtonTapped(_ sender: UIBarButtonItem) {
-    navigationController?.popViewController(animated: true)
-  }
+
+
 
 }
