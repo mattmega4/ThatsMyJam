@@ -64,6 +64,7 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 
-
+ThatsMyJam/GoogleService-Info.plist
 ThatsMyJam/SupportingFiles/GoogleService-Info.plist
+ThatsMyJam/Keys.plist
 
