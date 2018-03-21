@@ -24,12 +24,11 @@
 		295AFDE42061F59700C04DD4 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDE22061F59700C04DD4 /* UIViewController+Extensions.swift */; };
 		295AFDE62061F60300C04DD4 /* AcknowledgementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */; };
 		295AFDE72061F60300C04DD4 /* AcknowledgementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */; };
-		295AFDE92061F6A600C04DD4 /* Pods-Lynked-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 295AFDE82061F6A500C04DD4 /* Pods-Lynked-acknowledgements.plist */; };
-		295AFDEA2061F6A600C04DD4 /* Pods-Lynked-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 295AFDE82061F6A500C04DD4 /* Pods-Lynked-acknowledgements.plist */; };
 		2969DC862059E87800C2BE0A /* Old Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2969DC852059E87800C2BE0A /* Old Code.swift */; };
 		2990D801202525FA0090E18C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D800202525FA0090E18C /* UIView+Extensions.swift */; };
 		2990D8032025260E0090E18C /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8022025260E0090E18C /* Sequence+Extensions.swift */; };
 		2990D8052025261F0090E18C /* MutableCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */; };
+		2991FD6920621B180056D91B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2991FD6820621B180056D91B /* Settings.bundle */; };
 		2994BBF720620960006FC966 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994BBF620620960006FC966 /* SettingsViewController.swift */; };
 		2994BBF920620C30006FC966 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994BBF820620C30006FC966 /* MediaPlayerViewController.swift */; };
 		2994BBFA20620C30006FC966 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994BBF820620C30006FC966 /* MediaPlayerViewController.swift */; };
@@ -81,11 +80,12 @@
 		295AFDDF2061F56000C04DD4 /* LegalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalViewController.swift; sourceTree = "<group>"; };
 		295AFDE22061F59700C04DD4 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsTableViewCell.swift; sourceTree = "<group>"; };
-		295AFDE82061F6A500C04DD4 /* Pods-Lynked-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-Lynked-acknowledgements.plist"; sourceTree = "<group>"; };
 		2969DC852059E87800C2BE0A /* Old Code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Old Code.swift"; sourceTree = "<group>"; };
+		2990C69920622086005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pods-ThatsMyJam-acknowledgements.plist"; sourceTree = "<group>"; };
 		2990D800202525FA0090E18C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		2990D8022025260E0090E18C /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MutableCollection+Extensions.swift"; sourceTree = "<group>"; };
+		2991FD6820621B180056D91B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2994BBF620620960006FC966 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2994BBF820620C30006FC966 /* MediaPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerViewController.swift; sourceTree = "<group>"; };
 		29A3A024202522E900118867 /* ThatsMyJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThatsMyJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +184,7 @@
 		29A3A01B202522E900118867 = {
 			isa = PBXGroup;
 			children = (
+				2991FD6820621B180056D91B /* Settings.bundle */,
 				29A3A026202522E900118867 /* ThatsMyJam */,
 				29A3A03E202522E900118867 /* ThatsMyJamTests */,
 				29A3A025202522E900118867 /* Products */,
@@ -232,8 +233,8 @@
 				29A3A033202522E900118867 /* LaunchScreen.storyboard */,
 				29A3A036202522E900118867 /* Info.plist */,
 				290070C7202529100054A0C2 /* GoogleService-Info.plist */,
+				2990C69920622086005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */,
 				294399A220620747005FBD99 /* Keys.plist */,
-				295AFDE82061F6A500C04DD4 /* Pods-Lynked-acknowledgements.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -403,7 +404,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				295AFDE92061F6A600C04DD4 /* Pods-Lynked-acknowledgements.plist in Resources */,
+				2991FD6920621B180056D91B /* Settings.bundle in Resources */,
 				2933FB25205F209100EC7343 /* Localizable.strings in Resources */,
 				29A3A035202522E900118867 /* LaunchScreen.storyboard in Resources */,
 				290070C8202529100054A0C2 /* GoogleService-Info.plist in Resources */,
@@ -417,7 +418,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				295AFDEA2061F6A600C04DD4 /* Pods-Lynked-acknowledgements.plist in Resources */,
 				2994BBFB20620ED1006FC966 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
