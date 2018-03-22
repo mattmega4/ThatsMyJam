@@ -46,6 +46,7 @@
 		29A3A0522025240400118867 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0502025240400118867 /* MediaManager.swift */; };
 		29CB7C05205A37A900696357 /* RequestReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CB7C04205A37A900696357 /* RequestReview.swift */; };
 		29CB7C06205A37A900696357 /* RequestReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CB7C04205A37A900696357 /* RequestReview.swift */; };
+		29F0DE15206469480046960B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F0DE14206469480046960B /* AdSupport.framework */; };
 		B16DC1FAC1ECE4922434174E /* Pods_ThatsMyJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645321C3C91BA2077AE8CE0 /* Pods_ThatsMyJam.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +116,7 @@
 		29C09C51205DE730003E5158 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		29C09C52205DE730003E5158 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		29CB7C04205A37A900696357 /* RequestReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestReview.swift; sourceTree = "<group>"; };
+		29F0DE14206469480046960B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		29F1FCA9205DDBEF0043364B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		29F1FCAA205DDC290043364B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		29F1FCAB205DDC2A0043364B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29F0DE15206469480046960B /* AdSupport.framework in Frameworks */,
 				B16DC1FAC1ECE4922434174E /* Pods_ThatsMyJam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +151,7 @@
 		1414085DDC0EA4FFAED01033 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29F0DE14206469480046960B /* AdSupport.framework */,
 				A645321C3C91BA2077AE8CE0 /* Pods_ThatsMyJam.framework */,
 				58EF45B95F707500CAABFCF0 /* Pods_ThatsMyJamTests.framework */,
 			);
