@@ -46,7 +46,6 @@
 		29A3A0522025240400118867 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A0502025240400118867 /* MediaManager.swift */; };
 		29CB7C05205A37A900696357 /* RequestReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CB7C04205A37A900696357 /* RequestReview.swift */; };
 		29CB7C06205A37A900696357 /* RequestReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CB7C04205A37A900696357 /* RequestReview.swift */; };
-		29F0DE15206469480046960B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F0DE14206469480046960B /* AdSupport.framework */; };
 		B16DC1FAC1ECE4922434174E /* Pods_ThatsMyJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A645321C3C91BA2077AE8CE0 /* Pods_ThatsMyJam.framework */; };
 /* End PBXBuildFile section */
 
@@ -132,7 +131,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29F0DE15206469480046960B /* AdSupport.framework in Frameworks */,
 				B16DC1FAC1ECE4922434174E /* Pods_ThatsMyJam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
