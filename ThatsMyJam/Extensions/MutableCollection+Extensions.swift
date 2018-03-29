@@ -13,7 +13,7 @@ extension MutableCollection {
   public mutating func shuffle() {
     let c = count
     guard c > 1 else { return }
-    
+
     for (firstUnshuffled, unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
       // let d: IndexDistance
       let d: Int = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
@@ -22,3 +22,6 @@ extension MutableCollection {
     }
   }
 }
+
+
+

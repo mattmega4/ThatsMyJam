@@ -11,7 +11,7 @@ import StoreKit
 
 
 let runIncrementerSetting = "numberOfRuns"
-let minimumRunCount = 5
+let minimumRunCount = 10
 
 
 func incrementAppRuns() {
