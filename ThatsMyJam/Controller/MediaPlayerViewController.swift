@@ -14,7 +14,6 @@ import FirebaseAnalytics
 
 class MediaPlayerViewController: UIViewController {
   
-  
   @IBOutlet weak var topRightButton: UIButton!
   @IBOutlet weak var albumArtImageView: UIImageView!
   @IBOutlet weak var songProgressView: UIProgressView!
@@ -63,14 +62,10 @@ class MediaPlayerViewController: UIViewController {
     setNavBar()
     DispatchQueue.main.async {
       self.mediaPlayer.beginGeneratingPlaybackNotifications()
-      
       NotificationCenter.default.addObserver(self, selector: #selector(self.songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: self.mediaPlayer)
-      
       NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInterupted(_:)), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: self.mediaPlayer)
-      
 //      self.mediaPlayer.beginGeneratingPlaybackNotifications()
     }
-    
     albumArtImageView.createRoundedCorners()
     songProgressSlider.addTarget(self, action: #selector(playbackSlider(_:)), for: .valueChanged)
     volumeControlView.showsVolumeSlider = true
@@ -87,7 +82,6 @@ class MediaPlayerViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
   }
   
   // MARK: - Initial Audio Player setup Logic
@@ -95,9 +89,7 @@ class MediaPlayerViewController: UIViewController {
   func setUpAudioPlayerAndGetSongsShuffled() {
     try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategorySoloAmbient)
     try? AVAudioSession.sharedInstance().setActive(true)
-    
     let setupTrace = Performance.startTrace(name: "setupTrace")
-    
     DispatchQueue.main.async {
       self.clearSongInfo()
       MediaManager.shared.getAllSongs { (songs) in
@@ -106,7 +98,6 @@ class MediaPlayerViewController: UIViewController {
         }
         self.mediaPlayer.nowPlayingItem = nil
         self.newSongs.removeAll()
-        
         self.newSongs = theSongs.filter({ (item) -> Bool in
           return !MediaManager.shared.playedSongs.contains(item)
         })
@@ -114,7 +105,6 @@ class MediaPlayerViewController: UIViewController {
         self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: self.newSongs.shuffled()))
         self.mediaPlayer.shuffleMode = .off
         self.mediaPlayer.repeatMode = .none
-        
         setupTrace?.stop()
       }
     }
@@ -138,6 +128,9 @@ class MediaPlayerViewController: UIViewController {
       if self.mediaPlayer.playbackState == .paused {
         print("paused")
         self.isPlaying = false
+        self.playPauseSongButton.isSelected = self.isPlaying
+      } else if self.mediaPlayer.playbackState == .playing {
+        self.isPlaying = true
         self.playPauseSongButton.isSelected = self.isPlaying
       }
     }

@@ -24,10 +24,6 @@ class SettingsViewController: UIViewController {
       title = "Settings"
     }
 
-
-    
-
-  
     // MARK: - IB Actions
   
   @IBAction func rightBarButtonItemTapped(_ sender: UIBarButtonItem) {
