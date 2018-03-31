@@ -62,8 +62,13 @@ class MediaPlayerViewController: UIViewController {
     setUpAudioPlayerAndGetSongsShuffled()
     setNavBar()
     DispatchQueue.main.async {
-      NotificationCenter.default.addObserver(self, selector: #selector(self.songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: self.mediaPlayer)
       self.mediaPlayer.beginGeneratingPlaybackNotifications()
+      
+      NotificationCenter.default.addObserver(self, selector: #selector(self.songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: self.mediaPlayer)
+      
+      NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInterupted(_:)), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: self.mediaPlayer)
+      
+//      self.mediaPlayer.beginGeneratingPlaybackNotifications()
     }
     
     albumArtImageView.createRoundedCorners()
@@ -79,13 +84,11 @@ class MediaPlayerViewController: UIViewController {
       volumeView.addSubview(myVolumeView)
     }
   }
-  
-  
+
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
   }
-  
   
   // MARK: - Initial Audio Player setup Logic
   
@@ -117,6 +120,8 @@ class MediaPlayerViewController: UIViewController {
     }
   }
   
+  // MARK: - Unlock Everything & Play
+  
   func unlockEverythingAndPlay() {
     DispatchQueue.main.async {
       MediaManager.shared.lockedSongs.removeAll()
@@ -126,6 +131,17 @@ class MediaPlayerViewController: UIViewController {
     }
   }
   
+  // MARK: - Was Song Interupted
+  
+  @objc func wasSongInterupted(_ notification: Notification) {
+    DispatchQueue.main.async {
+      if self.mediaPlayer.playbackState == .paused {
+        print("paused")
+        self.isPlaying = false
+        self.playPauseSongButton.isSelected = self.isPlaying
+      }
+    }
+  }
   
   // MARK: - Playback Slider
   
@@ -137,6 +153,8 @@ class MediaPlayerViewController: UIViewController {
     }
   }
   
+  // MARK: - Song Changed
+  
   @objc func songChanged(_ notification: Notification) {
     DispatchQueue.main.async {
       self.songProgressSlider.maximumValue = Float(self.mediaPlayer.nowPlayingItem?.playbackDuration ?? 0)
@@ -145,8 +163,6 @@ class MediaPlayerViewController: UIViewController {
       self.songProgressView.progress = 0
       self.songTimePlayedLabel.text = self.getTimeElapsed()
       self.songTimeRemainingLabel.text = self.getTimeRemaining()
-      
-      
       if !self.firstLaunch {
         self.getCurrentlyPlayedInfo()
       } else {
@@ -159,15 +175,15 @@ class MediaPlayerViewController: UIViewController {
     }
   }
   
+  // MARK: - Check If Song Has Played All In Lock
+  
   func checkIfSongHasPlayedAllInLock() {
     DispatchQueue.main.async {
       if let nowPlaying = self.mediaPlayer.nowPlayingItem {
-        
         if self.albumIsLocked || self.artistIsLocked || self.genreIsLocked {
           MediaManager.shared.lockedSongs.append(nowPlaying)
         }
         MediaManager.shared.playedSongs.append(nowPlaying)
-        
         if self.albumIsLocked && MediaManager.shared.hasPlayedAllSongsFromAlbumFor(song: nowPlaying) {
           self.albumLockButtonTapped(self.albumLockIconButton)
           MediaManager.shared.lockedSongs.removeAll()
@@ -175,7 +191,6 @@ class MediaPlayerViewController: UIViewController {
           self.unlockEverythingAndPlay()
           Analytics.logEvent("albumTriggeredUnlocked", parameters: nil)
         }
-        
         if self.artistIsLocked && MediaManager.shared.hasPlayedAllSongsFromArtistFor(song: nowPlaying) {
           self.artistLockButtonTapped(self.artistLockIconButton)
           self.unlockEverythingAndPlay()
@@ -188,6 +203,8 @@ class MediaPlayerViewController: UIViewController {
         }
       }
     }}
+  
+  // MARK: - Check If Lock Should Be Enabled
   
   func checkIfLocksShouldBeEnabled() {
     albumLockIconButton.isEnabled = true
@@ -222,6 +239,8 @@ class MediaPlayerViewController: UIViewController {
     }
   }
   
+  // MARK: - Tapped Logic
+  
   func tappedLockLogic() {
     if !self.albumIsLocked && !self.artistIsLocked && !self.genreIsLocked {
       albumLockIconButton.isEnabled = true
@@ -254,7 +273,6 @@ class MediaPlayerViewController: UIViewController {
     self.genreLockLabel.tintColor = UIColor.init(red: 218.0/255.0, green: 218.0/255.0, blue: 218.0/255.0, alpha: 1.0)
   }
   
-  
   // MARK: - Clear Song Information
   
   func clearSongInfo() {
@@ -265,7 +283,6 @@ class MediaPlayerViewController: UIViewController {
       self.songAlbumLabel.text = ""
     }
   }
-  
   
   // MARK: - Get Song Information
   
@@ -280,8 +297,7 @@ class MediaPlayerViewController: UIViewController {
     }
   }
   
-  
-  // MARK: - Song Remaining & Duration Logic
+  // MARK: - Get Time Remaining
   
   func getTimeRemaining() -> String {
     let secondsRemaining = songProgressSlider.maximumValue - songProgressSlider.value
@@ -289,6 +305,8 @@ class MediaPlayerViewController: UIViewController {
     let seconds = String(format: "%02d", Int(secondsRemaining - Float(60  * minutes)))
     return "\(minutes):\(seconds)"
   }
+  
+  // MARK: - Get Time Elapsed
   
   func getTimeElapsed() -> String {
     let secondsElapsed = songProgressSlider.value
@@ -299,17 +317,14 @@ class MediaPlayerViewController: UIViewController {
     return "\(localizedMinutes):\(localizedSeconds)"
   }
   
+  // MARK: - Update Current Playback Time
   func updateCurrentPlaybackTime() {
     let elapsedTime = mediaPlayer.currentPlaybackTime
     songProgressSlider.value = Float(elapsedTime)
     songProgressView.progress = Float(elapsedTime / Double(songProgressSlider.maximumValue))
     songTimePlayedLabel.text = getTimeElapsed()
     songTimeRemainingLabel.text = getTimeRemaining()
-    
   }
-  
-  
-  
   
   // MARK: - IB Actions
   
@@ -319,7 +334,6 @@ class MediaPlayerViewController: UIViewController {
       self.present(prefNavigation, animated: true, completion: nil)
     }
   }
-  
   
   // MARK: - Song Control Button Actions
   
@@ -339,13 +353,11 @@ class MediaPlayerViewController: UIViewController {
     getCurrentlyPlayedInfo()
   }
   
-  
   @IBAction func forwardSongButtonTapped(_ sender: UIButton) {
     DispatchQueue.main.async {
       guard let nowPlaying = self.mediaPlayer.nowPlayingItem else {
         return
       }
-      
       if self.albumIsLocked && MediaManager.shared.hasPlayedAllSongsFromAlbumFor(song: nowPlaying) || self.artistIsLocked && MediaManager.shared.hasPlayedAllSongsFromArtistFor(song: nowPlaying) || self.genreIsLocked && MediaManager.shared.hasPlayedAllSongsFromGenreFor(song: nowPlaying) {
         self.unlockEverythingAndPlay()
       } else {
@@ -361,7 +373,6 @@ class MediaPlayerViewController: UIViewController {
     sender.isSelected = isPlaying
     if self.isPlaying {
       DispatchQueue.main.async {
-        
         self.mediaPlayer.prepareToPlay()
         self.mediaPlayer.play()
       }
@@ -373,7 +384,6 @@ class MediaPlayerViewController: UIViewController {
     
     getCurrentlyPlayedInfo()
     if isPlaying {
-      
       self.songTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
         DispatchQueue.main.async {
           self.updateCurrentPlaybackTime()
