@@ -12,6 +12,7 @@ import AVFoundation
 import FirebasePerformance
 import FirebaseAnalytics
 
+
 class MediaPlayerViewController: UIViewController {
   
   @IBOutlet weak var topRightButton: UIButton!
@@ -64,6 +65,9 @@ class MediaPlayerViewController: UIViewController {
       self.mediaPlayer.beginGeneratingPlaybackNotifications()
       NotificationCenter.default.addObserver(self, selector: #selector(self.songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: self.mediaPlayer)
       NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInterupted(_:)), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: self.mediaPlayer)
+
+
+      
 //      self.mediaPlayer.beginGeneratingPlaybackNotifications()
     }
     albumArtImageView.createRoundedCorners()
@@ -109,7 +113,7 @@ class MediaPlayerViewController: UIViewController {
       }
     }
   }
-  
+
   // MARK: - Unlock Everything & Play
   
   func unlockEverythingAndPlay() {
@@ -526,12 +530,12 @@ extension MediaPlayerViewController: AVAudioPlayerDelegate {
     Analytics.logEvent("audioPlayerDecodeErrorDidOccur", parameters: ["error": error?.localizedDescription ?? "error"])
     print("error")
   }
-  
+
   func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
     Analytics.logEvent("audioPlayerDidFinishPlaying", parameters: nil)
     print("finished playing")
-    
   }
+
   
 }
 
