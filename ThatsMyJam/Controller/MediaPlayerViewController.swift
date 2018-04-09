@@ -65,10 +65,6 @@ class MediaPlayerViewController: UIViewController {
       self.mediaPlayer.beginGeneratingPlaybackNotifications()
       NotificationCenter.default.addObserver(self, selector: #selector(self.songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: self.mediaPlayer)
       NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInterupted(_:)), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: self.mediaPlayer)
-
-
-      
-//      self.mediaPlayer.beginGeneratingPlaybackNotifications()
     }
     albumArtImageView.createRoundedCorners()
     songProgressSlider.addTarget(self, action: #selector(playbackSlider(_:)), for: .valueChanged)
