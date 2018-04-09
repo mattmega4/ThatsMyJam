@@ -60,7 +60,7 @@ class MediaManager: NSObject {
   // MARK: - Artist Lock Logic
   
   func getSongsWithCurrentArtistFor(item: MPMediaItem) -> MPMediaQuery {
-    let artistPredicate = MPMediaPropertyPredicate(value: item.artist, forProperty: MPMediaItemPropertyArtist, comparisonType: .contains)
+    let artistPredicate = MPMediaPropertyPredicate(value: item.artistPersistentID, forProperty: MPMediaItemPropertyArtistPersistentID, comparisonType: .contains)
     let query = MPMediaQuery()
     query.addFilterPredicate(artistPredicate)
     return query
