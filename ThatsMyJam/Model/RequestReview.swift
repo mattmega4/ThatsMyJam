@@ -11,17 +11,14 @@ import StoreKit
 
 
 let runIncrementerSetting = "numberOfRuns"
-let minimumRunCount = 10
-
+let minimumRunCount = 5
 
 func incrementAppRuns() {
   let usD = UserDefaults()
   let runs = getRunCounts() + 1
-
   usD.setValuesForKeys([runIncrementerSetting: runs])
   usD.synchronize()
 }
-
 
 func getRunCounts () -> Int {
   let usD = UserDefaults()
@@ -33,7 +30,6 @@ func getRunCounts () -> Int {
   print("Run Counts are \(runs)")
   return runs
 }
-
 
 func showReview() {
   let runs = getRunCounts()

@@ -64,7 +64,7 @@ class MediaPlayerViewController: UIViewController {
     DispatchQueue.main.async {
       self.mediaPlayer.beginGeneratingPlaybackNotifications()
       NotificationCenter.default.addObserver(self, selector: #selector(self.songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: self.mediaPlayer)
-      NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInterupted(_:)), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: self.mediaPlayer)
+//      NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInterupted(_:)), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: self.mediaPlayer)
     }
     albumArtImageView.createRoundedCorners()
     songProgressSlider.addTarget(self, action: #selector(playbackSlider(_:)), for: .valueChanged)
@@ -82,6 +82,7 @@ class MediaPlayerViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInterupted(_:)), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: self.mediaPlayer)
   }
   
   // MARK: - Initial Audio Player setup Logic
@@ -241,14 +242,26 @@ class MediaPlayerViewController: UIViewController {
       genreLockIconButton.isEnabled = true
     }
     if albumIsLocked {
-      artistLockIconButton.isEnabled = false
-      genreLockIconButton.isEnabled = false
+      artistLockIconButton.isSelected = false
+      artistIsLocked = false
+      genreLockIconButton.isSelected = false
+      genreIsLocked = false
+//      artistLockIconButton.isEnabled = false
+//      genreLockIconButton.isEnabled = false
     } else if artistIsLocked {
-      albumLockIconButton.isEnabled = false
-      genreLockIconButton.isEnabled = false
+      albumLockIconButton.isSelected = false
+      albumIsLocked = false
+      genreLockIconButton.isSelected = false
+      genreIsLocked = false
+//      albumLockIconButton.isEnabled = false
+//      genreLockIconButton.isEnabled = false
     } else if genreIsLocked {
-      albumLockIconButton.isEnabled = false
-      artistLockIconButton.isEnabled = false
+      albumLockIconButton.isSelected = false
+      albumIsLocked = false
+      artistLockIconButton.isSelected = false
+      artistIsLocked = false
+//      albumLockIconButton.isEnabled = false
+//      artistLockIconButton.isEnabled = false
     }
   }
   
