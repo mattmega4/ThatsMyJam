@@ -64,7 +64,7 @@ class MediaPlayerViewController: UIViewController {
     DispatchQueue.main.async {
       self.mediaPlayer.beginGeneratingPlaybackNotifications()
       NotificationCenter.default.addObserver(self, selector: #selector(self.songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: self.mediaPlayer)
-//      NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInterupted(_:)), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: self.mediaPlayer)
+      //      NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInterupted(_:)), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: self.mediaPlayer)
     }
     albumArtImageView.createRoundedCorners()
     songProgressSlider.addTarget(self, action: #selector(playbackSlider(_:)), for: .valueChanged)
@@ -79,7 +79,7 @@ class MediaPlayerViewController: UIViewController {
       volumeView.addSubview(myVolumeView)
     }
   }
-
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInterupted(_:)), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: self.mediaPlayer)
@@ -110,7 +110,7 @@ class MediaPlayerViewController: UIViewController {
       }
     }
   }
-
+  
   // MARK: - Unlock Everything & Play
   
   func unlockEverythingAndPlay() {
@@ -166,6 +166,14 @@ class MediaPlayerViewController: UIViewController {
       self.checkIfSongHasPlayedAllInLock()
       self.checkIfLocksShouldBeEnabled()
       self.tappedLockLogic()
+      
+      if self.mediaPlayer.indexOfNowPlayingItem == 0 {
+        print("hello world")
+        self.rewindSongButton.isEnabled = true
+      } else if self.mediaPlayer.indexOfNowPlayingItem == 1 {
+        print("Hiya")
+      }
+      
     }
   }
   
@@ -246,22 +254,22 @@ class MediaPlayerViewController: UIViewController {
       artistIsLocked = false
       genreLockIconButton.isSelected = false
       genreIsLocked = false
-//      artistLockIconButton.isEnabled = false
-//      genreLockIconButton.isEnabled = false
+      //      artistLockIconButton.isEnabled = false
+      //      genreLockIconButton.isEnabled = false
     } else if artistIsLocked {
       albumLockIconButton.isSelected = false
       albumIsLocked = false
       genreLockIconButton.isSelected = false
       genreIsLocked = false
-//      albumLockIconButton.isEnabled = false
-//      genreLockIconButton.isEnabled = false
+      //      albumLockIconButton.isEnabled = false
+      //      genreLockIconButton.isEnabled = false
     } else if genreIsLocked {
       albumLockIconButton.isSelected = false
       albumIsLocked = false
       artistLockIconButton.isSelected = false
       artistIsLocked = false
-//      albumLockIconButton.isEnabled = false
-//      artistLockIconButton.isEnabled = false
+      //      albumLockIconButton.isEnabled = false
+      //      artistLockIconButton.isEnabled = false
     }
   }
   
@@ -331,6 +339,7 @@ class MediaPlayerViewController: UIViewController {
     songTimePlayedLabel.text = getTimeElapsed()
     songTimeRemainingLabel.text = getTimeRemaining()
   }
+
   
   // MARK: - IB Actions
   
@@ -349,10 +358,14 @@ class MediaPlayerViewController: UIViewController {
         let secondsElapsed = self.songProgressSlider.value
         let minutes = Int(secondsElapsed / 60)
         let seconds = Int(secondsElapsed - Float(60  * minutes))
-        if seconds < 5 {
-          self.mediaPlayer.skipToPreviousItem()
-        } else {
+        if self.mediaPlayer.indexOfNowPlayingItem == 0 {
           self.mediaPlayer.skipToBeginning()
+        } else {
+          if seconds < 5 {
+            self.mediaPlayer.skipToPreviousItem()
+          } else {
+            self.mediaPlayer.skipToBeginning()
+          }
         }
       }
     })
@@ -539,12 +552,12 @@ extension MediaPlayerViewController: AVAudioPlayerDelegate {
     Analytics.logEvent("audioPlayerDecodeErrorDidOccur", parameters: ["error": error?.localizedDescription ?? "error"])
     print("error")
   }
-
+  
   func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
     Analytics.logEvent("audioPlayerDidFinishPlaying", parameters: nil)
     print("finished playing")
   }
-
+  
   
 }
 
