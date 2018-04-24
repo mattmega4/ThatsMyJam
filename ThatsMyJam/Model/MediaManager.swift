@@ -28,7 +28,7 @@ class MediaManager: NSObject {
         let audioFilter = MPMediaPropertyPredicate(value: mediaTypeMusic.rawValue, forProperty: MPMediaItemPropertyMediaType, comparisonType: MPMediaPredicateComparison.equalTo)
         query.addFilterPredicate(audioFilter)
         let songs = query.items?.filter({ (item) -> Bool in
-//          return item.mediaType.rawValue == 1
+          //          return item.mediaType.rawValue == 1
           return item.mediaType.rawValue <= MPMediaType.anyAudio.rawValue
         })
         completion(songs)
@@ -47,6 +47,9 @@ class MediaManager: NSObject {
     query.addFilterPredicate(albumPredicate)
     return query
   }
+  
+  
+
   
   // MARK: - Remove Album Filter Logic
   
@@ -84,7 +87,7 @@ class MediaManager: NSObject {
     query.addFilterPredicate(genrePredicate)
     return query
   }
-    
+
   // MARK: - Remove Genre Filter Logic
   
   func removeGenreLockFor(item: MPMediaItem) -> MPMediaQuery {
