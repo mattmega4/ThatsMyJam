@@ -67,7 +67,7 @@ class MediaPlayerViewController: UIViewController {
     albumArtImageView.createRoundedCorners()
     songProgressSlider.addTarget(self, action: #selector(playbackSlider(_:)), for: .valueChanged)
     volumeControlView.showsVolumeSlider = true
-    rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
+//    rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
   }
   
   override func viewDidLayoutSubviews() {
@@ -166,13 +166,12 @@ class MediaPlayerViewController: UIViewController {
       self.checkIfLocksShouldBeEnabled()
       self.tappedLockLogic()
       // re enable when apple fixes their stuff
-//      if self.mediaPlayer.indexOfNowPlayingItem == 0 {
-//        self.rewindSongButton.isEnabled = true
-//        self.rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
-//      } else if self.mediaPlayer.indexOfNowPlayingItem > 0 {
-//        self.rewindSongButton.setImage(UIImage(named: "rewindIconLight.png"), for: .normal)
-//
-//      }
+      if self.mediaPlayer.indexOfNowPlayingItem == 0 {
+        self.rewindSongButton.isEnabled = true
+        self.rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
+      } else if self.mediaPlayer.indexOfNowPlayingItem > 0 {
+        self.rewindSongButton.setImage(UIImage(named: "rewindIconLight.png"), for: .normal)
+      }
     }
   }
   
@@ -349,18 +348,18 @@ class MediaPlayerViewController: UIViewController {
       DispatchQueue.main.async {
         self.mediaPlayer.skipToBeginning()
         // uncomment when apple fixes stuff
-//        let secondsElapsed = self.songProgressSlider.value
-//        let minutes = Int(secondsElapsed / 60)
-//        let seconds = Int(secondsElapsed - Float(60  * minutes))
-//        if self.mediaPlayer.indexOfNowPlayingItem == 0 {
-//          self.mediaPlayer.skipToBeginning()
-//        } else {
-//          if seconds < 5 {
-//            self.mediaPlayer.skipToPreviousItem()
-//          } else {
-//            self.mediaPlayer.skipToBeginning()
-//          }
-//        }
+        let secondsElapsed = self.songProgressSlider.value
+        let minutes = Int(secondsElapsed / 60)
+        let seconds = Int(secondsElapsed - Float(60  * minutes))
+        if self.mediaPlayer.indexOfNowPlayingItem == 0 {
+          self.mediaPlayer.skipToBeginning()
+        } else {
+          if seconds < 5 {
+            self.mediaPlayer.skipToPreviousItem()
+          } else {
+            self.mediaPlayer.skipToBeginning()
+          }
+        }
       }
     })
     getCurrentlyPlayedInfo()
