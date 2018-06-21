@@ -130,7 +130,7 @@ class FeedbackViewController: UIViewController {
   
   func keyboardWillShow(notification:NSNotification) {
     var userInfo = notification.userInfo!
-    var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+    var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
     keyboardFrame = self.view.convert(keyboardFrame, from: nil)
     var contentInset: UIEdgeInsets = self.scrollView.contentInset
     contentInset.bottom = keyboardFrame.size.height
@@ -139,7 +139,8 @@ class FeedbackViewController: UIViewController {
   
   
   func keyboardWillHide(notification:NSNotification) {
-    let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+//    let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+    let contentInset:UIEdgeInsets = UIEdgeInsets()
     self.scrollView.contentInset = contentInset
   }
 }
@@ -203,7 +204,10 @@ extension FeedbackViewController: UIPickerViewDelegate, UIPickerViewDataSource {
   
   func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
     let titleData = topics[row]
-    let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont(name: "GillSans", size: 15.0)!,NSAttributedStringKey.foregroundColor:UIColor.darkGray])
+
+    let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.font: UIFont(name: "GillSans", size: 15.0)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+
+//    let myTitle = NSAttributedString(string: titleData, NSAttributedString.KeyNSAttributedString.Key.font: UIFont(name: "GillSans", size: 15.0)!,NSAttributedString.Key.foregroundColor:UIColor.darkGray])
     return myTitle
   }
   

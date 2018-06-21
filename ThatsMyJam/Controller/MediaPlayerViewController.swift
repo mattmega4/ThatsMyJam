@@ -6,6 +6,14 @@
 //  Copyright © 2018 Matthew Howes Singleton. All rights reserved.
 //
 
+#if swift(>=4.2)
+import UIKit.UIGeometry
+extension UIEdgeInsets {
+  public static let zero = UIEdgeInsets()
+}
+#endif
+
+
 import UIKit
 import MediaPlayer
 import AVFoundation
@@ -87,8 +95,15 @@ class MediaPlayerViewController: UIViewController {
   // MARK: - Initial Audio Player setup Logic
   
   func setUpAudioPlayerAndGetSongsShuffled() {
-    try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategorySoloAmbient)
+//    try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategorySoloAmbient)
+
+
+
+    try? AVAudioSession.sharedInstance().setCategory(.soloAmbient, mode: .default, options: AVAudioSession.CategoryOptions())
+
     try? AVAudioSession.sharedInstance().setActive(true)
+
+    
     let setupTrace = Performance.startTrace(name: "setupTrace")
     DispatchQueue.main.async {
       self.clearSongInfo()

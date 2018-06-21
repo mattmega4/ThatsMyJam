@@ -19,14 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
 
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     
     // MARK: - NavBar Light Color
-    UIApplication.shared.statusBarStyle = .lightContent
-    
-//    UIApplication.shared.setMinimumBackgroundFetchInterval(1)
-    
+
+    var darkMode = false
+
+    var preferredStatusBarStyle : UIStatusBarStyle {
+      return darkMode ? .default : .lightContent
+    }
+
+//    UIApplication.shared.statusBarStyle = .lightContent
+
     Fabric.with([Crashlytics.self])
     FirebaseApp.configure()
     incrementAppRuns()
