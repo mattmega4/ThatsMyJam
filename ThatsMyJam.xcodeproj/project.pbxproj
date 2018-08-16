@@ -305,7 +305,6 @@
 				29A3A021202522E900118867 /* Frameworks */,
 				29A3A022202522E900118867 /* Resources */,
 				A5523AAC78F38A36DF30B320 /* [CP] Embed Pods Frameworks */,
-				054DCBB53232B5F776E30BE2 /* [CP] Copy Pods Resources */,
 				296B61C620252CA400627E41 /* ShellScript */,
 				295DF52420AA03CF00A770EB /* ShellScript */,
 			);
@@ -326,8 +325,6 @@
 				29A3A037202522E900118867 /* Sources */,
 				29A3A038202522E900118867 /* Frameworks */,
 				29A3A039202522E900118867 /* Resources */,
-				D53DAF71B73B7ADB828553D5 /* [CP] Embed Pods Frameworks */,
-				A9946BA937DA33597101D1C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -419,21 +416,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		054DCBB53232B5F776E30BE2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		295DF52420AA03CF00A770EB /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
@@ -488,6 +470,7 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 				"${BUILT_PRODUCTS_DIR}/mailgun/mailgun.framework",
@@ -498,6 +481,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/mailgun.framework",
@@ -506,36 +490,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A9946BA937DA33597101D1C7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ThatsMyJamTests/Pods-ThatsMyJamTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D53DAF71B73B7ADB828553D5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ThatsMyJamTests/Pods-ThatsMyJamTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F1B0C1690D59205BC1F18939 /* [CP] Check Pods Manifest.lock */ = {
