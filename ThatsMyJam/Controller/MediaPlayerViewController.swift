@@ -54,7 +54,7 @@ class MediaPlayerViewController: UIViewController {
   var genreQuery: MPMediaQuery?
   var newSongs = [MPMediaItem]()
   var currentSong: MPMediaItem?
-  let mediaPlayer = MPMusicPlayerController.applicationQueuePlayer //applicationMusicPlayer //systemMusicPlayer
+  let mediaPlayer = MPMusicPlayerController.applicationQueuePlayer //applicationQueuePlayer //applicationMusicPlayer //systemMusicPlayer
   var songTimer: Timer?
   var firstLaunch = true
   var lastPlayedItem: MPMediaItem?
@@ -75,9 +75,17 @@ class MediaPlayerViewController: UIViewController {
     albumArtImageView.createRoundedCorners()
     songProgressSlider.addTarget(self, action: #selector(playbackSlider(_:)), for: .valueChanged)
     volumeControlView.showsVolumeSlider = true
-//    rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
+    rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
+
+    NotificationCenter.default.addObserver(self, selector: #selector(wasSongInterupted(_:)), name: .appBecameActive, object: nil)
+
+//    NotificationCenter.default.addObserver(self,
+//                                           selector: #selector(wakeUp),
+//                                           name: .appBecameActive,
+//                                           object: nil)
   }
-  
+
+
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     if volumeView.subviews.count == 0 {
@@ -88,7 +96,7 @@ class MediaPlayerViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInterupted(_:)), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: self.mediaPlayer)
+
     showReview()
   }
   
@@ -137,16 +145,22 @@ class MediaPlayerViewController: UIViewController {
   }
   
   // MARK: - Was Song Interupted
-  
+
+  var bob: Bool {
+    return mediaPlayer.playbackState == .playing
+  }
+
+
   @objc func wasSongInterupted(_ notification: Notification) {
+//  func wasSongInterrupted() {
     DispatchQueue.main.async {
-      if self.mediaPlayer.playbackState == .paused {
-        print("paused")
-        self.isPlaying = false
-        self.playPauseSongButton.isSelected = self.isPlaying
-      } else if self.mediaPlayer.playbackState == .playing {
-        self.isPlaying = true
-        self.playPauseSongButton.isSelected = self.isPlaying
+      if self.mediaPlayer.playbackState == .interrupted {
+//        var isPlaying: Bool { return self.mediaPlayer.playbackState == .playing }
+        print("Playback state is \(self.mediaPlayer.playbackState.rawValue), self.isPlaying Bool is \(self.isPlaying)")
+
+
+        self.playPauseSongButton.setImage(UIImage(named: "playIconLight.png"), for: .normal)
+       self.isPlaying = false
       }
     }
   }
@@ -400,13 +414,17 @@ class MediaPlayerViewController: UIViewController {
   
   @IBAction func playPauseSongButtonTapped(_ sender: UIButton) {
     isPlaying = !isPlaying
-    sender.isSelected = isPlaying
+//    sender.isSelected = isPlaying
     if self.isPlaying {
+//      self.playPauseSongButton.isSelected = self.isPlaying
+      self.playPauseSongButton.setImage(UIImage(named: "pauseIconLight"), for: .normal)
       DispatchQueue.main.async {
         self.mediaPlayer.prepareToPlay()
         self.mediaPlayer.play()
       }
     } else {
+//      self.playPauseSongButton.isSelected = self.isPlaying
+      self.playPauseSongButton.setImage(UIImage(named: "playIconLight"), for: .normal)
       DispatchQueue.main.async {
         self.mediaPlayer.pause()
       }
@@ -526,6 +544,7 @@ class MediaPlayerViewController: UIViewController {
             return item.mediaType.rawValue <= MPMediaType.anyAudio.rawValue
           }) {
             items.shuffle()
+
             let descriptor = MPMusicPlayerMediaItemQueueDescriptor(itemCollection: MPMediaItemCollection(items: self.newSongs.shuffled()))
             self.mediaPlayer.prepend(descriptor)
             self.getCurrentlyPlayedInfo()

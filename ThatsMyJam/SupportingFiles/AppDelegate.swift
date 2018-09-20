@@ -24,15 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - NavBar Light Color
 
-    var darkMode = false
 
-    var preferredStatusBarStyle : UIStatusBarStyle {
-      return darkMode ? .default : .lightContent
+    var preferredStatusBarStyle: UIStatusBarStyle {
+      return .lightContent
     }
 
 //    UIApplication.shared.statusBarStyle = .lightContent
 
-    Fabric.with([Crashlytics.self])
+//    Fabric.with([Crashlytics.self])
     FirebaseApp.configure()
     incrementAppRuns()
     
@@ -56,6 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func applicationDidBecomeActive(_ application: UIApplication) {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+    NotificationCenter.default.post(name: .appBecameActive, object: nil)
+
   }
 
   func applicationWillTerminate(_ application: UIApplication) {

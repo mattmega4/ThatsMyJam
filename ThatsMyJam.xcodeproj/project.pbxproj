@@ -10,6 +10,7 @@
 		283D87E86C2F621DE8EDBF93 /* Pods_ThatsMyJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EF45B95F707500CAABFCF0 /* Pods_ThatsMyJamTests.framework */; };
 		290070C8202529100054A0C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 290070C7202529100054A0C2 /* GoogleService-Info.plist */; };
 		2933FB25205F209100EC7343 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2933FB27205F209100EC7343 /* Localizable.strings */; };
+		293A324821544A9A00E4A18D /* Notification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293A324721544A9A00E4A18D /* Notification+Extensions.swift */; };
 		2943999E206203F6005FBD99 /* StoryboardKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2943999D206203F6005FBD99 /* StoryboardKeys.swift */; };
 		294399A12062057B005FBD99 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294399A02062057B005FBD99 /* FeedbackViewController.swift */; };
 		294399A320620747005FBD99 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 294399A220620747005FBD99 /* Keys.plist */; };
@@ -71,6 +72,7 @@
 		2933FB2D205F20A900EC7343 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2933FB2E205F20AA00EC7343 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2933FB2F205F20AC00EC7343 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		293A324721544A9A00E4A18D /* Notification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extensions.swift"; sourceTree = "<group>"; };
 		2943999D206203F6005FBD99 /* StoryboardKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKeys.swift; sourceTree = "<group>"; };
 		294399A02062057B005FBD99 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		294399A220620747005FBD99 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				2990D8022025260E0090E18C /* Sequence+Extensions.swift */,
 				2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */,
 				295AFDE22061F59700C04DD4 /* UIViewController+Extensions.swift */,
+				293A324721544A9A00E4A18D /* Notification+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -422,12 +425,13 @@
 			files = (
 			);
 			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/upload-symbols\" -gsp \"${PROJECT_DIR}/GoogleService-Info.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"";
+			shellScript = "\"${PODS_ROOT}/Fabric/upload-symbols\" -gsp \"${PROJECT_DIR}/GoogleService-Info.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
 		};
 		296B61C620252CA400627E41 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -435,12 +439,13 @@
 			files = (
 			);
 			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 3605c744e15ddf7d8ef099f0020dfcdd2e2abd5c 7bf7613729d303dcf6eda216f60fde4100191c032181ca9d63ffb7b2533bc45a";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 3605c744e15ddf7d8ef099f0020dfcdd2e2abd5c 7bf7613729d303dcf6eda216f60fde4100191c032181ca9d63ffb7b2533bc45a\n";
 		};
 		5A57CC72462396792CDEE491 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -533,6 +538,7 @@
 				295AFDE62061F60300C04DD4 /* AcknowledgementsTableViewCell.swift in Sources */,
 				29A3A028202522E900118867 /* AppDelegate.swift in Sources */,
 				295AFDD92061F4F400C04DD4 /* AcknowledgementsViewModel.swift in Sources */,
+				293A324821544A9A00E4A18D /* Notification+Extensions.swift in Sources */,
 				2994BBF720620960006FC966 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

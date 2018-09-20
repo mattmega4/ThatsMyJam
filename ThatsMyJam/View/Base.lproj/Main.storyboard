@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UQg-ei-7of">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UQg-ei-7of">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -166,7 +164,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="volumeMoreIconLight" translatesAutoresizingMaskIntoConstraints="NO" id="A03-ru-TvN">
-                                <rect key="frame" x="315" y="496.5" width="15" height="15"/>
+                                <rect key="frame" x="315" y="497" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="A03-ru-TvN" secondAttribute="height" multiplier="1:1" id="8Yp-Og-Ka3"/>
                                     <constraint firstAttribute="width" constant="15" id="Iw0-Ia-V9G"/>
@@ -247,7 +245,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oOH-9A-Wjt">
-                                <rect key="frame" x="150.5" y="622" width="75" height="20"/>
+                                <rect key="frame" x="150" y="622" width="75" height="20"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="22"/>
                                 <color key="textColor" red="0.84705882349999995" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -394,7 +392,7 @@
                         <outlet property="forwardSongButton" destination="PSK-UZ-UAo" id="uQb-I0-odf"/>
                         <outlet property="genreLockIconButton" destination="oOY-G3-oDL" id="JJ8-Sr-VYc"/>
                         <outlet property="genreLockLabel" destination="zNe-xO-3h4" id="ZUu-5x-J9W"/>
-                        <outlet property="playPauseSongButton" destination="wZJ-qU-2LO" id="Ihw-XV-KRT"/>
+                        <outlet property="playPauseSongButton" destination="wZJ-qU-2LO" id="xxT-aG-MIM"/>
                         <outlet property="rewindSongButton" destination="HCa-Sx-OKC" id="YQu-A4-Xhl"/>
                         <outlet property="songAlbumLabel" destination="Q1Y-QW-Oau" id="1Ys-hZ-CCb"/>
                         <outlet property="songArtistLabel" destination="VQw-gL-aTz" id="ldf-rC-rSP"/>
@@ -422,16 +420,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="41E-dC-htX">
-                                <rect key="frame" x="123.5" y="114" width="128.5" height="128.5"/>
+                                <rect key="frame" x="123.5" y="114" width="128" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="41E-dC-htX" secondAttribute="height" multiplier="1:1" id="cFU-Zk-unI"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GHB-nb-uVQ">
-                                <rect key="frame" x="25" y="392.5" width="325" height="249.5"/>
+                                <rect key="frame" x="25" y="392" width="325" height="250"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lwk-qC-grZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="83"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="83.5"/>
                                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
                                         <state key="normal" title="Acknowledgements">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -441,7 +439,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaH-48-fFS">
-                                        <rect key="frame" x="0.0" y="83" width="325" height="83.5"/>
+                                        <rect key="frame" x="0.0" y="83.5" width="325" height="83"/>
                                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
                                         <state key="normal" title="Legal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -451,7 +449,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Y1-yT-IcJ">
-                                        <rect key="frame" x="0.0" y="166.5" width="325" height="83"/>
+                                        <rect key="frame" x="0.0" y="166.5" width="325" height="83.5"/>
                                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
                                         <state key="normal" title="Feedback">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -559,7 +557,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DK8-Uy-E71">
-                                                    <rect key="frame" x="10" y="10" width="355" height="111.5"/>
+                                                    <rect key="frame" x="10" y="10" width="355" height="112"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4FO-d4-5mE">
                                                             <rect key="frame" x="10" y="20" width="335" height="20"/>

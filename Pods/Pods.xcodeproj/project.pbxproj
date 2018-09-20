@@ -351,7 +351,6 @@
 		28F1E293244E796EB77F1F9ABDB9E81A /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		292730762FAB4493A314589C0A7895D5 /* Type.pbobjc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Type.pbobjc.h; path = objectivec/google/protobuf/Type.pbobjc.h; sourceTree = "<group>"; };
 		297D136E368D52AADC3A83D66515F826 /* Pods-ThatsMyJam-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ThatsMyJam-acknowledgements.plist"; sourceTree = "<group>"; };
-		29ADB46EE9455FA4373E8878B054EE46 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Frameworks/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
 		2A32DEE195B4B3CD72387126663E6CCF /* ANSCompatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ANSCompatibility.h; path = iOS/Crashlytics.framework/Headers/ANSCompatibility.h; sourceTree = "<group>"; };
 		2A55295AE4E99752485F3CFE31633EDA /* GPBUnknownField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBUnknownField.h; path = objectivec/GPBUnknownField.h; sourceTree = "<group>"; };
 		2AF08D7EB82902ED67E24C2FFBFC6480 /* FIRErrors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRErrors.m; path = Firebase/Core/FIRErrors.m; sourceTree = "<group>"; };
@@ -541,7 +540,7 @@
 		CF758FBC7476B0F6637651D82483E793 /* Pods-ThatsMyJam.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ThatsMyJam.modulemap"; sourceTree = "<group>"; };
 		CF930F331579C46EF88D471D8A4433CD /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = nanopb.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB573A94891E0AFE7543D4F50DED567 /* GULMutableDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULMutableDictionary.h; path = GoogleUtilities/Network/Private/GULMutableDictionary.h; sourceTree = "<group>"; };
-		CFFE9C05122F5F2E1A756539C04ADA7D /* MeasurementNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MeasurementNanoPB.framework; path = Frameworks/MeasurementNanoPB.framework; sourceTree = "<group>"; };
+		D1BC0098D0A5D9EB7FD61533137B61B2 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Frameworks/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
 		D455ECC90B78A2046FD82F7E32503289 /* GPBRootObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBRootObject.h; path = objectivec/GPBRootObject.h; sourceTree = "<group>"; };
 		D5EAC8ECB477CE1D095E2DD2C4FF214B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7CA123C5CF4C4A05D57A35B76EE9AC2 /* GULAppEnvironmentUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULAppEnvironmentUtil.m; path = GoogleUtilities/Environment/third_party/GULAppEnvironmentUtil.m; sourceTree = "<group>"; };
@@ -939,15 +938,6 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		4EFC7AD68299BE92F50ABE7EE71A9B2F /* GoogleAppMeasurement */ = {
-			isa = PBXGroup;
-			children = (
-				C62B9CFA67668216734F32F434AA19BF /* Frameworks */,
-			);
-			name = GoogleAppMeasurement;
-			path = GoogleAppMeasurement;
-			sourceTree = "<group>";
-		};
 		54FCB0AA7A9A8791ED0F7328F66281CA /* NSData+zlib */ = {
 			isa = PBXGroup;
 			children = (
@@ -1160,7 +1150,7 @@
 				F1A9FA398728AAF7C38280074B17E920 /* FirebaseCore */,
 				D0FB1AB8261A0691502AAEB9D834EED2 /* FirebaseInstanceID */,
 				2B2D28382244198232617B7107737D05 /* FirebasePerformance */,
-				4EFC7AD68299BE92F50ABE7EE71A9B2F /* GoogleAppMeasurement */,
+				CC5AFF68A65B4CB63F099BF6BC3048B5 /* GoogleAppMeasurement */,
 				730119A65CF89600EED53A89ECB091F1 /* GoogleToolboxForMac */,
 				95954D3D4CC617A6102AF55389765BC0 /* GoogleUtilities */,
 				40925702505A7F02EBADBCCA4988DC44 /* GTMSessionFetcher */,
@@ -1249,13 +1239,13 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		C62B9CFA67668216734F32F434AA19BF /* Frameworks */ = {
+		CC5AFF68A65B4CB63F099BF6BC3048B5 /* GoogleAppMeasurement */ = {
 			isa = PBXGroup;
 			children = (
-				29ADB46EE9455FA4373E8878B054EE46 /* GoogleAppMeasurement.framework */,
-				CFFE9C05122F5F2E1A756539C04ADA7D /* MeasurementNanoPB.framework */,
+				D0AC911754033824ABA51F4362F55C7B /* Frameworks */,
 			);
-			name = Frameworks;
+			name = GoogleAppMeasurement;
+			path = GoogleAppMeasurement;
 			sourceTree = "<group>";
 		};
 		D037D5184565ECEC8E88D2C02683E0F3 /* Protobuf */ = {
@@ -1327,6 +1317,14 @@
 			);
 			name = Protobuf;
 			path = Protobuf;
+			sourceTree = "<group>";
+		};
+		D0AC911754033824ABA51F4362F55C7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1BC0098D0A5D9EB7FD61533137B61B2 /* GoogleAppMeasurement.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D0FB1AB8261A0691502AAEB9D834EED2 /* FirebaseInstanceID */ = {
