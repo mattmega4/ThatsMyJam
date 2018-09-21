@@ -76,13 +76,13 @@ class MediaPlayerViewController: UIViewController {
     songProgressSlider.addTarget(self, action: #selector(playbackSlider(_:)), for: .valueChanged)
     volumeControlView.showsVolumeSlider = true
     rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
+    
+    var preferredStatusBarStyle : UIStatusBarStyle {
+      return .lightContent
+    }
 
     NotificationCenter.default.addObserver(self, selector: #selector(wasSongInterupted(_:)), name: .appBecameActive, object: nil)
-
-//    NotificationCenter.default.addObserver(self,
-//                                           selector: #selector(wakeUp),
-//                                           name: .appBecameActive,
-//                                           object: nil)
+  showReview()
   }
 
 
@@ -96,8 +96,7 @@ class MediaPlayerViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-
-    showReview()
+    
   }
   
   // MARK: - Initial Audio Player setup Logic
@@ -154,7 +153,7 @@ class MediaPlayerViewController: UIViewController {
   @objc func wasSongInterupted(_ notification: Notification) {
 //  func wasSongInterrupted() {
     DispatchQueue.main.async {
-      if self.mediaPlayer.playbackState == .interrupted {
+      if self.mediaPlayer.playbackState == .interrupted || self.mediaPlayer.playbackState == .stopped || self.mediaPlayer.playbackState == .paused {
 //        var isPlaying: Bool { return self.mediaPlayer.playbackState == .playing }
         print("Playback state is \(self.mediaPlayer.playbackState.rawValue), self.isPlaying Bool is \(self.isPlaying)")
 

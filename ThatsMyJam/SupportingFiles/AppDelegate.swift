@@ -25,9 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - NavBar Light Color
 
 
-    var preferredStatusBarStyle: UIStatusBarStyle {
+     var preferredStatusBarStyle: UIStatusBarStyle {
       return .lightContent
     }
+
+    
+    
 
 //    UIApplication.shared.statusBarStyle = .lightContent
 
