@@ -19,6 +19,7 @@ import MediaPlayer
 import AVFoundation
 import FirebasePerformance
 import FirebaseAnalytics
+import Crashlytics
 
 
 class MediaPlayerViewController: UIViewController {
@@ -54,16 +55,22 @@ class MediaPlayerViewController: UIViewController {
   var genreQuery: MPMediaQuery?
   var newSongs = [MPMediaItem]()
   var currentSong: MPMediaItem?
-  let mediaPlayer = MPMusicPlayerController.applicationQueuePlayer //applicationQueuePlayer //applicationMusicPlayer //systemMusicPlayer
+  let mediaPlayer = MPMusicPlayerController.systemMusicPlayer //applicationQueuePlayer //applicationMusicPlayer //systemMusicPlayer
   var songTimer: Timer?
   var firstLaunch = true
   var lastPlayedItem: MPMediaItem?
   var volumeControlView = MPVolumeView()
   var counter = 0
   var aSongIsInChamber = false
+
+  let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
+  let remoCommandCenter = MPRemoteCommandCenter.shared()
+  var audioSession = AVAudioSession.sharedInstance()
+
   
   override func viewDidLoad() {
     super.viewDidLoad()
+
     
     clearSongInfo()
     setUpAudioPlayerAndGetSongsShuffled()
@@ -80,11 +87,39 @@ class MediaPlayerViewController: UIViewController {
     var preferredStatusBarStyle : UIStatusBarStyle {
       return .lightContent
     }
-
     NotificationCenter.default.addObserver(self, selector: #selector(wasSongInterupted(_:)), name: .appBecameActive, object: nil)
-  showReview()
+    showReview()
+    setupAudioSession()
+
   }
 
+  func setupAudioSession() {
+
+    var canBecomeFirstResponder: Bool { return true }
+    self.becomeFirstResponder()
+
+    do {
+      try AVAudioSession.sharedInstance().setCategory(.soloAmbient, mode: .default, options: .duckOthers)
+      try AVAudioSession.sharedInstance().setActive(true)
+    } catch {
+      print("Error setting the AVAudioSession:", error.localizedDescription)
+    }
+  }
+
+
+  //  func setupRemoteCommandCenter() {
+  //    let commandCenter = MPRemoteCommandCenter.shared();
+  //    commandCenter.playCommand.isEnabled = true
+  //    commandCenter.playCommand.addTarget {event in
+  //      self.mediaPlayer.play()
+  //      return .success
+  //    }
+  //    commandCenter.pauseCommand.isEnabled = true
+  //    commandCenter.pauseCommand.addTarget {event in
+  //      self.mediaPlayer.pause()
+  //      return .success
+  //    }
+  //  }
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
@@ -94,23 +129,16 @@ class MediaPlayerViewController: UIViewController {
     }
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    
-  }
+  //  override func viewWillAppear(_ animated: Bool) {
+  //    super.viewWillAppear(animated)
+  //
+  //  }
+
   
   // MARK: - Initial Audio Player setup Logic
   
   func setUpAudioPlayerAndGetSongsShuffled() {
-//    try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategorySoloAmbient)
 
-
-
-    try? AVAudioSession.sharedInstance().setCategory(.soloAmbient, mode: .default, options: AVAudioSession.CategoryOptions())
-
-    try? AVAudioSession.sharedInstance().setActive(true)
-
-    
     let setupTrace = Performance.startTrace(name: "setupTrace")
     DispatchQueue.main.async {
       self.clearSongInfo()
@@ -125,11 +153,27 @@ class MediaPlayerViewController: UIViewController {
         })
         self.aSongIsInChamber = true
         self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: self.newSongs.shuffled()))
+
         self.mediaPlayer.shuffleMode = .songs
         self.mediaPlayer.repeatMode = .none
         setupTrace?.stop()
       }
     }
+  }
+
+  // MARK: - Now Playing Info Center 
+
+  func nowPlayingInfoCenterLogic() {
+    //    UIApplication.shared.beginReceivingRemoteControlEvents()
+    //    self.becomeFirstResponder()
+
+    if let songInfo = self.mediaPlayer.nowPlayingItem {
+      nowPlayingInfoCenter.nowPlayingInfo = [
+        MPMediaItemPropertyTitle: songInfo.title ?? "",
+        MPMediaItemPropertyArtist: songInfo.artist ?? "",
+        MPMediaItemPropertyArtwork : songInfo.artwork?.image(at: CGSize(width: 400, height: 400)) ?? #imageLiteral(resourceName: "emptyArtworkImage")]
+    }
+
   }
 
   
@@ -145,21 +189,12 @@ class MediaPlayerViewController: UIViewController {
   
   // MARK: - Was Song Interupted
 
-  var bob: Bool {
-    return mediaPlayer.playbackState == .playing
-  }
-
-
   @objc func wasSongInterupted(_ notification: Notification) {
-//  func wasSongInterrupted() {
     DispatchQueue.main.async {
       if self.mediaPlayer.playbackState == .interrupted || self.mediaPlayer.playbackState == .stopped || self.mediaPlayer.playbackState == .paused {
-//        var isPlaying: Bool { return self.mediaPlayer.playbackState == .playing }
         print("Playback state is \(self.mediaPlayer.playbackState.rawValue), self.isPlaying Bool is \(self.isPlaying)")
-
-
         self.playPauseSongButton.setImage(UIImage(named: "playIconLight.png"), for: .normal)
-       self.isPlaying = false
+        self.isPlaying = false
       }
     }
   }
@@ -194,12 +229,12 @@ class MediaPlayerViewController: UIViewController {
       self.checkIfLocksShouldBeEnabled()
       self.tappedLockLogic()
       // re enable when apple fixes their stuff
-      if self.mediaPlayer.indexOfNowPlayingItem == 0 {
-        self.rewindSongButton.isEnabled = true
-        self.rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
-      } else if self.mediaPlayer.indexOfNowPlayingItem > 0 {
-        self.rewindSongButton.setImage(UIImage(named: "rewindIconLight.png"), for: .normal)
-      }
+      //      if self.mediaPlayer.indexOfNowPlayingItem == 0 {
+      //        self.rewindSongButton.isEnabled = true
+      //        self.rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
+      //      } else if self.mediaPlayer.indexOfNowPlayingItem > 0 {
+      //        self.rewindSongButton.setImage(UIImage(named: "rewindIconLight.png"), for: .normal)
+      //      }
     }
   }
   
@@ -410,19 +445,21 @@ class MediaPlayerViewController: UIViewController {
       }
     })
   }
-  
+
   @IBAction func playPauseSongButtonTapped(_ sender: UIButton) {
+
     isPlaying = !isPlaying
-//    sender.isSelected = isPlaying
+    //    sender.isSelected = isPlaying
     if self.isPlaying {
-//      self.playPauseSongButton.isSelected = self.isPlaying
+      //      self.playPauseSongButton.isSelected = self.isPlaying
       self.playPauseSongButton.setImage(UIImage(named: "pauseIconLight"), for: .normal)
       DispatchQueue.main.async {
         self.mediaPlayer.prepareToPlay()
         self.mediaPlayer.play()
+        //        self.setupRemoteCommandCenter()
       }
     } else {
-//      self.playPauseSongButton.isSelected = self.isPlaying
+      //      self.playPauseSongButton.isSelected = self.isPlaying
       self.playPauseSongButton.setImage(UIImage(named: "playIconLight"), for: .normal)
       DispatchQueue.main.async {
         self.mediaPlayer.pause()

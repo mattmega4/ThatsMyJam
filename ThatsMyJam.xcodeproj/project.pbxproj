@@ -307,9 +307,8 @@
 				29A3A020202522E900118867 /* Sources */,
 				29A3A021202522E900118867 /* Frameworks */,
 				29A3A022202522E900118867 /* Resources */,
-				296B61C620252CA400627E41 /* ShellScript */,
-				295DF52420AA03CF00A770EB /* ShellScript */,
 				5A57CC72462396792CDEE491 /* [CP] Embed Pods Frameworks */,
+				299C9FD321D6AB7200B12212 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -419,33 +418,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		295DF52420AA03CF00A770EB /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/upload-symbols\" -gsp \"${PROJECT_DIR}/GoogleService-Info.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
-		};
-		296B61C620252CA400627E41 /* ShellScript */ = {
+		299C9FD321D6AB7200B12212 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 3605c744e15ddf7d8ef099f0020dfcdd2e2abd5c 7bf7613729d303dcf6eda216f60fde4100191c032181ca9d63ffb7b2533bc45a\n";
+			shellScript = "sleep 15\n\"${PROJECT_DIR}/Fabric.framework/run\" 3605c744e15ddf7d8ef099f0020dfcdd2e2abd5c 7bf7613729d303dcf6eda216f60fde4100191c032181ca9d63ffb7b2533bc45a\n";
 		};
 		5A57CC72462396792CDEE491 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -453,7 +442,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -476,7 +465,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9D8CD639D44B6AF4096A1755 /* [CP] Check Pods Manifest.lock */ = {

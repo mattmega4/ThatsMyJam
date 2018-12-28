@@ -10,7 +10,7 @@ target 'ThatsMyJam' do
 
   pod 'Firebase/Core'
   pod 'Fabric'
-  pod 'Crashlytics'
+  pod 'Crashlytics', '~>  3.12'
   pod 'Firebase/Performance'
   pod 'mailgun'
   pod 'UITextView+Placeholder'
