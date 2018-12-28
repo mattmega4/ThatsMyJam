@@ -87,7 +87,10 @@ class MediaPlayerViewController: UIViewController {
     var preferredStatusBarStyle : UIStatusBarStyle {
       return .lightContent
     }
-    NotificationCenter.default.addObserver(self, selector: #selector(wasSongInterupted(_:)), name: .appBecameActive, object: nil)
+
+    NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInteruptedNotification(_:)), name: nil, object: self.mediaPlayer)
+
+
     showReview()
     setupAudioSession()
 
@@ -129,10 +132,12 @@ class MediaPlayerViewController: UIViewController {
     }
   }
   
-  //  override func viewWillAppear(_ animated: Bool) {
-  //    super.viewWillAppear(animated)
-  //
-  //  }
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      wasSongInterupted()
+    }
+
+
 
   
   // MARK: - Initial Audio Player setup Logic
@@ -189,16 +194,25 @@ class MediaPlayerViewController: UIViewController {
   
   // MARK: - Was Song Interupted
 
-  @objc func wasSongInterupted(_ notification: Notification) {
+  func wasSongInterupted() {
     DispatchQueue.main.async {
-      if self.mediaPlayer.playbackState == .interrupted || self.mediaPlayer.playbackState == .stopped || self.mediaPlayer.playbackState == .paused {
-        print("Playback state is \(self.mediaPlayer.playbackState.rawValue), self.isPlaying Bool is \(self.isPlaying)")
-        self.playPauseSongButton.setImage(UIImage(named: "playIconLight.png"), for: .normal)
+      if self.mediaPlayer.playbackState == .paused {
+        print("paused")
         self.isPlaying = false
+        self.playPauseSongButton.isSelected = self.isPlaying
+        self.playPauseSongButton.setImage(UIImage(named: "playIconLight.png"), for: .normal)
+      } else if self.mediaPlayer.playbackState == .playing {
+        self.isPlaying = true
+        self.playPauseSongButton.isSelected = self.isPlaying
       }
     }
   }
-  
+
+  @objc func wasSongInteruptedNotification(_ notification: Notification) {
+    wasSongInterupted()
+  }
+
+
   // MARK: - Playback Slider
   
   @objc func playbackSlider(_ slider: UISlider) {
@@ -417,11 +431,13 @@ class MediaPlayerViewController: UIViewController {
         if self.mediaPlayer.indexOfNowPlayingItem == 0 {
           self.mediaPlayer.skipToBeginning()
         } else {
-          if seconds < 5 {
-            self.mediaPlayer.skipToPreviousItem()
-          } else {
-            self.mediaPlayer.skipToBeginning()
-          }
+          // Fix when Apple fixes issue
+          self.mediaPlayer.skipToBeginning()
+//          if seconds < 5 {
+//            self.mediaPlayer.skipToPreviousItem()
+//          } else {
+//            self.mediaPlayer.skipToBeginning()
+//          }
         }
       }
     })
