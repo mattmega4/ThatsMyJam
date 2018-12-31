@@ -425,20 +425,20 @@ class MediaPlayerViewController: UIViewController {
       DispatchQueue.main.async {
         self.mediaPlayer.skipToBeginning()
         // uncomment when apple fixes stuff
-        let secondsElapsed = self.songProgressSlider.value
-        let minutes = Int(secondsElapsed / 60)
-        let seconds = Int(secondsElapsed - Float(60  * minutes))
-        if self.mediaPlayer.indexOfNowPlayingItem == 0 {
-          self.mediaPlayer.skipToBeginning()
-        } else {
-          // Fix when Apple fixes issue
-          self.mediaPlayer.skipToBeginning()
-//          if seconds < 5 {
-//            self.mediaPlayer.skipToPreviousItem()
-//          } else {
-//            self.mediaPlayer.skipToBeginning()
-//          }
-        }
+//        let secondsElapsed = self.songProgressSlider.value
+//        let minutes = Int(secondsElapsed / 60)
+//        let seconds = Int(secondsElapsed - Float(60  * minutes))
+//        if self.mediaPlayer.indexOfNowPlayingItem == 0 {
+//          self.mediaPlayer.skipToBeginning()
+//        } else {
+//          // Fix when Apple fixes issue
+//          self.mediaPlayer.skipToBeginning()
+////          if seconds < 5 {
+////            self.mediaPlayer.skipToPreviousItem()
+////          } else {
+////            self.mediaPlayer.skipToBeginning()
+////          }
+//        }
       }
     })
     getCurrentlyPlayedInfo()
