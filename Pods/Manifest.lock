@@ -1,7 +1,5 @@
 PODS:
   - AFNetworking (1.1.0)
-  - Answers (1.4.0):
-    - Fabric (~> 1.8.0)
   - Crashlytics (3.11.1):
     - Fabric (~> 1.8.1)
   - Fabric (1.8.2)
@@ -91,7 +89,6 @@ PODS:
   - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
-  - Answers
   - Crashlytics
   - Fabric
   - Firebase/Core
@@ -102,7 +99,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
-    - Answers
     - Crashlytics
     - Fabric
     - Firebase
@@ -123,7 +119,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: e6427e782b25a2289d909960df8ef41358b3277c
-  Answers: e7317ccd30e7bf55c3bacfe28adbe2304b082e49
   Crashlytics: ca7ab4bc304aa216bdc2e4c1a96389ee77252203
   Fabric: d2b22f443ba195d8a7cc204da230977c72733b40
   Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
@@ -142,6 +137,6 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: f4bf366806eb6f9f2eb2632188cbb0c476eeb021
+PODFILE CHECKSUM: 0975ee23d3b89b6a00b48690953a925acccd1c54
 
 COCOAPODS: 1.6.0.beta.2

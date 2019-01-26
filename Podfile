@@ -11,7 +11,6 @@ target 'ThatsMyJam' do
   pod 'Firebase/Core'
   pod 'Fabric'
   pod 'Crashlytics'
-  pod 'Answers'
   pod 'Firebase/Performance'
   pod 'mailgun'
   pod 'UITextView+Placeholder'
