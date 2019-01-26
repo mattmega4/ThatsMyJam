@@ -97,10 +97,8 @@ class MediaPlayerViewController: UIViewController {
   }
 
   func setupAudioSession() {
-
     var canBecomeFirstResponder: Bool { return true }
     self.becomeFirstResponder()
-
     do {
       try AVAudioSession.sharedInstance().setCategory(.soloAmbient, mode: .default, options: .duckOthers)
       try AVAudioSession.sharedInstance().setActive(true)
