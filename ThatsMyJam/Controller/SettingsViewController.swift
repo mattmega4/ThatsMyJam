@@ -47,6 +47,6 @@ class SettingsViewController: UIViewController {
       self.navigationController?.pushViewController(feedVC, animated: true)
     }
   }
-  
+
 
 }

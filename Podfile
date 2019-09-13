@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
- platform :ios, '12.0'
+ platform :ios, '12.1'
 
 
 target 'ThatsMyJam' do
@@ -9,9 +9,9 @@ target 'ThatsMyJam' do
   # Pods for ThatsMyJam
 
   pod 'Firebase/Core'
-  pod 'Fabric'
-  pod 'Crashlytics'
   pod 'Firebase/Performance'
+  pod 'Fabric'
+  pod 'Crashlytics', '~>  3.14'
   pod 'mailgun'
   pod 'UITextView+Placeholder'
 
@@ -25,5 +25,13 @@ target 'ThatsMyJam' do
 
 end
 
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['CLANG_WARN_DOCUMENTATION_COMMENTS'] = 'NO'
+    end
+  end
+end
 
 

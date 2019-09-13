@@ -31,7 +31,7 @@ class MediaPlayerViewController: UIViewController {
   @IBOutlet weak var songTimePlayedLabel: UILabel!
   @IBOutlet weak var songTimeRemainingLabel: UILabel!
   @IBOutlet weak var songNameLabel: UILabel!
-  @IBOutlet weak var songArtistLabel: UILabel!
+  //  @IBOutlet weak var songArtistLabel: UILabel!
   @IBOutlet weak var songAlbumLabel: UILabel!
   @IBOutlet weak var rewindSongButton: UIButton!
   @IBOutlet weak var playPauseSongButton: UIButton!
@@ -55,22 +55,22 @@ class MediaPlayerViewController: UIViewController {
   var genreQuery: MPMediaQuery?
   var newSongs = [MPMediaItem]()
   var currentSong: MPMediaItem?
-  let mediaPlayer = MPMusicPlayerController.systemMusicPlayer //applicationQueuePlayer //applicationMusicPlayer //systemMusicPlayer
+  let mediaPlayer = MPMusicPlayerController.systemMusicPlayer //applicationQueuePlayer  //applicationMusicPlayer //systemMusicPlayer
   var songTimer: Timer?
   var firstLaunch = true
   var lastPlayedItem: MPMediaItem?
   var volumeControlView = MPVolumeView()
   var counter = 0
   var aSongIsInChamber = false
-
+  
   let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
   let remoCommandCenter = MPRemoteCommandCenter.shared()
   var audioSession = AVAudioSession.sharedInstance()
-
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     
     clearSongInfo()
     setUpAudioPlayerAndGetSongsShuffled()
@@ -80,48 +80,47 @@ class MediaPlayerViewController: UIViewController {
       NotificationCenter.default.addObserver(self, selector: #selector(self.songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: self.mediaPlayer)
     }
     albumArtImageView.createRoundedCorners()
+    if let abV = albumArtImageView {
+      abV.createRoundedCorners()
+    }
+    
     songProgressSlider.addTarget(self, action: #selector(playbackSlider(_:)), for: .valueChanged)
     volumeControlView.showsVolumeSlider = true
-    rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
+    if #available(iOS 13.0, *) {
+      print("using ios 13 and above")
+    } else {
+      print("NOT using ios 13 or above")
+      rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
+    }
+    
     
     var preferredStatusBarStyle : UIStatusBarStyle {
       return .lightContent
     }
-
+    
     NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInteruptedNotification(_:)), name: nil, object: self.mediaPlayer)
-
-
+    
+    
     showReview()
     setupAudioSession()
-
+    
   }
-
+  
   func setupAudioSession() {
     var canBecomeFirstResponder: Bool { return true }
     self.becomeFirstResponder()
     do {
-      try AVAudioSession.sharedInstance().setCategory(.soloAmbient, mode: .default, options: .duckOthers)
+      
+      try AVAudioSession.sharedInstance().setCategory(.soloAmbient, mode: .default, options: [.allowAirPlay, .mixWithOthers])
       try AVAudioSession.sharedInstance().setActive(true)
+      
     } catch {
       print("Error setting the AVAudioSession:", error.localizedDescription)
     }
   }
-
-
-  //  func setupRemoteCommandCenter() {
-  //    let commandCenter = MPRemoteCommandCenter.shared();
-  //    commandCenter.playCommand.isEnabled = true
-  //    commandCenter.playCommand.addTarget {event in
-  //      self.mediaPlayer.play()
-  //      return .success
-  //    }
-  //    commandCenter.pauseCommand.isEnabled = true
-  //    commandCenter.pauseCommand.addTarget {event in
-  //      self.mediaPlayer.pause()
-  //      return .success
-  //    }
-  //  }
-
+  
+  
+  
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     if volumeView.subviews.count == 0 {
@@ -130,18 +129,18 @@ class MediaPlayerViewController: UIViewController {
     }
   }
   
-    override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-      wasSongInterupted()
-    }
-
-
-
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    wasSongInterupted()
+  }
+  
+  
+  
   
   // MARK: - Initial Audio Player setup Logic
   
   func setUpAudioPlayerAndGetSongsShuffled() {
-
+    
     let setupTrace = Performance.startTrace(name: "setupTrace")
     DispatchQueue.main.async {
       self.clearSongInfo()
@@ -156,29 +155,29 @@ class MediaPlayerViewController: UIViewController {
         })
         self.aSongIsInChamber = true
         self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: self.newSongs.shuffled()))
-
+        
         self.mediaPlayer.shuffleMode = .songs
         self.mediaPlayer.repeatMode = .none
         setupTrace?.stop()
       }
     }
   }
-
+  
   // MARK: - Now Playing Info Center 
-
+  
   func nowPlayingInfoCenterLogic() {
     //    UIApplication.shared.beginReceivingRemoteControlEvents()
     //    self.becomeFirstResponder()
-
+    
     if let songInfo = self.mediaPlayer.nowPlayingItem {
       nowPlayingInfoCenter.nowPlayingInfo = [
         MPMediaItemPropertyTitle: songInfo.title ?? "",
         MPMediaItemPropertyArtist: songInfo.artist ?? "",
         MPMediaItemPropertyArtwork : songInfo.artwork?.image(at: CGSize(width: 400, height: 400)) ?? #imageLiteral(resourceName: "emptyArtworkImage")]
     }
-
+    
   }
-
+  
   
   // MARK: - Unlock Everything & Play
   
@@ -191,7 +190,7 @@ class MediaPlayerViewController: UIViewController {
   }
   
   // MARK: - Was Song Interupted
-
+  
   func wasSongInterupted() {
     DispatchQueue.main.async {
       if self.mediaPlayer.playbackState == .paused {
@@ -205,12 +204,12 @@ class MediaPlayerViewController: UIViewController {
       }
     }
   }
-
+  
   @objc func wasSongInteruptedNotification(_ notification: Notification) {
     wasSongInterupted()
   }
-
-
+  
+  
   // MARK: - Playback Slider
   
   @objc func playbackSlider(_ slider: UISlider) {
@@ -240,13 +239,19 @@ class MediaPlayerViewController: UIViewController {
       self.checkIfSongHasPlayedAllInLock()
       self.checkIfLocksShouldBeEnabled()
       self.tappedLockLogic()
+      
       // re enable when apple fixes their stuff
-      //      if self.mediaPlayer.indexOfNowPlayingItem == 0 {
-      //        self.rewindSongButton.isEnabled = true
-      //        self.rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
-      //      } else if self.mediaPlayer.indexOfNowPlayingItem > 0 {
-      //        self.rewindSongButton.setImage(UIImage(named: "rewindIconLight.png"), for: .normal)
-      //      }
+      
+      if #available(iOS 13.0, *) {
+        if self.mediaPlayer.indexOfNowPlayingItem == 0 {
+          self.rewindSongButton.isEnabled = true
+          self.rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
+        } else if self.mediaPlayer.indexOfNowPlayingItem > 0 {
+          self.rewindSongButton.setImage(UIImage(named: "rewindIconLight.png"), for: .normal)
+        }
+      } else {
+        print("using an ios version under ios13")
+      }
     }
   }
   
@@ -357,9 +362,10 @@ class MediaPlayerViewController: UIViewController {
   
   func clearSongInfo() {
     DispatchQueue.main.async {
+      
       self.albumArtImageView.image = #imageLiteral(resourceName: "emptyArtworkImage")
       self.songNameLabel.text = ""
-      self.songArtistLabel.text = ""
+      //      self.songArtistLabel.text = ""
       self.songAlbumLabel.text = ""
     }
   }
@@ -371,11 +377,12 @@ class MediaPlayerViewController: UIViewController {
       if let songInfo = self.mediaPlayer.nowPlayingItem {
         self.songNameLabel.text = songInfo.title ?? ""
         self.songAlbumLabel.text = songInfo.albumTitle ?? ""
-        self.songArtistLabel.text = songInfo.artist ?? ""
+        //        self.songArtistLabel.text = songInfo.artist ?? ""
         self.albumArtImageView.image = songInfo.artwork?.image(at: CGSize(width: 400, height: 400)) ?? #imageLiteral(resourceName: "emptyArtworkImage")
       }
     }
   }
+  
   
   // MARK: - Get Time Remaining
   
@@ -421,22 +428,31 @@ class MediaPlayerViewController: UIViewController {
   @IBAction func rewindSongButtonTapped(_ sender: UIButton) {
     mediaPlayer.prepareToPlay(completionHandler: { (error) in
       DispatchQueue.main.async {
-        self.mediaPlayer.skipToBeginning()
-        // uncomment when apple fixes stuff
-//        let secondsElapsed = self.songProgressSlider.value
-//        let minutes = Int(secondsElapsed / 60)
-//        let seconds = Int(secondsElapsed - Float(60  * minutes))
-//        if self.mediaPlayer.indexOfNowPlayingItem == 0 {
-//          self.mediaPlayer.skipToBeginning()
-//        } else {
-//          // Fix when Apple fixes issue
-//          self.mediaPlayer.skipToBeginning()
-////          if seconds < 5 {
-////            self.mediaPlayer.skipToPreviousItem()
-////          } else {
-////            self.mediaPlayer.skipToBeginning()
-////          }
-//        }
+        //
+        //         uncomment when apple fixes stuff
+        
+        if #available(iOS 13.0, *) {
+          let secondsElapsed = self.songProgressSlider.value
+          let minutes = Int(secondsElapsed / 60)
+          let seconds = Int(secondsElapsed - Float(60  * minutes))
+          if self.mediaPlayer.indexOfNowPlayingItem == 0 {
+            self.rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
+            self.mediaPlayer.skipToBeginning()
+          } else {
+            self.rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
+            self.mediaPlayer.skipToBeginning()
+            if seconds < 5 {
+              self.rewindSongButton.setImage(UIImage(named: "rewindIconLight.png"), for: .normal)
+              self.mediaPlayer.skipToPreviousItem()
+            } else {
+              self.rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
+              self.mediaPlayer.skipToBeginning()
+            }
+          }
+        } else {
+          self.mediaPlayer.skipToBeginning()
+        }
+        
       }
     })
     getCurrentlyPlayedInfo()
@@ -454,14 +470,14 @@ class MediaPlayerViewController: UIViewController {
           self.mediaPlayer.prepareToPlay()
           self.mediaPlayer.skipToNextItem()
         }
-
+        
         self.getCurrentlyPlayedInfo()
       }
     })
   }
-
+  
   @IBAction func playPauseSongButtonTapped(_ sender: UIButton) {
-
+    
     isPlaying = !isPlaying
     //    sender.isSelected = isPlaying
     if self.isPlaying {
@@ -594,7 +610,6 @@ class MediaPlayerViewController: UIViewController {
             return item.mediaType.rawValue <= MPMediaType.anyAudio.rawValue
           }) {
             items.shuffle()
-
             let descriptor = MPMusicPlayerMediaItemQueueDescriptor(itemCollection: MPMediaItemCollection(items: self.newSongs.shuffled()))
             self.mediaPlayer.prepend(descriptor)
             self.getCurrentlyPlayedInfo()

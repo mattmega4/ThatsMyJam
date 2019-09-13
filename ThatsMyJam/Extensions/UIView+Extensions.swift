@@ -11,7 +11,7 @@ import UIKit
 
 extension UIView {
   
-  public func createRoundedCorners() {
+   public func createRoundedCorners() {
     layer.cornerRadius = 7
     clipsToBounds = true
   }
