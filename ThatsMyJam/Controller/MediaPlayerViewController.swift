@@ -363,34 +363,44 @@ class MediaPlayerViewController: UIViewController {
   }
   
   // MARK: - Get Song Information
-  
+
+
+
+
+
+  func convertSongInfoFromStringTONSAttributedString(text: String, textColor: UIColor) -> NSAttributedString {
+
+    let attributes = [ NSAttributedString.Key.foregroundColor: textColor]
+    let attributedString = NSAttributedString(string: text, attributes: attributes)
+
+    return attributedString
+  }
+
+  func bob() {
+    let stacy = convertSongInfoFromStringTONSAttributedString(text: "Hello", textColor: .red)
+  }
+
+
+
+
   func getCurrentlyPlayedInfo() {
     DispatchQueue.main.async {
       if let songInfo = self.mediaPlayer.nowPlayingItem {
         self.songNameLabel.text = songInfo.title ?? ""
 
-        let albumColor = songInfo.albumTitle ?? ""
-        let albumAttributed = [ NSAttributedString.Key.foregroundColor: UIColor.white ]
-        let albumAttrString = NSAttributedString(string: albumColor, attributes: albumAttributed)
 
-        let dash = " - "
-        let dashAttributed = [ NSAttributedString.Key.foregroundColor: UIColor.white ]
-        let dashAttrString = NSAttributedString(string: dash, attributes: dashAttributed)
+        let attributedAlbumName = self.convertSongInfoFromStringTONSAttributedString(text: songInfo.albumTitle ?? "", textColor: .white)
+        let attributedDash = self.convertSongInfoFromStringTONSAttributedString(text: "  -  ", textColor: .white)
+        let attributedArtistName = self.convertSongInfoFromStringTONSAttributedString(text: songInfo.artist ?? "", textColor: .red)
+        let attributedSpace = self.convertSongInfoFromStringTONSAttributedString(text: "    ", textColor: .clear)
 
-        let artistColor = songInfo.artist ?? ""
-        let artistAttributed = [ NSAttributedString.Key.foregroundColor: UIColor.red ]
-        let artistAttrString = NSAttributedString(string: artistColor, attributes: artistAttributed)
-
-        let space = "    "
-            let spaceAttributed = [ NSAttributedString.Key.foregroundColor: UIColor.white ]
-            let spaceAttrString = NSAttributedString(string: space, attributes: spaceAttributed)
 
 
         let combination = NSMutableAttributedString()
-        combination.append(albumAttrString)
-        combination.append(dashAttrString)
-        combination.append(artistAttrString)
-        combination.append(spaceAttrString)
+        combination.append(attributedAlbumName)
+        combination.append(attributedDash)
+        combination.append(attributedArtistName)
+        combination.append(attributedSpace)
 
 //        let combo = albumAttrString + dashAttrString + artistAttrString
         self.songAlbumLabel.attributedText = combination
