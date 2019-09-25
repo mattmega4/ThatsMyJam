@@ -55,7 +55,7 @@ class MediaPlayerViewController: UIViewController {
   var genreQuery: MPMediaQuery?
   var newSongs = [MPMediaItem]()
   var currentSong: MPMediaItem?
-  let mediaPlayer = MPMusicPlayerController.systemMusicPlayer //applicationQueuePlayer  //applicationMusicPlayer //systemMusicPlayer
+  let mediaPlayer = MPMusicPlayerController.systemMusicPlayer
   var songTimer: Timer?
   var firstLaunch = true
   var lastPlayedItem: MPMediaItem?
@@ -70,40 +70,20 @@ class MediaPlayerViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    
-    clearSongInfo()
-    setUpAudioPlayerAndGetSongsShuffled()
-    setNavBar()
-    DispatchQueue.main.async {
-      self.mediaPlayer.beginGeneratingPlaybackNotifications()
-      NotificationCenter.default.addObserver(self, selector: #selector(self.songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: self.mediaPlayer)
-    }
+
     albumArtImageView.createRoundedCorners()
     if let abV = albumArtImageView {
       abV.createRoundedCorners()
     }
-    
     songProgressSlider.addTarget(self, action: #selector(playbackSlider(_:)), for: .valueChanged)
     volumeControlView.showsVolumeSlider = true
-    if #available(iOS 13.0, *) {
-      print("using ios 13 and above")
-    } else {
-      print("NOT using ios 13 or above")
-      rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
-    }
-    
-    
+
     var preferredStatusBarStyle : UIStatusBarStyle {
       return .lightContent
     }
     
     NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInteruptedNotification(_:)), name: nil, object: self.mediaPlayer)
-    
-    
-    showReview()
-    setupAudioSession()
-    
+
   }
   
   func setupAudioSession() {
@@ -111,7 +91,7 @@ class MediaPlayerViewController: UIViewController {
     self.becomeFirstResponder()
     do {
       
-      try AVAudioSession.sharedInstance().setCategory(.soloAmbient, mode: .default, options: [.allowAirPlay, .mixWithOthers])
+      try AVAudioSession.sharedInstance().setCategory(.soloAmbient, mode: .default, options: [.allowAirPlay, .mixWithOthers, .defaultToSpeaker])
       try AVAudioSession.sharedInstance().setActive(true)
       
     } catch {
@@ -131,7 +111,24 @@ class MediaPlayerViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    clearSongInfo()
+    setupAudioSession()
+    setUpAudioPlayerAndGetSongsShuffled()
+    setNavBar()
+    showReview()
+
     wasSongInterupted()
+    DispatchQueue.main.async {
+      self.mediaPlayer.beginGeneratingPlaybackNotifications()
+      NotificationCenter.default.addObserver(self, selector: #selector(self.songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: self.mediaPlayer)
+    }
+
+    if #available(iOS 13.0, *) {
+      print("using ios 13 and above (1st time)")
+    } else {
+      print("NOT using ios 13 or above (1st time)")
+      rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
+    }
   }
   
   
@@ -140,9 +137,8 @@ class MediaPlayerViewController: UIViewController {
   // MARK: - Initial Audio Player setup Logic
   
   func setUpAudioPlayerAndGetSongsShuffled() {
-    
-    let setupTrace = Performance.startTrace(name: "setupTrace")
     DispatchQueue.main.async {
+      self.mediaPlayer.stop()
       self.clearSongInfo()
       MediaManager.shared.getAllSongs { (songs) in
         guard let theSongs = songs else {
@@ -155,10 +151,8 @@ class MediaPlayerViewController: UIViewController {
         })
         self.aSongIsInChamber = true
         self.mediaPlayer.setQueue(with: MPMediaItemCollection(items: self.newSongs.shuffled()))
-        
         self.mediaPlayer.shuffleMode = .songs
         self.mediaPlayer.repeatMode = .none
-        setupTrace?.stop()
       }
     }
   }
@@ -243,6 +237,7 @@ class MediaPlayerViewController: UIViewController {
       // re enable when apple fixes their stuff
       
       if #available(iOS 13.0, *) {
+        print("using ios 13 and above (2nd time)")
         if self.mediaPlayer.indexOfNowPlayingItem == 0 {
           self.rewindSongButton.isEnabled = true
           self.rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
@@ -250,7 +245,7 @@ class MediaPlayerViewController: UIViewController {
           self.rewindSongButton.setImage(UIImage(named: "rewindIconLight.png"), for: .normal)
         }
       } else {
-        print("using an ios version under ios13")
+        print("NOT using ios 13 or above (2nd time)")
       }
     }
   }
@@ -268,17 +263,14 @@ class MediaPlayerViewController: UIViewController {
           self.albumLockButtonTapped(self.albumLockIconButton)
           MediaManager.shared.lockedSongs.removeAll()
           self.unlockEverythingAndPlay()
-          Analytics.logEvent("albumTriggeredUnlocked", parameters: nil)
         }
         if self.artistIsLocked && MediaManager.shared.hasPlayedAllSongsFromArtistFor(song: nowPlaying) {
           self.artistLockButtonTapped(self.artistLockIconButton)
           self.unlockEverythingAndPlay()
-          Analytics.logEvent("artistTriggeredUnlocked", parameters: nil)
         }
         if self.genreIsLocked && MediaManager.shared.hasPlayedAllSongsFromGenreFor(song: nowPlaying) {
           self.genreLockButtonTapped(self.genreLockIconButton)
           self.unlockEverythingAndPlay()
-          Analytics.logEvent("genreTriggeredUnlocked", parameters: nil)
         }
       }
     }}
@@ -376,13 +368,39 @@ class MediaPlayerViewController: UIViewController {
     DispatchQueue.main.async {
       if let songInfo = self.mediaPlayer.nowPlayingItem {
         self.songNameLabel.text = songInfo.title ?? ""
-        self.songAlbumLabel.text = songInfo.albumTitle ?? ""
+
+        let albumColor = songInfo.albumTitle ?? ""
+        let albumAttributed = [ NSAttributedString.Key.foregroundColor: UIColor.white ]
+        let albumAttrString = NSAttributedString(string: albumColor, attributes: albumAttributed)
+
+        let dash = " - "
+        let dashAttributed = [ NSAttributedString.Key.foregroundColor: UIColor.white ]
+        let dashAttrString = NSAttributedString(string: dash, attributes: dashAttributed)
+
+        let artistColor = songInfo.artist ?? ""
+        let artistAttributed = [ NSAttributedString.Key.foregroundColor: UIColor.red ]
+        let artistAttrString = NSAttributedString(string: artistColor, attributes: artistAttributed)
+
+        let space = "    "
+            let spaceAttributed = [ NSAttributedString.Key.foregroundColor: UIColor.white ]
+            let spaceAttrString = NSAttributedString(string: space, attributes: spaceAttributed)
+
+
+        let combination = NSMutableAttributedString()
+        combination.append(albumAttrString)
+        combination.append(dashAttrString)
+        combination.append(artistAttrString)
+        combination.append(spaceAttrString)
+
+//        let combo = albumAttrString + dashAttrString + artistAttrString
+        self.songAlbumLabel.attributedText = combination
+//        self.songAlbumLabel.text = combination
         //        self.songArtistLabel.text = songInfo.artist ?? ""
         self.albumArtImageView.image = songInfo.artwork?.image(at: CGSize(width: 400, height: 400)) ?? #imageLiteral(resourceName: "emptyArtworkImage")
       }
     }
   }
-  
+
   
   // MARK: - Get Time Remaining
   
@@ -432,6 +450,7 @@ class MediaPlayerViewController: UIViewController {
         //         uncomment when apple fixes stuff
         
         if #available(iOS 13.0, *) {
+          print("using ios 13 and above (3rd time)")
           let secondsElapsed = self.songProgressSlider.value
           let minutes = Int(secondsElapsed / 60)
           let seconds = Int(secondsElapsed - Float(60  * minutes))
@@ -450,9 +469,9 @@ class MediaPlayerViewController: UIViewController {
             }
           }
         } else {
+          print("NOT using ios 13 or above (3rd time)")
           self.mediaPlayer.skipToBeginning()
         }
-        
       }
     })
     getCurrentlyPlayedInfo()
@@ -467,49 +486,37 @@ class MediaPlayerViewController: UIViewController {
         if self.albumIsLocked && MediaManager.shared.hasPlayedAllSongsFromAlbumFor(song: nowPlaying) || self.artistIsLocked && MediaManager.shared.hasPlayedAllSongsFromArtistFor(song: nowPlaying) || self.genreIsLocked && MediaManager.shared.hasPlayedAllSongsFromGenreFor(song: nowPlaying) {
           self.unlockEverythingAndPlay()
         } else {
-          self.mediaPlayer.prepareToPlay()
           self.mediaPlayer.skipToNextItem()
         }
-        
         self.getCurrentlyPlayedInfo()
       }
     })
   }
   
   @IBAction func playPauseSongButtonTapped(_ sender: UIButton) {
-    
-    isPlaying = !isPlaying
-    //    sender.isSelected = isPlaying
-    if self.isPlaying {
-      //      self.playPauseSongButton.isSelected = self.isPlaying
-      self.playPauseSongButton.setImage(UIImage(named: "pauseIconLight"), for: .normal)
+    mediaPlayer.prepareToPlay(completionHandler: { (error) in
       DispatchQueue.main.async {
-        self.mediaPlayer.prepareToPlay()
-        self.mediaPlayer.play()
-        //        self.setupRemoteCommandCenter()
-      }
-    } else {
-      //      self.playPauseSongButton.isSelected = self.isPlaying
-      self.playPauseSongButton.setImage(UIImage(named: "playIconLight"), for: .normal)
-      DispatchQueue.main.async {
-        self.mediaPlayer.pause()
-      }
-    }
-    
-    getCurrentlyPlayedInfo()
-    if isPlaying {
-      self.songTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
-        DispatchQueue.main.async {
-          self.updateCurrentPlaybackTime()
-          self.getCurrentlyPlayedInfo()
+        self.isPlaying = !self.isPlaying
+        if self.isPlaying {
+          self.playPauseSongButton.setImage(UIImage(named: "pauseIconLight"), for: .normal)
+          self.mediaPlayer.prepareToPlay()
+          self.mediaPlayer.play()
+        } else {
+          self.playPauseSongButton.setImage(UIImage(named: "playIconLight"), for: .normal)
+          self.mediaPlayer.pause()
         }
-      })
-      DispatchQueue.main.async {
         self.getCurrentlyPlayedInfo()
+        if self.isPlaying {
+          self.songTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+            self.updateCurrentPlaybackTime()
+            self.getCurrentlyPlayedInfo()
+          })
+          self.getCurrentlyPlayedInfo()
+        } else {
+          self.songTimer?.invalidate()
+        }
       }
-    } else {
-      songTimer?.invalidate()
-    }
+    })
   }
   
   
@@ -521,8 +528,6 @@ class MediaPlayerViewController: UIViewController {
         if sender.isSelected {
           sender.isSelected = false
           self.albumIsLocked = false
-          let unlockAlbumTrace = Performance.startTrace(name: "albumUnlockedTrace")
-          Analytics.logEvent("albumTapUnlocked", parameters: nil)
           let unlockAlbum = MediaManager.shared.removeAlbumLockFor(item: nowPlaying)
           if var items = unlockAlbum.items?.filter({ (item) -> Bool in
             return item.mediaType.rawValue <= MPMediaType.anyAudio.rawValue
@@ -533,36 +538,30 @@ class MediaPlayerViewController: UIViewController {
             self.getCurrentlyPlayedInfo()
           }
           self.tappedLockLogic()
-          unlockAlbumTrace?.stop()
         } else {
           sender.isSelected = true
           self.albumIsLocked = true
           self.artistIsLocked = false
           self.genreIsLocked = false
-          let lockAlbumTrace = Performance.startTrace(name: "albumLockedTrace")
-          Analytics.logEvent("albumTapLocked", parameters: ["album": nowPlaying.albumTitle ?? "Album Title"])
           let lockAlbum = MediaManager.shared.getSongsWithCurrentAlbumFor(item: nowPlaying)
           if var items = lockAlbum.items {
             items.shuffle()
             let descriptor = MPMusicPlayerMediaItemQueueDescriptor(itemCollection: MPMediaItemCollection(items: items))
             self.mediaPlayer.prepend(descriptor)
           }
-          lockAlbumTrace?.stop()
           self.tappedLockLogic()
         }
       }
     }
   }
-  
-  
+
+
   @IBAction func artistLockButtonTapped(_ sender: UIButton) {
     DispatchQueue.main.async {
       if let nowPlaying = self.mediaPlayer.nowPlayingItem {
         if sender.isSelected {
           sender.isSelected = false
           self.artistIsLocked = false
-          let unlockArtistTrace = Performance.startTrace(name: "artistUnlockedTrace")
-          Analytics.logEvent("artistTapUnlocked", parameters: nil)
           self.tappedLockLogic()
           let unlockArtist = MediaManager.shared.removeArtistLockFor(item: nowPlaying)
           if var items = unlockArtist.items?.filter({ (item) -> Bool in
@@ -574,15 +573,11 @@ class MediaPlayerViewController: UIViewController {
             self.getCurrentlyPlayedInfo()
           }
           self.tappedLockLogic()
-          unlockArtistTrace?.stop()
         } else {
           sender.isSelected = true
           self.artistIsLocked = true
           self.albumIsLocked = false
           self.genreIsLocked = false
-          let unlockArtistTrace = Performance.startTrace(name: "artistLockedTrace")
-          Analytics.logEvent("artistTapLocked", parameters: ["artist": nowPlaying.artist ?? "Artist"])
-          
           let lockArtist = MediaManager.shared.getSongsWithCurrentArtistFor(item: nowPlaying)
           if var items = lockArtist.items {
             items.shuffle()
@@ -590,7 +585,6 @@ class MediaPlayerViewController: UIViewController {
             self.mediaPlayer.prepend(descriptor)
           }
           self.tappedLockLogic()
-          unlockArtistTrace?.stop()
         }
       }
     }
@@ -603,8 +597,6 @@ class MediaPlayerViewController: UIViewController {
         if sender.isSelected {
           sender.isSelected = false
           self.genreIsLocked = false
-          let unlockGenreTrace = Performance.startTrace(name: "genreUnlockedTrace")
-          Analytics.logEvent("genreTapUnlocked", parameters: nil)
           let unlockGenre = MediaManager.shared.removeGenreLockFor(item: nowPlaying)
           if var items = unlockGenre.items?.filter({ (item) -> Bool in
             return item.mediaType.rawValue <= MPMediaType.anyAudio.rawValue
@@ -615,14 +607,11 @@ class MediaPlayerViewController: UIViewController {
             self.getCurrentlyPlayedInfo()
           }
           self.tappedLockLogic()
-          unlockGenreTrace?.stop()
         } else {
           sender.isSelected = true
           self.genreIsLocked = true
           self.artistIsLocked = false
           self.albumIsLocked = false
-          let lockGenreTrace = Performance.startTrace(name: "genreLockedTrace")
-          Analytics.logEvent("genreTapLocked", parameters: ["genre": nowPlaying.genre ?? "Genre"])
           let lockGenre = MediaManager.shared.getSongsWithCurrentGenreFor(item: nowPlaying)
           if var items = lockGenre.items {
             items.shuffle()
@@ -630,12 +619,10 @@ class MediaPlayerViewController: UIViewController {
             self.mediaPlayer.prepend(descriptor)
           }
           self.tappedLockLogic()
-          lockGenreTrace?.stop()
         }
       }
     }
   }
-  
 }
 
 

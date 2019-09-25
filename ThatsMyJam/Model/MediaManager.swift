@@ -48,9 +48,7 @@ class MediaManager: NSObject {
     return query
   }
   
-  
 
-  
   // MARK: - Remove Album Filter Logic
   
   func removeAlbumLockFor(item: MPMediaItem) -> MPMediaQuery {
