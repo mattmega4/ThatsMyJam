@@ -3,6 +3,8 @@ PODS:
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - Fabric (1.10.2)
+  - Firebase/Analytics (6.9.0):
+    - Firebase/Core
   - Firebase/Core (6.9.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.1.2)
@@ -106,8 +108,9 @@ PODS:
   - "UITextView+Placeholder (1.3.3)"
 
 DEPENDENCIES:
-  - Crashlytics
-  - Fabric
+  - Crashlytics (~> 3.14.0)
+  - Fabric (~> 1.10.2)
+  - Firebase/Analytics
   - Firebase/Core
   - Firebase/Performance
   - mailgun
@@ -167,6 +170,6 @@ SPEC CHECKSUMS:
   Protobuf: 67fb42ba613def994e61854de2b3164f13790cc4
   "UITextView+Placeholder": c407b27599ea23cca425946fee3cf1db5d547008
 
-PODFILE CHECKSUM: e98f20f4187cc4fda6aa693ff18f7bca9450dc97
+PODFILE CHECKSUM: 37ca8cf8455f438fb16e80db93128c854b678412
 
 COCOAPODS: 1.8.0

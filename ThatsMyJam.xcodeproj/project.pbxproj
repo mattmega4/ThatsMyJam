@@ -26,6 +26,7 @@
 		295AFDE42061F59700C04DD4 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDE22061F59700C04DD4 /* UIViewController+Extensions.swift */; };
 		295AFDE62061F60300C04DD4 /* AcknowledgementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */; };
 		295AFDE72061F60300C04DD4 /* AcknowledgementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */; };
+		297DA469233C3FCE001B56EB /* AlbumArtistConcatenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DA468233C3FCE001B56EB /* AlbumArtistConcatenation.swift */; };
 		2990C69C206223EA005F1825 /* Pods-ThatsMyJam-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2990C69B206223EA005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */; };
 		2990D801202525FA0090E18C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D800202525FA0090E18C /* UIView+Extensions.swift */; };
 		2990D8032025260E0090E18C /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8022025260E0090E18C /* Sequence+Extensions.swift */; };
@@ -40,7 +41,6 @@
 		2994BC01206213E8006FC966 /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDD62061F4CC00C04DD4 /* AcknowledgementsViewController.swift */; };
 		29A3A028202522E900118867 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A027202522E900118867 /* AppDelegate.swift */; };
 		29A3A02D202522E900118867 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A3A02B202522E900118867 /* Main.storyboard */; };
-		29A3A030202522E900118867 /* ThatsMyJam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A02E202522E900118867 /* ThatsMyJam.xcdatamodeld */; };
 		29A3A032202522E900118867 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29A3A031202522E900118867 /* Assets.xcassets */; };
 		29A3A035202522E900118867 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A3A033202522E900118867 /* LaunchScreen.storyboard */; };
 		29A3A040202522E900118867 /* ThatsMyJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A03F202522E900118867 /* ThatsMyJamTests.swift */; };
@@ -85,6 +85,7 @@
 		295AFDDF2061F56000C04DD4 /* LegalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalViewController.swift; sourceTree = "<group>"; };
 		295AFDE22061F59700C04DD4 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsTableViewCell.swift; sourceTree = "<group>"; };
+		297DA468233C3FCE001B56EB /* AlbumArtistConcatenation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumArtistConcatenation.swift; sourceTree = "<group>"; };
 		2990C69B206223EA005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-ThatsMyJam-acknowledgements.plist"; sourceTree = "<group>"; };
 		2990D800202525FA0090E18C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		2990D8022025260E0090E18C /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		29A3A024202522E900118867 /* ThatsMyJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThatsMyJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A3A027202522E900118867 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29A3A02C202522E900118867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		29A3A02F202522E900118867 /* ThatsMyJam.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ThatsMyJam.xcdatamodel; sourceTree = "<group>"; };
 		29A3A031202522E900118867 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29A3A034202522E900118867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		29A3A036202522E900118867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -275,20 +275,12 @@
 		29A3A04E2025238B00118867 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				29A3A04F202523DE00118867 /* CoreData */,
 				29A3A0502025240400118867 /* MediaManager.swift */,
 				29CB7C04205A37A900696357 /* RequestReview.swift */,
 				2933FB27205F209100EC7343 /* Localizable.strings */,
+				297DA468233C3FCE001B56EB /* AlbumArtistConcatenation.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		29A3A04F202523DE00118867 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				29A3A02E202522E900118867 /* ThatsMyJam.xcdatamodeld */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		490D40A6EE5FA38BAC34B870 /* Pods */ = {
@@ -443,7 +435,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "sleep 15\n\"${PROJECT_DIR}/Fabric.framework/run\" 3605c744e15ddf7d8ef099f0020dfcdd2e2abd5c\n";
+			shellScript = "sleep 15\n\"${PROJECT_DIR}/Fabric.framework/run\" 3605c744e15ddf7d8ef099f0020dfcdd2e2abd5c \n";
 		};
 		6CE1D16D4753ABFD8ADA98B4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -527,8 +519,8 @@
 				294399A12062057B005FBD99 /* FeedbackViewController.swift in Sources */,
 				2990D8032025260E0090E18C /* Sequence+Extensions.swift in Sources */,
 				295AFDE02061F56000C04DD4 /* LegalViewController.swift in Sources */,
+				297DA469233C3FCE001B56EB /* AlbumArtistConcatenation.swift in Sources */,
 				2943999E206203F6005FBD99 /* StoryboardKeys.swift in Sources */,
-				29A3A030202522E900118867 /* ThatsMyJam.xcdatamodeld in Sources */,
 				295AFDDD2061F52800C04DD4 /* Library.swift in Sources */,
 				295AFDD72061F4CC00C04DD4 /* AcknowledgementsViewController.swift in Sources */,
 				2994BBF920620C30006FC966 /* MediaPlayerViewController.swift in Sources */,
@@ -862,19 +854,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		29A3A02E202522E900118867 /* ThatsMyJam.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				29A3A02F202522E900118867 /* ThatsMyJam.xcdatamodel */,
-			);
-			currentVersion = 29A3A02F202522E900118867 /* ThatsMyJam.xcdatamodel */;
-			path = ThatsMyJam.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 29A3A01C202522E900118867 /* Project object */;
 }

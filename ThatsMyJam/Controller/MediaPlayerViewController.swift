@@ -20,6 +20,7 @@ import AVFoundation
 import FirebasePerformance
 import FirebaseAnalytics
 import Crashlytics
+import MarqueeLabel
 
 
 class MediaPlayerViewController: UIViewController {
@@ -31,7 +32,6 @@ class MediaPlayerViewController: UIViewController {
   @IBOutlet weak var songTimePlayedLabel: UILabel!
   @IBOutlet weak var songTimeRemainingLabel: UILabel!
   @IBOutlet weak var songNameLabel: UILabel!
-  //  @IBOutlet weak var songArtistLabel: UILabel!
   @IBOutlet weak var songAlbumLabel: UILabel!
   @IBOutlet weak var rewindSongButton: UIButton!
   @IBOutlet weak var playPauseSongButton: UIButton!
@@ -62,6 +62,8 @@ class MediaPlayerViewController: UIViewController {
   var volumeControlView = MPVolumeView()
   var counter = 0
   var aSongIsInChamber = false
+
+  var concatenationLogic = AlbumArtistConcatenation()
   
   let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
   let remoCommandCenter = MPRemoteCommandCenter.shared()
@@ -204,15 +206,7 @@ class MediaPlayerViewController: UIViewController {
   }
   
   
-  // MARK: - Playback Slider
-  
-  @objc func playbackSlider(_ slider: UISlider) {
-    DispatchQueue.main.async {
-      if slider == self.songProgressSlider {
-        self.mediaPlayer.currentPlaybackTime = Double(slider.value)
-      }
-    }
-  }
+
   
   // MARK: - Song Changed
   
@@ -357,55 +351,28 @@ class MediaPlayerViewController: UIViewController {
       
       self.albumArtImageView.image = #imageLiteral(resourceName: "emptyArtworkImage")
       self.songNameLabel.text = ""
-      //      self.songArtistLabel.text = ""
       self.songAlbumLabel.text = ""
     }
   }
   
   // MARK: - Get Song Information
 
-
-
-
-
-  func convertSongInfoFromStringTONSAttributedString(text: String, textColor: UIColor) -> NSAttributedString {
-
-    let attributes = [ NSAttributedString.Key.foregroundColor: textColor]
-    let attributedString = NSAttributedString(string: text, attributes: attributes)
-
-    return attributedString
-  }
-
-  func bob() {
-    let stacy = convertSongInfoFromStringTONSAttributedString(text: "Hello", textColor: .red)
-  }
-
-
-
-
   func getCurrentlyPlayedInfo() {
     DispatchQueue.main.async {
       if let songInfo = self.mediaPlayer.nowPlayingItem {
         self.songNameLabel.text = songInfo.title ?? ""
 
-
-        let attributedAlbumName = self.convertSongInfoFromStringTONSAttributedString(text: songInfo.albumTitle ?? "", textColor: .white)
-        let attributedDash = self.convertSongInfoFromStringTONSAttributedString(text: "  -  ", textColor: .white)
-        let attributedArtistName = self.convertSongInfoFromStringTONSAttributedString(text: songInfo.artist ?? "", textColor: .red)
-        let attributedSpace = self.convertSongInfoFromStringTONSAttributedString(text: "    ", textColor: .clear)
-
-
+        let attributedAlbumName = self.concatenationLogic.convertSongInfoFromStringToNSAttributedString(text: songInfo.albumTitle ?? "", textColor: .white)
+        let attributedDash = self.concatenationLogic.convertSongInfoFromStringToNSAttributedString(text: "  -  ", textColor: .white)
+        let attributedArtistName = self.concatenationLogic.convertSongInfoFromStringToNSAttributedString(text: songInfo.artist ?? "", textColor: .red)
+        let attributedSpace = self.concatenationLogic.convertSongInfoFromStringToNSAttributedString(text: "    ", textColor: .clear)
 
         let combination = NSMutableAttributedString()
         combination.append(attributedAlbumName)
         combination.append(attributedDash)
         combination.append(attributedArtistName)
         combination.append(attributedSpace)
-
-//        let combo = albumAttrString + dashAttrString + artistAttrString
         self.songAlbumLabel.attributedText = combination
-//        self.songAlbumLabel.text = combination
-        //        self.songArtistLabel.text = songInfo.artist ?? ""
         self.albumArtImageView.image = songInfo.artwork?.image(at: CGSize(width: 400, height: 400)) ?? #imageLiteral(resourceName: "emptyArtworkImage")
       }
     }
@@ -440,7 +407,24 @@ class MediaPlayerViewController: UIViewController {
     songTimePlayedLabel.text = getTimeElapsed()
     songTimeRemainingLabel.text = getTimeRemaining()
   }
-  
+
+  // MARK: - Playback Slider
+
+  @objc func playbackSlider(_ slider: UISlider) {
+    DispatchQueue.main.async {
+      if slider == self.songProgressSlider {
+        self.mediaPlayer.currentPlaybackTime = Double(slider.value)
+      }
+    }
+  }
+
+
+
+
+
+
+
+
   
   // MARK: - IB Actions
   
@@ -456,9 +440,6 @@ class MediaPlayerViewController: UIViewController {
   @IBAction func rewindSongButtonTapped(_ sender: UIButton) {
     mediaPlayer.prepareToPlay(completionHandler: { (error) in
       DispatchQueue.main.async {
-        //
-        //         uncomment when apple fixes stuff
-        
         if #available(iOS 13.0, *) {
           print("using ios 13 and above (3rd time)")
           let secondsElapsed = self.songProgressSlider.value
