@@ -28,7 +28,7 @@ class AcknowledgementsViewModel: NSObject {
   
   func getVersionInfo() -> String? {
     if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-      return "Thats My Jam Version: \(version)"
+      return "Version: \(version)"
     }
     return nil
   }

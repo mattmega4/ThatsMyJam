@@ -8,14 +8,17 @@ target 'ThatsMyJam' do
 
   # Pods for ThatsMyJam
 
+  pod 'AcknowList'
+  pod 'ChameleonFramework/Swift'
+  pod 'Crashlytics', '~> 3.14.0'
+  pod 'Fabric', '~> 1.10.2'
+  pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Performance'
-  pod 'Fabric', '~> 1.10.2'
-  pod 'Crashlytics', '~> 3.14.0'
-  pod 'Firebase/Analytics'
+  pod 'MarqueeLabel'
   pod 'mailgun'
   pod 'UITextView+Placeholder'
-  pod 'MarqueeLabel'
+
 
   target 'ThatsMyJamTests' do
     inherit! :search_paths

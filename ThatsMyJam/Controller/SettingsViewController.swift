@@ -7,33 +7,47 @@
 //
 
 import UIKit
+import AcknowList
+import ChameleonFramework
 
 class SettingsViewController: UIViewController {
   
   @IBOutlet weak var rightNavBarButtonItem: UIBarButtonItem!
   @IBOutlet weak var logoImgView: UIImageView!
+  @IBOutlet weak var appNameLabel: UILabel!
+  @IBOutlet weak var versionLabel: UILabel!
   @IBOutlet weak var buttonStackView: UIStackView!
   @IBOutlet weak var acknowledgementsButton: UIButton!
   @IBOutlet weak var legalButton: UIButton!
   @IBOutlet weak var feedbackButton: UIButton!
+
+  let viewModel = AcknowledgementsViewModel()
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-        setNavBar()
-      title = "Settings"
-    }
+    setNavBar()
+    
+    title = "Settings"
+    appNameLabel.text = "Thats My Jam"
+    versionLabel.text = viewModel.getVersionInfo()
+    acknowledgementsButton.roundedButton()
+    legalButton.roundedButton()
+    feedbackButton.roundedButton()
+  }
 
-    // MARK: - IB Actions
+  // MARK: - IB Actions
   
   @IBAction func rightBarButtonItemTapped(_ sender: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
   }
   
   @IBAction func acknowledgementsButtonTapped(_ sender: UIButton) {
-    if let ackVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardKeys.acknowledgementsVCViewControllerStoryboardID) as? AcknowledgementsViewController {
-      self.navigationController?.pushViewController(ackVC, animated: true)
-    }
+    //    if let ackVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardKeys.acknowledgementsVCViewControllerStoryboardID) as? AcknowledgementsViewController {
+    //      self.navigationController?.pushViewController(ackVC, animated: true)
+    //    }
+    let viewController = AcknowListViewController()
+    navigationController?.pushViewController(viewController, animated: true)
   }
   
   @IBAction func legalButtontapped(_ sender: UIButton) {

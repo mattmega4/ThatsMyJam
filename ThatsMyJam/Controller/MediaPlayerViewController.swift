@@ -20,7 +20,7 @@ import AVFoundation
 import FirebasePerformance
 import FirebaseAnalytics
 import Crashlytics
-import MarqueeLabel
+import ChameleonFramework
 
 
 class MediaPlayerViewController: UIViewController {
@@ -62,7 +62,7 @@ class MediaPlayerViewController: UIViewController {
   var volumeControlView = MPVolumeView()
   var counter = 0
   var aSongIsInChamber = false
-
+  
   var concatenationLogic = AlbumArtistConcatenation()
   
   let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
@@ -72,20 +72,14 @@ class MediaPlayerViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    albumArtImageView.createRoundedCorners()
-    if let abV = albumArtImageView {
-      abV.createRoundedCorners()
-    }
+    setUpAudioPlayerAndGetSongsShuffled()
+    albumArtImageView.roundedCorners()
     songProgressSlider.addTarget(self, action: #selector(playbackSlider(_:)), for: .valueChanged)
     volumeControlView.showsVolumeSlider = true
-
-    var preferredStatusBarStyle : UIStatusBarStyle {
+    var preferredStatusBarStyle: UIStatusBarStyle {
       return .lightContent
     }
-    
     NotificationCenter.default.addObserver(self, selector: #selector(self.wasSongInteruptedNotification(_:)), name: nil, object: self.mediaPlayer)
-
   }
   
   func setupAudioSession() {
@@ -115,22 +109,23 @@ class MediaPlayerViewController: UIViewController {
     super.viewWillAppear(animated)
     clearSongInfo()
     setupAudioSession()
-    setUpAudioPlayerAndGetSongsShuffled()
+    //    setUpAudioPlayerAndGetSongsShuffled()
     setNavBar()
     showReview()
-
+    
     wasSongInterupted()
     DispatchQueue.main.async {
       self.mediaPlayer.beginGeneratingPlaybackNotifications()
       NotificationCenter.default.addObserver(self, selector: #selector(self.songChanged(_:)), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: self.mediaPlayer)
     }
-
+    
     if #available(iOS 13.0, *) {
       print("using ios 13 and above (1st time)")
     } else {
       print("NOT using ios 13 or above (1st time)")
       rewindSongButton.setImage(UIImage(named: "restartSongLight.png"), for: .normal)
     }
+    
   }
   
   
@@ -206,7 +201,7 @@ class MediaPlayerViewController: UIViewController {
   }
   
   
-
+  
   
   // MARK: - Song Changed
   
@@ -356,28 +351,34 @@ class MediaPlayerViewController: UIViewController {
   }
   
   // MARK: - Get Song Information
-
+  
   func getCurrentlyPlayedInfo() {
     DispatchQueue.main.async {
       if let songInfo = self.mediaPlayer.nowPlayingItem {
-        self.songNameLabel.text = songInfo.title ?? ""
-
-        let attributedAlbumName = self.concatenationLogic.convertSongInfoFromStringToNSAttributedString(text: songInfo.albumTitle ?? "", textColor: .white)
-        let attributedDash = self.concatenationLogic.convertSongInfoFromStringToNSAttributedString(text: "  -  ", textColor: .white)
-        let attributedArtistName = self.concatenationLogic.convertSongInfoFromStringToNSAttributedString(text: songInfo.artist ?? "", textColor: .red)
+        let attributedSongName = self.concatenationLogic.convertSongInfoFromStringToNSAttributedString(text: songInfo.title ?? "", textColor: .white)
         let attributedSpace = self.concatenationLogic.convertSongInfoFromStringToNSAttributedString(text: "    ", textColor: .clear)
-
-        let combination = NSMutableAttributedString()
-        combination.append(attributedAlbumName)
-        combination.append(attributedDash)
-        combination.append(attributedArtistName)
-        combination.append(attributedSpace)
-        self.songAlbumLabel.attributedText = combination
+        let firstLineCombination = NSMutableAttributedString()
+        firstLineCombination.append(attributedSongName)
+        firstLineCombination.append(attributedSpace)
+        
+        self.songNameLabel.text = songInfo.title ?? "No Entered Song Title"
+        
+        let attributedAlbumName = self.concatenationLogic.convertSongInfoFromStringToNSAttributedString(text: songInfo.albumTitle ?? "Unknown Album", textColor: .white)
+        let attributedDash = self.concatenationLogic.convertSongInfoFromStringToNSAttributedString(text: "  -  ", textColor: .white)
+        let attributedArtistName = self.concatenationLogic.convertSongInfoFromStringToNSAttributedString(text: songInfo.artist ?? "Unknown Artist", textColor: .red)
+        
+        
+        let secondLineCombination = NSMutableAttributedString()
+        secondLineCombination.append(attributedAlbumName)
+        secondLineCombination.append(attributedDash)
+        secondLineCombination.append(attributedArtistName)
+        secondLineCombination.append(attributedSpace)
+        self.songAlbumLabel.attributedText = secondLineCombination
         self.albumArtImageView.image = songInfo.artwork?.image(at: CGSize(width: 400, height: 400)) ?? #imageLiteral(resourceName: "emptyArtworkImage")
       }
     }
   }
-
+  
   
   // MARK: - Get Time Remaining
   
@@ -407,9 +408,9 @@ class MediaPlayerViewController: UIViewController {
     songTimePlayedLabel.text = getTimeElapsed()
     songTimeRemainingLabel.text = getTimeRemaining()
   }
-
+  
   // MARK: - Playback Slider
-
+  
   @objc func playbackSlider(_ slider: UISlider) {
     DispatchQueue.main.async {
       if slider == self.songProgressSlider {
@@ -417,21 +418,16 @@ class MediaPlayerViewController: UIViewController {
       }
     }
   }
-
-
-
-
-
-
-
-
   
   // MARK: - IB Actions
   
   @IBAction func topRightButtonTapped(_ sender: UIButton) {
     if let prefVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardKeys.settingsViewControllerStoryboardID) as? SettingsViewController {
       let prefNavigation = UINavigationController(rootViewController: prefVC)
+      prefNavigation.modalPresentationStyle = .fullScreen
       self.present(prefNavigation, animated: true, completion: nil)
+      
+      
     }
   }
   
@@ -469,6 +465,9 @@ class MediaPlayerViewController: UIViewController {
   }
   
   @IBAction func forwardSongButtonTapped(_ sender: UIButton) {
+    self.forwardSongButton.isEnabled = false
+    
+    
     mediaPlayer.prepareToPlay(completionHandler: { (error) in
       DispatchQueue.main.async {
         guard let nowPlaying = self.mediaPlayer.nowPlayingItem else {
@@ -481,7 +480,12 @@ class MediaPlayerViewController: UIViewController {
         }
         self.getCurrentlyPlayedInfo()
       }
+      self.delay(seconds: 0.75) {
+        self.forwardSongButton.isEnabled = true
+      }
+      
     })
+    
   }
   
   @IBAction func playPauseSongButtonTapped(_ sender: UIButton) {
@@ -527,7 +531,14 @@ class MediaPlayerViewController: UIViewController {
             let descriptor = MPMusicPlayerMediaItemQueueDescriptor(itemCollection: MPMediaItemCollection(items: self.newSongs.shuffled()))
             self.mediaPlayer.prepend(descriptor)
             self.getCurrentlyPlayedInfo()
+            
           }
+          //          self.forwardSongButton.isEnabled = false
+          //          self.mediaPlayer.prepareToPlay { (error) in
+          //            self.unlockEverythingAndPlay()
+          //            self.getCurrentlyPlayedInfo()
+          //            self.forwardSongButton.isEnabled = true
+          //          }
           self.tappedLockLogic()
         } else {
           sender.isSelected = true
@@ -545,8 +556,8 @@ class MediaPlayerViewController: UIViewController {
       }
     }
   }
-
-
+  
+  
   @IBAction func artistLockButtonTapped(_ sender: UIButton) {
     DispatchQueue.main.async {
       if let nowPlaying = self.mediaPlayer.nowPlayingItem {
@@ -563,6 +574,13 @@ class MediaPlayerViewController: UIViewController {
             self.mediaPlayer.prepend(descriptor)
             self.getCurrentlyPlayedInfo()
           }
+          //          self.forwardSongButton.isEnabled = false
+          //          self.mediaPlayer.prepareToPlay { (error) in
+          //            self.unlockEverythingAndPlay()
+          //            self.getCurrentlyPlayedInfo()
+          //            self.forwardSongButton.isEnabled = true
+          //          }
+          
           self.tappedLockLogic()
         } else {
           sender.isSelected = true
@@ -597,6 +615,12 @@ class MediaPlayerViewController: UIViewController {
             self.mediaPlayer.prepend(descriptor)
             self.getCurrentlyPlayedInfo()
           }
+          //          self.forwardSongButton.isEnabled = false
+          //          self.mediaPlayer.prepareToPlay { (error) in
+          //            self.unlockEverythingAndPlay()
+          //            self.getCurrentlyPlayedInfo()
+          //            self.forwardSongButton.isEnabled = true
+          //          }
           self.tappedLockLogic()
         } else {
           sender.isSelected = true

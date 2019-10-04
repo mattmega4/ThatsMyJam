@@ -16,6 +16,9 @@ class MediaManager: NSObject {
   static let shared = MediaManager()
   var playedSongs = [MPMediaItem]()
   var lockedSongs = [MPMediaItem]()
+  var albumQuery = MPMediaQuery(filterPredicates: nil)
+  var artistQuery = MPMediaQuery(filterPredicates: nil)
+  var genreQuery = MPMediaQuery(filterPredicates: nil)
   
   // MARK: - Get All Song Logic
   
@@ -23,9 +26,12 @@ class MediaManager: NSObject {
   func getAllSongs(completion: @escaping (_ songs: [MPMediaItem]?) -> Void) {
     MPMediaLibrary.requestAuthorization { (status) in
       if status == .authorized {
-        let query = MPMediaQuery()
+//        let query = MPMediaQuery()
+
         let mediaTypeMusic = MPMediaType.music
         let audioFilter = MPMediaPropertyPredicate(value: mediaTypeMusic.rawValue, forProperty: MPMediaItemPropertyMediaType, comparisonType: MPMediaPredicateComparison.equalTo)
+//        let query = MPMediaQuery()
+        let query = MPMediaQuery(filterPredicates: [audioFilter])
         query.addFilterPredicate(audioFilter)
         let songs = query.items?.filter({ (item) -> Bool in
           //          return item.mediaType.rawValue == 1
@@ -37,15 +43,23 @@ class MediaManager: NSObject {
       }
     }
   }
-  
-  
+
+
+
   // MARK: - Album Lock Logic
   
   func getSongsWithCurrentAlbumFor(item: MPMediaItem) -> MPMediaQuery {
+
+    let artistPredicateWithin = MPMediaPropertyPredicate(value: item.artist, forProperty: MPMediaItemPropertyArtist, comparisonType: .contains)
     let albumPredicate = MPMediaPropertyPredicate(value: item.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
-    let query = MPMediaQuery()
+    let myFilterSet: Set<MPMediaPropertyPredicate> = [artistPredicateWithin, albumPredicate]
+
+//    let query = MPMediaQuery()
+    var query = MPMediaQuery(filterPredicates: nil)
+    query = MPMediaQuery(filterPredicates: myFilterSet)
     query.addFilterPredicate(albumPredicate)
-    return query
+    albumQuery = query
+    return albumQuery
   }
   
 
@@ -53,27 +67,40 @@ class MediaManager: NSObject {
   
   func removeAlbumLockFor(item: MPMediaItem) -> MPMediaQuery {
     let albumPredicate = MPMediaPropertyPredicate(value: item.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
-    let query = MPMediaQuery()
+//    let query = MPMediaQuery()
+    let query = MPMediaQuery(filterPredicates: nil)
     query.removeFilterPredicate(albumPredicate)
-    return query
+    albumQuery = query
+//    albumQuery.removeFilterPredicate(albumPredicate)
+//    return query
+    return albumQuery
   }
+
+
+
+
+
   
   // MARK: - Artist Lock Logic
   
   func getSongsWithCurrentArtistFor(item: MPMediaItem) -> MPMediaQuery {
     let artistPredicate = MPMediaPropertyPredicate(value: item.artist, forProperty: MPMediaItemPropertyArtist, comparisonType: .contains)
-    let query = MPMediaQuery()
+//    let query = MPMediaQuery()
+    let query = MPMediaQuery(filterPredicates: nil)
     query.addFilterPredicate(artistPredicate)
-    return query
+    artistQuery = query
+    return artistQuery
   }
   
   // MARK: - Remove Artist Filter Logic
   
   func removeArtistLockFor(item: MPMediaItem) -> MPMediaQuery {
     let artistPredicate = MPMediaPropertyPredicate(value: item.artist, forProperty: MPMediaItemPropertyArtist)
-    let query = MPMediaQuery()
+//    let query = MPMediaQuery()
+    let query = MPMediaQuery(filterPredicates: nil)
     query.removeFilterPredicate(artistPredicate)
-    return query
+    artistQuery = query
+    return artistQuery
   }
   
   
@@ -81,19 +108,22 @@ class MediaManager: NSObject {
   
   func getSongsWithCurrentGenreFor(item: MPMediaItem) -> MPMediaQuery {
     let genrePredicate = MPMediaPropertyPredicate(value: item.genre, forProperty: MPMediaItemPropertyGenre, comparisonType: .contains)
-    let query = MPMediaQuery()
+//    let query = MPMediaQuery()
+    let query = MPMediaQuery(filterPredicates: nil)
     query.addFilterPredicate(genrePredicate)
-    return query
+    genreQuery = query
+    return genreQuery
   }
 
   // MARK: - Remove Genre Filter Logic
   
   func removeGenreLockFor(item: MPMediaItem) -> MPMediaQuery {
-    
     let genrePredicate = MPMediaPropertyPredicate(value: item.genre, forProperty: MPMediaItemPropertyGenre)
-    let query = MPMediaQuery()
+//    let query = MPMediaQuery()
+    let query = MPMediaQuery(filterPredicates: nil)
     query.removeFilterPredicate(genrePredicate)
-    return query
+    genreQuery = query
+    return genreQuery
   }
 
   
