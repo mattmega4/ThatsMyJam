@@ -25,6 +25,7 @@ Visit https://apps.apple.com/us/app/thats-my-jam/id1341519942 directly to downla
 ### Prerequisites
 
 iOS 12.0 + For basic function of App
+
 iOS 12.0+ For optimatal functionality 
 
 ## Locking on Artist/Album/Genre
