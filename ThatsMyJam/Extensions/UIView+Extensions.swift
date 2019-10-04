@@ -11,9 +11,15 @@ import UIKit
 
 extension UIView {
   
-  public func createRoundedCorners() {
+   public func roundedCorners() {
     layer.cornerRadius = 7
     clipsToBounds = true
+  }
+
+  public func roundedButton() {
+    layer.cornerRadius = 15
+    clipsToBounds = true
+    backgroundColor = UIColor.white.withAlphaComponent(0.7)
   }
   
 }
