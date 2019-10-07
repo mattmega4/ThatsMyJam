@@ -379,6 +379,7 @@
 				ja,
 				"zh-Hans",
 				"zh-Hant",
+				es,
 			);
 			mainGroup = 29A3A01B202522E900118867;
 			productRefGroup = 29A3A025202522E900118867 /* Products */;

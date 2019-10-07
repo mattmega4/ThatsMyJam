@@ -71,7 +71,6 @@ class MediaPlayerViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    
     clearSongInfo()
     setUpAudioPlayerAndGetSongsShuffled()
     setNavBar()
