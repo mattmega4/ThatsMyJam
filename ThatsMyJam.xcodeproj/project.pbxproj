@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		283D87E86C2F621DE8EDBF93 /* Pods_ThatsMyJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EF45B95F707500CAABFCF0 /* Pods_ThatsMyJamTests.framework */; };
 		290070C8202529100054A0C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 290070C7202529100054A0C2 /* GoogleService-Info.plist */; };
+		2916353D232B2A7F009FF70A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2916353C232B2A7F009FF70A /* AudioToolbox.framework */; };
 		2933FB25205F209100EC7343 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2933FB27205F209100EC7343 /* Localizable.strings */; };
+		2936980C233DC6A8007289D1 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2936980B233DC6A8007289D1 /* NSObject+Extensions.swift */; };
 		293A324821544A9A00E4A18D /* Notification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293A324721544A9A00E4A18D /* Notification+Extensions.swift */; };
 		2943999E206203F6005FBD99 /* StoryboardKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2943999D206203F6005FBD99 /* StoryboardKeys.swift */; };
 		294399A12062057B005FBD99 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294399A02062057B005FBD99 /* FeedbackViewController.swift */; };
@@ -25,6 +27,7 @@
 		295AFDE42061F59700C04DD4 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDE22061F59700C04DD4 /* UIViewController+Extensions.swift */; };
 		295AFDE62061F60300C04DD4 /* AcknowledgementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */; };
 		295AFDE72061F60300C04DD4 /* AcknowledgementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */; };
+		297DA469233C3FCE001B56EB /* AlbumArtistConcatenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DA468233C3FCE001B56EB /* AlbumArtistConcatenation.swift */; };
 		2990C69C206223EA005F1825 /* Pods-ThatsMyJam-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2990C69B206223EA005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */; };
 		2990D801202525FA0090E18C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D800202525FA0090E18C /* UIView+Extensions.swift */; };
 		2990D8032025260E0090E18C /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990D8022025260E0090E18C /* Sequence+Extensions.swift */; };
@@ -39,7 +42,6 @@
 		2994BC01206213E8006FC966 /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295AFDD62061F4CC00C04DD4 /* AcknowledgementsViewController.swift */; };
 		29A3A028202522E900118867 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A027202522E900118867 /* AppDelegate.swift */; };
 		29A3A02D202522E900118867 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A3A02B202522E900118867 /* Main.storyboard */; };
-		29A3A030202522E900118867 /* ThatsMyJam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A02E202522E900118867 /* ThatsMyJam.xcdatamodeld */; };
 		29A3A032202522E900118867 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29A3A031202522E900118867 /* Assets.xcassets */; };
 		29A3A035202522E900118867 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A3A033202522E900118867 /* LaunchScreen.storyboard */; };
 		29A3A040202522E900118867 /* ThatsMyJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3A03F202522E900118867 /* ThatsMyJamTests.swift */; };
@@ -63,6 +65,8 @@
 /* Begin PBXFileReference section */
 		0E898F2C06109C0F215828DD /* Pods-ThatsMyJam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThatsMyJam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam.debug.xcconfig"; sourceTree = "<group>"; };
 		290070C7202529100054A0C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2916353B232B2A7E009FF70A /* ThatsMyJam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ThatsMyJam.entitlements; sourceTree = "<group>"; };
+		2916353C232B2A7F009FF70A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2933FB26205F209100EC7343 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2933FB28205F20A300EC7343 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2933FB29205F20A500EC7343 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -72,6 +76,7 @@
 		2933FB2D205F20A900EC7343 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2933FB2E205F20AA00EC7343 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2933FB2F205F20AC00EC7343 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		2936980B233DC6A8007289D1 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
 		293A324721544A9A00E4A18D /* Notification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extensions.swift"; sourceTree = "<group>"; };
 		2943999D206203F6005FBD99 /* StoryboardKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKeys.swift; sourceTree = "<group>"; };
 		294399A02062057B005FBD99 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +87,7 @@
 		295AFDDF2061F56000C04DD4 /* LegalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalViewController.swift; sourceTree = "<group>"; };
 		295AFDE22061F59700C04DD4 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		295AFDE52061F60300C04DD4 /* AcknowledgementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsTableViewCell.swift; sourceTree = "<group>"; };
+		297DA468233C3FCE001B56EB /* AlbumArtistConcatenation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumArtistConcatenation.swift; sourceTree = "<group>"; };
 		2990C69B206223EA005F1825 /* Pods-ThatsMyJam-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-ThatsMyJam-acknowledgements.plist"; sourceTree = "<group>"; };
 		2990D800202525FA0090E18C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		2990D8022025260E0090E18C /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
@@ -89,10 +95,10 @@
 		2991FD6820621B180056D91B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2994BBF620620960006FC966 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2994BBF820620C30006FC966 /* MediaPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerViewController.swift; sourceTree = "<group>"; };
+		2997319D233D973000AB66FC /* Pods-ThatsMyJam-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Pods-ThatsMyJam-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-ThatsMyJam/../../../Pods-ThatsMyJam-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
 		29A3A024202522E900118867 /* ThatsMyJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThatsMyJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A3A027202522E900118867 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29A3A02C202522E900118867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		29A3A02F202522E900118867 /* ThatsMyJam.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ThatsMyJam.xcdatamodel; sourceTree = "<group>"; };
 		29A3A031202522E900118867 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29A3A034202522E900118867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		29A3A036202522E900118867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B16DC1FAC1ECE4922434174E /* Pods_ThatsMyJam.framework in Frameworks */,
+				2916353D232B2A7F009FF70A /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +158,7 @@
 		1414085DDC0EA4FFAED01033 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2916353C232B2A7F009FF70A /* AudioToolbox.framework */,
 				29F0DE14206469480046960B /* AdSupport.framework */,
 				A645321C3C91BA2077AE8CE0 /* Pods_ThatsMyJam.framework */,
 				58EF45B95F707500CAABFCF0 /* Pods_ThatsMyJamTests.framework */,
@@ -201,6 +209,7 @@
 		29A3A026202522E900118867 /* ThatsMyJam */ = {
 			isa = PBXGroup;
 			children = (
+				2916353B232B2A7E009FF70A /* ThatsMyJam.entitlements */,
 				29A3A04E2025238B00118867 /* Model */,
 				29A3A04D2025238900118867 /* View */,
 				29A3A04C2025238700118867 /* Controller */,
@@ -223,6 +232,7 @@
 		29A3A04A2025238300118867 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				2997319D233D973000AB66FC /* Pods-ThatsMyJam-acknowledgements.plist */,
 				29A3A027202522E900118867 /* AppDelegate.swift */,
 				29A3A031202522E900118867 /* Assets.xcassets */,
 				29A3A033202522E900118867 /* LaunchScreen.storyboard */,
@@ -241,6 +251,7 @@
 				2990D8042025261F0090E18C /* MutableCollection+Extensions.swift */,
 				295AFDE22061F59700C04DD4 /* UIViewController+Extensions.swift */,
 				293A324721544A9A00E4A18D /* Notification+Extensions.swift */,
+				2936980B233DC6A8007289D1 /* NSObject+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -269,20 +280,12 @@
 		29A3A04E2025238B00118867 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				29A3A04F202523DE00118867 /* CoreData */,
 				29A3A0502025240400118867 /* MediaManager.swift */,
 				29CB7C04205A37A900696357 /* RequestReview.swift */,
 				2933FB27205F209100EC7343 /* Localizable.strings */,
+				297DA468233C3FCE001B56EB /* AlbumArtistConcatenation.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		29A3A04F202523DE00118867 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				29A3A02E202522E900118867 /* ThatsMyJam.xcdatamodeld */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		490D40A6EE5FA38BAC34B870 /* Pods */ = {
@@ -307,8 +310,9 @@
 				29A3A020202522E900118867 /* Sources */,
 				29A3A021202522E900118867 /* Frameworks */,
 				29A3A022202522E900118867 /* Resources */,
-				5A57CC72462396792CDEE491 /* [CP] Embed Pods Frameworks */,
-				299C9FD321D6AB7200B12212 /* ShellScript */,
+				2920EBD2233DDF460066DCAE /* ShellScript */,
+				29FD693821FC177000898C6B /* ShellScript */,
+				6CE1D16D4753ABFD8ADA98B4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -350,6 +354,7 @@
 				TargetAttributes = {
 					29A3A023202522E900118867 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -359,6 +364,7 @@
 					};
 					29A3A03A202522E900118867 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 29A3A023202522E900118867;
 					};
@@ -419,7 +425,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		299C9FD321D6AB7200B12212 /* ShellScript */ = {
+		2920EBD2233DDF460066DCAE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "find dSYM_directory -name \"*.dSYM\" | xargs -I \\{\\} $PODS_ROOT/Fabric/upload-symbols -a fabric-api-key -p platform \\{\\}\n";
+		};
+		29FD693821FC177000898C6B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -435,9 +458,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "sleep 15\n\"${PROJECT_DIR}/Fabric.framework/run\" 3605c744e15ddf7d8ef099f0020dfcdd2e2abd5c 7bf7613729d303dcf6eda216f60fde4100191c032181ca9d63ffb7b2533bc45a\n";
+			shellScript = "sleep 15\n\"${PROJECT_DIR}/Fabric.framework/run\" 3605c744e15ddf7d8ef099f0020dfcdd2e2abd5c \n";
 		};
-		5A57CC72462396792CDEE491 /* [CP] Embed Pods Frameworks */ = {
+		6CE1D16D4753ABFD8ADA98B4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -445,10 +468,13 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ThatsMyJam/Pods-ThatsMyJam-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/AcknowList/AcknowList.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 				"${BUILT_PRODUCTS_DIR}/mailgun/mailgun.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -456,10 +482,13 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AcknowList.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/mailgun.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -517,8 +546,8 @@
 				294399A12062057B005FBD99 /* FeedbackViewController.swift in Sources */,
 				2990D8032025260E0090E18C /* Sequence+Extensions.swift in Sources */,
 				295AFDE02061F56000C04DD4 /* LegalViewController.swift in Sources */,
+				297DA469233C3FCE001B56EB /* AlbumArtistConcatenation.swift in Sources */,
 				2943999E206203F6005FBD99 /* StoryboardKeys.swift in Sources */,
-				29A3A030202522E900118867 /* ThatsMyJam.xcdatamodeld in Sources */,
 				295AFDDD2061F52800C04DD4 /* Library.swift in Sources */,
 				295AFDD72061F4CC00C04DD4 /* AcknowledgementsViewController.swift in Sources */,
 				2994BBF920620C30006FC966 /* MediaPlayerViewController.swift in Sources */,
@@ -529,6 +558,7 @@
 				29A3A028202522E900118867 /* AppDelegate.swift in Sources */,
 				295AFDD92061F4F400C04DD4 /* AcknowledgementsViewModel.swift in Sources */,
 				293A324821544A9A00E4A18D /* Notification+Extensions.swift in Sources */,
+				2936980C233DC6A8007289D1 /* NSObject+Extensions.swift in Sources */,
 				2994BBF720620960006FC966 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -736,16 +766,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = ThatsMyJam/ThatsMyJam.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = K8YZSQZRNW;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/ThatsMyJam/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.7.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewhsingleton.ThatsMyJam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.2;
+				SWIFT_REFLECTION_METADATA_LEVEL = all;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -756,14 +792,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = ThatsMyJam/ThatsMyJam.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K8YZSQZRNW;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/ThatsMyJam/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.7.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewhsingleton.ThatsMyJam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_ENABLE_BATCH_MODE = NO;
+				SWIFT_REFLECTION_METADATA_LEVEL = all;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -783,7 +825,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewhsingleton.ThatsMyJamTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ThatsMyJam.app/ThatsMyJam";
 			};
@@ -803,7 +845,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewhsingleton.ThatsMyJamTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ThatsMyJam.app/ThatsMyJam";
 			};
@@ -840,19 +882,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		29A3A02E202522E900118867 /* ThatsMyJam.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				29A3A02F202522E900118867 /* ThatsMyJam.xcdatamodel */,
-			);
-			currentVersion = 29A3A02F202522E900118867 /* ThatsMyJam.xcdatamodel */;
-			path = ThatsMyJam.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 29A3A01C202522E900118867 /* Project object */;
 }
