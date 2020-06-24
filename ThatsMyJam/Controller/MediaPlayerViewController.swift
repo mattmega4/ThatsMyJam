@@ -72,11 +72,7 @@ class MediaPlayerViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-<<<<<<< HEAD
-
     clearSongInfo()
-=======
->>>>>>> 49f018afec0ad15dd6d08ff001e81c8893a47826
     setUpAudioPlayerAndGetSongsShuffled()
     albumArtImageView.roundedCorners()
     songProgressSlider.addTarget(self, action: #selector(playbackSlider(_:)), for: .valueChanged)
@@ -485,7 +481,7 @@ class MediaPlayerViewController: UIViewController {
         }
         self.getCurrentlyPlayedInfo()
       }
-      self.delay(seconds: 0.75) {
+      self.delay(seconds: 0.50) {
         self.forwardSongButton.isEnabled = true
       }
       

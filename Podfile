@@ -10,8 +10,8 @@ target 'ThatsMyJam' do
 
   pod 'AcknowList'
   pod 'ChameleonFramework/Swift'
-  pod 'Crashlytics', '~> 3.14.0'
-  pod 'Fabric', '~> 1.10.2'
+  pod 'Crashlytics'
+  pod 'Fabric'
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Performance'

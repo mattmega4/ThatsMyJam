@@ -52,8 +52,20 @@ class MediaManager: NSObject {
 
     let artistPredicateWithin = MPMediaPropertyPredicate(value: item.artist, forProperty: MPMediaItemPropertyArtist, comparisonType: .contains)
     let albumPredicate = MPMediaPropertyPredicate(value: item.albumTitle, forProperty: MPMediaItemPropertyAlbumTitle)
-    let myFilterSet: Set<MPMediaPropertyPredicate> = [artistPredicateWithin, albumPredicate]
 
+    let compilationPredicate = MPMediaPropertyPredicate(value: item.isCompilation, forProperty: MPMediaItemPropertyIsCompilation)
+
+    var myFilterSet: Set<MPMediaPropertyPredicate>
+    var isComp: String
+    if item.isCompilation == true {
+       myFilterSet = [artistPredicateWithin, albumPredicate, compilationPredicate]
+      isComp = "true"
+    } else {
+       myFilterSet = [artistPredicateWithin, albumPredicate]
+      isComp = "false"
+    }
+
+    print(isComp)
 //    let query = MPMediaQuery()
     var query = MPMediaQuery(filterPredicates: nil)
     query = MPMediaQuery(filterPredicates: myFilterSet)
